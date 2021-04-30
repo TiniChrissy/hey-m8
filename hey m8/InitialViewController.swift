@@ -10,9 +10,10 @@ import GoogleSignIn
 
 class InitialViewController: UIViewController {
 
-//    @IBOutlet weak var signInButton: GIDSignInButton!
+    @IBOutlet weak var googleSignInButton: GIDSignInButton!
+
     
-   var signInButton: UIButton!
+//   var signInButton: UIButton!
       var signOutButton: UIButton!
       var greetingLabel: UILabel!
 
@@ -33,7 +34,10 @@ class InitialViewController: UIViewController {
        greetingLabel.heightAnchor.constraint(equalToConstant: 54).isActive = true
        greetingLabel.widthAnchor.constraint(equalToConstant: 300).isActive = true
        
-        
+//        googleSignInButton.colorScheme = GIDSignInButtonColorScheme.dark
+//        googleSignInButton.style = GIDSignInButtonStyle.iconOnly
+//
+        /*
        // Add sign-in button
        signInButton = UIButton()
        signInButton.layer.cornerRadius = 10.0
@@ -48,7 +52,7 @@ class InitialViewController: UIViewController {
        signInButton.heightAnchor.constraint(equalToConstant: 44).isActive = true
        signInButton.widthAnchor.constraint(equalToConstant: 250).isActive = true
        
- 
+ */
         /*
        // Add sign-out button
        signOutButton = UIButton()
