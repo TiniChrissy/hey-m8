@@ -5,6 +5,10 @@
 //  Created by Christina Li on 30/4/21.
 //
 
+//sign in code with lots of help from
+// https://medium.com/swlh/google-sign-in-integration-in-ios-90cdd5cb5967
+
+
 import UIKit
 import GoogleSignIn
 
@@ -12,19 +16,17 @@ class InitialViewController: UIViewController {
 
     @IBOutlet weak var googleSignInButton: GIDSignInButton!
 
-    
 //   var signInButton: UIButton!
       var signOutButton: UIButton!
       var greetingLabel: UILabel!
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
         // Add greeting label
        greetingLabel = UILabel()
-       greetingLabel.text = "Welcome to hey m8"
+       greetingLabel.text = "Log in or sign up to hey m8"
        greetingLabel.textAlignment = .center
 //       greetingLabel.backgroundColor = .tertiarySystemFill
        view.addSubview(greetingLabel)
@@ -34,8 +36,13 @@ class InitialViewController: UIViewController {
        greetingLabel.heightAnchor.constraint(equalToConstant: 54).isActive = true
        greetingLabel.widthAnchor.constraint(equalToConstant: 300).isActive = true
        
-//        googleSignInButton.colorScheme = GIDSignInButtonColorScheme.dark
-//        googleSignInButton.style = GIDSignInButtonStyle.iconOnly
+        if self.traitCollection.userInterfaceStyle == .dark {
+            // User Interface is Dark
+            googleSignInButton.colorScheme = GIDSignInButtonColorScheme.dark
+        } else {
+            googleSignInButton.colorScheme = GIDSignInButtonColorScheme.light
+        }
+//       googleSignInButton.style = GIDSignInButtonStyle.iconOnly
 //
         /*
        // Add sign-in button
@@ -78,8 +85,49 @@ class InitialViewController: UIViewController {
         // Automatically sign in the user.
 //        GIDSignIn.sharedInstance()?.restorePreviousSignIn()
 
+        
+        // Register notification to update screen after user successfully signed in
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(userDidSignInGoogle(_:)),
+                                               name: .signInGoogleCompleted,
+                                               object: nil)
+        
+        // Update screen base on sign-in/sign-out status (when screen is shown)
+        updateScreen()
     }
 
-
+    // MARK:- Notification
+    @objc private func userDidSignInGoogle(_ notification: Notification) {
+        // Update screen after user successfully signed in
+        updateScreen()
+    }
+    
+    private func updateScreen() {
+        
+        if let user = GIDSignIn.sharedInstance()?.currentUser {
+            // User signed in
+            
+            // Show greeting message
+            greetingLabel.text = "Hey \(user.profile.givenName!)! ✌️"
+            
+            // Hide sign in button
+            googleSignInButton.isHidden = true
+            
+            // Show sign out button
+//            signOutButton.isHidden = false
+            
+        } else {
+            // User signed out
+            
+            // Show sign in message
+             greetingLabel.text = "Log in or sign up to hey m8"
+             
+             // Show sign in button
+             googleSignInButton.isHidden = false
+             
+             // Hide sign out button
+//             signOutButton.isHidden = true
+        }
+    }
 }
 
