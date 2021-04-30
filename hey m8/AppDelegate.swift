@@ -11,14 +11,12 @@ import GoogleSignIn
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
-
-
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         // Initialize sign-in
-        GIDSignIn.sharedInstance().clientID = "156995123525-9i421d7vcgmb8sq482fo3243u24h6dgh.apps.googleusercontent.com"
+        GIDSignIn.sharedInstance().clientID = "1074792501605-0ahv6ce4ehij10d25es2dlc1a4shr9bn.apps.googleusercontent.com"
         GIDSignIn.sharedInstance().delegate = self
+        GIDSignIn.sharedInstance()?.restorePreviousSignIn()
 
         return true
     }
@@ -41,42 +39,46 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any]) -> Bool {
       return GIDSignIn.sharedInstance().handle(url)
     }
+    
+    
 
     // For ios 8 or older
     func application(_ application: UIApplication,
                      open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
       return GIDSignIn.sharedInstance().handle(url)
     }
-    
-    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!,
+
+    func sign(_ signIn: GIDSignIn!,
+              didSignInFor user: GIDGoogleUser!,
               withError error: Error!) {
-      if let error = error {
-        if (error as NSError).code == GIDSignInErrorCode.hasNoAuthInKeychain.rawValue {
-          print("The user has not signed in before or they have since signed out.")
-        } else {
-          print("\(error.localizedDescription)")
+        
+        // Check for sign in error
+        if let error = error {
+            if (error as NSError).code == GIDSignInErrorCode.hasNoAuthInKeychain.rawValue {
+                print("The user has not signed in before or they have since signed out.")
+            } else {
+                print("\(error.localizedDescription)")
+            }
+            return
         }
-        return
-      }
-      // Perform any operations on signed in user here.
-      let userId = user.userID                  // For client-side use only!
-      let idToken = user.authentication.idToken // Safe to send to the server
-      let fullName = user.profile.name
-      let givenName = user.profile.givenName
-      let familyName = user.profile.familyName
-      let email = user.profile.email
-      // ...
+
+        // Post notification after user successfully sign in
+        NotificationCenter.default.post(name: .signInGoogleCompleted, object: nil)
     }
 
-    
     func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!,
               withError error: Error!) {
       // Perform any operations when the user disconnects from app here.
       // ...
     }
 
-
-
-
 }
 
+extension Notification.Name {
+    
+    /// Notification when user successfully sign in using Google
+    static var signInGoogleCompleted: Notification.Name {
+        return .init(rawValue: #function)
+    }
+
+}
