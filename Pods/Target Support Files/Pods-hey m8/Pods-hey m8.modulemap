@@ -1,0 +1,6 @@
+framework module Pods_hey_m8 {
+  umbrella header "Pods-hey m8-umbrella.h"
+
+  export *
+  module * { export * }
+}
