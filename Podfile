@@ -7,5 +7,8 @@ target 'hey m8' do
 
   # Pods for hey m8
 	pod 'GoogleSignIn'
+  pod 'Firebase/Auth'
 
+  # add pods for desired Firebase products
+  # https://firebase.google.com/docs/ios/setup#available-pods
 end

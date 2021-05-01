@@ -11,6 +11,7 @@
 
 import UIKit
 import GoogleSignIn
+import Firebase
 
 class InitialViewController: UIViewController {
 
@@ -58,9 +59,8 @@ class InitialViewController: UIViewController {
        signInButton.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
        signInButton.heightAnchor.constraint(equalToConstant: 44).isActive = true
        signInButton.widthAnchor.constraint(equalToConstant: 250).isActive = true
-       
  */
-        /*
+        
        // Add sign-out button
        signOutButton = UIButton()
        signOutButton.layer.cornerRadius = 10.0
@@ -77,14 +77,12 @@ class InitialViewController: UIViewController {
        
        // Sign-out button is hidden by default
        signOutButton.isHidden = true
-
-        */
+        
        // Let GIDSignIn know that this view controller is presenter of the sign-in sheet
        GIDSignIn.sharedInstance()?.presentingViewController = self
 
         // Automatically sign in the user.
 //        GIDSignIn.sharedInstance()?.restorePreviousSignIn()
-
         
         // Register notification to update screen after user successfully signed in
         NotificationCenter.default.addObserver(self,
@@ -102,6 +100,21 @@ class InitialViewController: UIViewController {
         updateScreen()
     }
     
+    @objc func signOutButtonTapped(_ sender: UIButton) {
+        // Sign out from Google
+        GIDSignIn.sharedInstance()?.signOut()
+        
+        // Sign out from Firebase
+        do {
+            try Auth.auth().signOut()
+            
+            // Update screen after user successfully signed out
+            updateScreen()
+        } catch let error as NSError {
+            print ("Error signing out from Firebase: %@", error)
+        }
+    }
+    
     private func updateScreen() {
         
         if let user = GIDSignIn.sharedInstance()?.currentUser {
@@ -114,7 +127,7 @@ class InitialViewController: UIViewController {
             googleSignInButton.isHidden = true
             
             // Show sign out button
-//            signOutButton.isHidden = false
+           signOutButton.isHidden = false
             
         } else {
             // User signed out
@@ -126,7 +139,7 @@ class InitialViewController: UIViewController {
              googleSignInButton.isHidden = false
              
              // Hide sign out button
-//             signOutButton.isHidden = true
+             signOutButton.isHidden = true
         }
     }
 }

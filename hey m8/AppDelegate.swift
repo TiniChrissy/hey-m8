@@ -5,19 +5,34 @@
 //  Created by Christina Li on 30/4/21.
 //
 
+//Firebase code taken mostly from
+//https://swiftsenpai.com/development/google-sign-in-firebase-authentication/
+
 import UIKit
 import GoogleSignIn
+import Firebase
 
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        //Firebase stuff
+        FirebaseApp.configure()
+        
+        
+        // Google Auth
         // Initialize sign-in
-        GIDSignIn.sharedInstance().clientID = "1074792501605-0ahv6ce4ehij10d25es2dlc1a4shr9bn.apps.googleusercontent.com"
+        GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
+//        GIDSignIn.sharedInstance().clientID = "1074792501605-0ahv6ce4ehij10d25es2dlc1a4shr9bn.apps.googleusercontent.com"
         GIDSignIn.sharedInstance().delegate = self
+        
+        //if user was already signed in
         GIDSignIn.sharedInstance()?.restorePreviousSignIn()
 
+       
+        
         return true
     }
 
@@ -40,8 +55,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
       return GIDSignIn.sharedInstance().handle(url)
     }
     
-    
-
     // For ios 8 or older
     func application(_ application: UIApplication,
                      open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
@@ -61,9 +74,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
             }
             return
         }
+        
+        // Get credential object using Google ID token and Google access token
+        guard let authentication = user.authentication else {
+            return
+        }
+        let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
+                                                       accessToken: authentication.accessToken)
+        
+        // Authenticate with Firebase using the credential object
+        Auth.auth().signIn(with: credential) { (authResult, error) in
+            if let error = error {
+                print("Error occurs when authenticate with Firebase: \(error.localizedDescription)")
+            }
+                
+            // Post notification after user successfully sign in
+            NotificationCenter.default.post(name: .signInGoogleCompleted, object: nil)
+        }
 
-        // Post notification after user successfully sign in
-        NotificationCenter.default.post(name: .signInGoogleCompleted, object: nil)
     }
 
     func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!,
