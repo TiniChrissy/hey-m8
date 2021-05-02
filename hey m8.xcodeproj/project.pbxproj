@@ -15,6 +15,7 @@
 		AE1E79D5263BC6A300839C27 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE1E79D4263BC6A300839C27 /* Assets.xcassets */; };
 		AE1E79D8263BC6A300839C27 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE1E79D6263BC6A300839C27 /* LaunchScreen.storyboard */; };
 		AE9B466F263C507700C179BF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AE9B466E263C507700C179BF /* GoogleService-Info.plist */; };
+		AE9B4671263E67D100C179BF /* MainTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9B4670263E67D100C179BF /* MainTabViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		AE1E79D7263BC6A300839C27 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AE1E79D9263BC6A300839C27 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AE9B466E263C507700C179BF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		AE9B4670263E67D100C179BF /* MainTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +82,7 @@
 				AE1E79D4263BC6A300839C27 /* Assets.xcassets */,
 				AE1E79D6263BC6A300839C27 /* LaunchScreen.storyboard */,
 				AE1E79D9263BC6A300839C27 /* Info.plist */,
+				AE9B4670263E67D100C179BF /* MainTabViewController.swift */,
 				AE9B466E263C507700C179BF /* GoogleService-Info.plist */,
 			);
 			path = "hey m8";
@@ -228,6 +231,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AE1E79D0263BC6A000839C27 /* InitialViewController.swift in Sources */,
+				AE9B4671263E67D100C179BF /* MainTabViewController.swift in Sources */,
 				AE1E79CC263BC6A000839C27 /* AppDelegate.swift in Sources */,
 				AE1E79CE263BC6A000839C27 /* SceneDelegate.swift in Sources */,
 			);

@@ -8,6 +8,9 @@
 //sign in code with lots of help from
 // https://medium.com/swlh/google-sign-in-integration-in-ios-90cdd5cb5967
 
+//For other UI and other sign in apart from Google
+//https://firebase.google.com/docs/auth/ios/firebaseui
+
 
 import UIKit
 import GoogleSignIn
@@ -97,7 +100,10 @@ class InitialViewController: UIViewController {
     // MARK:- Notification
     @objc private func userDidSignInGoogle(_ notification: Notification) {
         // Update screen after user successfully signed in
-        updateScreen()
+//        updateScreen()
+        let mainTabViewController = storyboard?.instantiateViewController(withIdentifier: "MainTabViewController") as! MainTabViewController
+        
+        present(mainTabViewController, animated: true, completion: nil  )
     }
     
     @objc func signOutButtonTapped(_ sender: UIButton) {

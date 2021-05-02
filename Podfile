@@ -7,7 +7,9 @@ target 'hey m8' do
 
   # Pods for hey m8
 	pod 'GoogleSignIn'
-  pod 'Firebase/Auth'
+  pod 'Firebase/Auth' 
+  pod 'FirebaseUI'  #For prebuilt UI, doens't include UI for anonymous login
+
 
   # add pods for desired Firebase products
   # https://firebase.google.com/docs/ios/setup#available-pods
