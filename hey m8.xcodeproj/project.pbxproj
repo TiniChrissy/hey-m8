@@ -16,6 +16,8 @@
 		AE1E79D8263BC6A300839C27 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE1E79D6263BC6A300839C27 /* LaunchScreen.storyboard */; };
 		AE9B466F263C507700C179BF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AE9B466E263C507700C179BF /* GoogleService-Info.plist */; };
 		AE9B4671263E67D100C179BF /* MainTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9B4670263E67D100C179BF /* MainTabViewController.swift */; };
+		AE9B4673263E70C100C179BF /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9B4672263E70C100C179BF /* EventsViewController.swift */; };
+		AE9B4676263E733800C179BF /* GroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9B4675263E733800C179BF /* GroupsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		AE1E79D9263BC6A300839C27 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AE9B466E263C507700C179BF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		AE9B4670263E67D100C179BF /* MainTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabViewController.swift; sourceTree = "<group>"; };
+		AE9B4672263E70C100C179BF /* EventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsViewController.swift; sourceTree = "<group>"; };
+		AE9B4675263E733800C179BF /* GroupsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,15 +81,25 @@
 			children = (
 				AE1E79CB263BC6A000839C27 /* AppDelegate.swift */,
 				AE1E79CD263BC6A000839C27 /* SceneDelegate.swift */,
-				AE1E79CF263BC6A000839C27 /* InitialViewController.swift */,
 				AE1E79D1263BC6A000839C27 /* Main.storyboard */,
 				AE1E79D4263BC6A300839C27 /* Assets.xcassets */,
 				AE1E79D6263BC6A300839C27 /* LaunchScreen.storyboard */,
 				AE1E79D9263BC6A300839C27 /* Info.plist */,
-				AE9B4670263E67D100C179BF /* MainTabViewController.swift */,
 				AE9B466E263C507700C179BF /* GoogleService-Info.plist */,
+				AE9B4674263E70C600C179BF /* Controllers */,
 			);
 			path = "hey m8";
+			sourceTree = "<group>";
+		};
+		AE9B4674263E70C600C179BF /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				AE1E79CF263BC6A000839C27 /* InitialViewController.swift */,
+				AE9B4670263E67D100C179BF /* MainTabViewController.swift */,
+				AE9B4672263E70C100C179BF /* EventsViewController.swift */,
+				AE9B4675263E733800C179BF /* GroupsViewController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		E753979DE67D92BCA48A5BD5 /* Pods */ = {
@@ -232,8 +246,10 @@
 			files = (
 				AE1E79D0263BC6A000839C27 /* InitialViewController.swift in Sources */,
 				AE9B4671263E67D100C179BF /* MainTabViewController.swift in Sources */,
+				AE9B4676263E733800C179BF /* GroupsViewController.swift in Sources */,
 				AE1E79CC263BC6A000839C27 /* AppDelegate.swift in Sources */,
 				AE1E79CE263BC6A000839C27 /* SceneDelegate.swift in Sources */,
+				AE9B4673263E70C100C179BF /* EventsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

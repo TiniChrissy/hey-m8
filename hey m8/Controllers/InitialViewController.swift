@@ -101,9 +101,13 @@ class InitialViewController: UIViewController {
     @objc private func userDidSignInGoogle(_ notification: Notification) {
         // Update screen after user successfully signed in
 //        updateScreen()
-        let mainTabViewController = storyboard?.instantiateViewController(withIdentifier: "MainTabViewController") as! MainTabViewController
         
-        present(mainTabViewController, animated: true, completion: nil  )
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let mainTabViewController = storyboard.instantiateViewController(identifier: "MainTabViewController")
+        
+        // This is to get the SceneDelegate object from your view controller
+        // then call the change root view controller function to change to main tab bar
+        (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(mainTabViewController)
     }
     
     @objc func signOutButtonTapped(_ sender: UIButton) {
