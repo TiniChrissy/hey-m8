@@ -10,6 +10,8 @@ target 'hey m8' do
   pod 'Firebase/Auth' 
   pod 'FirebaseUI'  #For prebuilt UI, doens't include UI for anonymous login
 
+  pod 'JTAppleCalendar'
+
 
   # add pods for desired Firebase products
   # https://firebase.google.com/docs/ios/setup#available-pods

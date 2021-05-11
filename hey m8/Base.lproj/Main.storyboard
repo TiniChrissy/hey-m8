@@ -5,6 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -60,26 +61,123 @@
                         <viewLayoutGuide key="safeArea" id="lmX-sB-e4n"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="o2s-Hu-NF8"/>
+                    <navigationItem key="navigationItem" id="o2s-Hu-NF8">
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="aND-kv-j1D">
+                            <connections>
+                                <segue destination="Bbc-4d-SSl" kind="show" id="KLj-1Y-gBB"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9qe-qY-CaC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3600.0000000000005" y="-250.44642857142856"/>
         </scene>
-        <!--View Controller-->
+        <!--Create Event-->
         <scene sceneID="qmM-3y-Ppk">
             <objects>
                 <viewController id="Bbc-4d-SSl" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vYx-bi-78x">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cgl-fB-AfA">
+                                <rect key="frame" x="87" y="302" width="97" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Description (Optional)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3yR-HN-1tY">
+                                <rect key="frame" x="87" y="387" width="97" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="00v-Tl-n20">
+                                <rect key="frame" x="146" y="433" width="122" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Chose date range"/>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="EhQ-sJ-Q8v"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Create Event" id="oWA-XM-hi2"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QSp-CU-vqZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4504.347826086957" y="-245.08928571428569"/>
+            <point key="canvasLocation" x="4511.594202898551" y="-250.44642857142856"/>
+        </scene>
+        <!--Date range Picker-->
+        <scene sceneID="JdP-rU-X89">
+            <objects>
+                <viewController id="ffN-pu-fnG" customClass="DateSelectionViewController" customModule="hey_m8" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="SUU-9B-Ig8">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Select date range of your event" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IJx-QD-l3W">
+                                <rect key="frame" x="88" y="170" width="239" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="dMQ-OZ-6XI" customClass="JTAppleCalendarView" customModule="JTAppleCalendar">
+                                <rect key="frame" x="0.0" y="229" width="414" height="214"/>
+                                <color key="backgroundColor" systemColor="systemGray4Color"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="214" id="RfR-QU-OIJ"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="x5g-hd-sh0">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="CustomCell" reuseIdentifier="CustomCell" id="z1O-Sl-zJ4" customClass="CustomCell" customModule="hey_m8" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="43" width="128" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="LLy-iJ-PhQ">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UJ4-8a-VQ0">
+                                                    <rect key="frame" x="43" y="53.5" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="UJ4-8a-VQ0" firstAttribute="centerY" secondItem="LLy-iJ-PhQ" secondAttribute="centerY" id="4Zi-xu-Zb3"/>
+                                                <constraint firstItem="UJ4-8a-VQ0" firstAttribute="centerX" secondItem="LLy-iJ-PhQ" secondAttribute="centerX" id="C9J-TQ-3tc"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <color key="backgroundColor" red="0.57045853140000002" green="0.57047235969999999" blue="0.57046490910000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <outlet property="dataLabel" destination="UJ4-8a-VQ0" id="ula-m4-LRB"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="ffN-pu-fnG" id="TiA-Dk-NbI"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="DpD-12-ztH"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="DpD-12-ztH" firstAttribute="trailing" secondItem="dMQ-OZ-6XI" secondAttribute="trailing" id="4J1-dh-BuI"/>
+                            <constraint firstItem="dMQ-OZ-6XI" firstAttribute="top" secondItem="IJx-QD-l3W" secondAttribute="bottom" id="baN-Q7-h2m"/>
+                            <constraint firstItem="dMQ-OZ-6XI" firstAttribute="leading" secondItem="DpD-12-ztH" secondAttribute="leading" id="yBy-eR-jtz"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Date range Picker" id="8DE-5S-04i"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qOi-Tx-uRk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5473.913043478261" y="-250.44642857142856"/>
         </scene>
         <!--Main Tab View Controller-->
         <scene sceneID="3Cl-qY-dee">
@@ -159,6 +257,9 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray4Color">
+            <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

@@ -5,6 +5,9 @@
 //  Created by Christina Li on 30/4/21.
 //
 
+//Initial page to tab bar controllers
+//https://fluffy.es/how-to-transition-from-login-screen-to-tab-bar-controller/
+
 import UIKit
 import GoogleSignIn
 
@@ -22,9 +25,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
         // if user is logged in before
-//        if true {
-        if let user = GIDSignIn.sharedInstance()?.currentUser {
-//        if UserDefaults.standard.string(forKey: "username") != nil {
+
+        if (GIDSignIn.sharedInstance()?.currentUser) != nil {
             // instantiate the main tab bar controller and set it as root view controller
             // using the storyboard identifier we set earlier
             let mainTabBarController = storyboard.instantiateViewController(identifier: "MainTabViewController")
@@ -45,6 +47,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         // change the root view controller to your specific view controller
         window.rootViewController = vc
+    
+
+        // add animation
+        UIView.transition(with: window,
+                          duration: 0.5,
+                          options: [.transitionFlipFromLeft],
+                          animations: nil,
+                          completion: nil)
     }
     
     
