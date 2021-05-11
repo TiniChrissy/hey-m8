@@ -16,14 +16,12 @@ class DateSelectionViewController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
-    
-
-   
 }
 
 extension DateSelectionViewController: JTACMonthViewDelegate, JTACMonthViewDataSource {
     func calendar(_ calendar: JTACMonthView, willDisplay cell: JTACDayCell, forItemAt date: Date, cellState: CellState, indexPath: IndexPath) {
-        print("help")
+        let cell = cell as! CustomCell
+        cell.dataLabel.text = cellState.text
     }
     
     func calendar(_ calendar: JTACMonthView, cellForItemAt date: Date, cellState: CellState, indexPath: IndexPath) -> JTACDayCell {
@@ -32,12 +30,10 @@ extension DateSelectionViewController: JTACMonthViewDelegate, JTACMonthViewDataS
         return cell
     }
     
-    
     func configureCalendar(_ calendar: JTACMonthView) -> ConfigurationParameters {
         formater.dateFormat = "yyyy MM dd"
         formater.timeZone = Calendar.current.timeZone
         formater.locale = Calendar.current.locale
-        
         
         let startDate = formater.date(from: "2021 04 01")!
         let endDate = formater.date(from: "2021 06 01")!
