@@ -12,6 +12,12 @@ target 'hey m8' do
 
   pod 'JTAppleCalendar'
 
+pod 'Firebase/Firestore'
+
+# Optionally, include the Swift extensions if you're using Swift.
+pod 'FirebaseFirestoreSwift'
+
+
 end
 
   # add pods for desired Firebase products
