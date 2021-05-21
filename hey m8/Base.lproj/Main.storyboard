@@ -81,42 +81,64 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cgl-fB-AfA">
-                                <rect key="frame" x="87" y="302" width="97" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cgl-fB-AfA">
+                                <rect key="frame" x="90" y="188" width="200" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="WvC-7A-1qM"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Description (Optional)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3yR-HN-1tY">
-                                <rect key="frame" x="87" y="387" width="97" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Description (Optional)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3yR-HN-1tY">
+                                <rect key="frame" x="90" y="272" width="200" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="dbm-c4-BDY"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UeM-YC-wJc">
-                                <rect key="frame" x="139" y="429" width="136" height="30"/>
+                                <rect key="frame" x="122" y="333" width="136" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Choose Date Range"/>
                                 <connections>
                                     <segue destination="ffN-pu-fnG" kind="show" id="pAQ-ke-YkA"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zo0-Gv-Fww">
+                                <rect key="frame" x="144" y="371" width="90" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Add Location"/>
+                                <connections>
+                                    <segue destination="tDl-lF-bmi" kind="show" id="V31-pi-KxY"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5fI-ij-5Sk">
+                                <rect key="frame" x="144" y="409" width="93" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Link to Group"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jTT-8W-loB">
+                                <rect key="frame" x="138" y="464" width="103" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="linkColor"/>
+                                <state key="normal" title="Create Event">
+                                    <color key="titleColor" systemColor="systemGray6Color"/>
+                                </state>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="EhQ-sJ-Q8v"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="cgl-fB-AfA" firstAttribute="top" secondItem="EhQ-sJ-Q8v" secondAttribute="top" constant="100" id="0hU-IT-GIg"/>
+                            <constraint firstItem="EhQ-sJ-Q8v" firstAttribute="trailing" secondItem="cgl-fB-AfA" secondAttribute="trailing" constant="90" id="1Y6-Ye-PUt"/>
+                            <constraint firstItem="EhQ-sJ-Q8v" firstAttribute="trailing" secondItem="3yR-HN-1tY" secondAttribute="trailing" constant="90" id="IFo-4e-BlC"/>
+                            <constraint firstItem="3yR-HN-1tY" firstAttribute="leading" secondItem="EhQ-sJ-Q8v" secondAttribute="leading" constant="90" id="PaS-8t-Gh2"/>
+                            <constraint firstItem="3yR-HN-1tY" firstAttribute="top" secondItem="cgl-fB-AfA" secondAttribute="bottom" constant="50" id="scw-pN-cPg"/>
+                            <constraint firstItem="cgl-fB-AfA" firstAttribute="leading" secondItem="EhQ-sJ-Q8v" secondAttribute="leading" constant="90" id="uka-hl-wmJ"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Create Event" id="oWA-XM-hi2">
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="I01-gI-GSG">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="2Kp-nJ-ryn">
-                                <rect key="frame" x="302" y="7" width="92" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                            </button>
-                            <connections>
-                                <segue destination="ffN-pu-fnG" kind="show" id="Rn1-bf-aCz"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Create Event" id="oWA-XM-hi2"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QSp-CU-vqZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -192,7 +214,29 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qOi-Tx-uRk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5473.913043478261" y="-250.44642857142856"/>
+            <point key="canvasLocation" x="5443" y="-777"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="U83-A4-muJ">
+            <objects>
+                <viewController id="tDl-lF-bmi" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hD5-yA-9o6">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="nKJ-li-260">
+                                <rect key="frame" x="20" y="122" width="374" height="691"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </mapView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="X2V-Jb-XSr"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="hwb-mJ-coi"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mbq-fp-S2X" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6092.753623188406" y="-250.44642857142856"/>
         </scene>
         <!--Main Tab View Controller-->
         <scene sceneID="3Cl-qY-dee">
@@ -206,6 +250,7 @@
                     <connections>
                         <segue destination="Goa-ab-8tz" kind="relationship" relationship="viewControllers" id="n3I-rK-0bO"/>
                         <segue destination="prA-kr-BhX" kind="relationship" relationship="viewControllers" id="jim-Rf-C4V"/>
+                        <segue destination="4Yu-KY-9Ou" kind="relationship" relationship="viewControllers" id="3Pd-AC-jEk"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2DY-Zq-Nf1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -216,7 +261,7 @@
         <scene sceneID="ax1-rp-shp">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Goa-ab-8tz" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Events" id="2YK-Ey-wJf"/>
+                    <tabBarItem key="tabBarItem" title="Events" selectedImage="calendar" catalog="system" id="2YK-Ey-wJf"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="gIW-Qm-g0Q">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -231,11 +276,27 @@
             </objects>
             <point key="canvasLocation" x="2691.304347826087" y="-250.44642857142856"/>
         </scene>
-        <!--Groups-->
+        <!--View Controller-->
+        <scene sceneID="YcV-Zr-p5H">
+            <objects>
+                <viewController id="4Yu-KY-9Ou" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="SdZ-6I-8dD">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="6sp-uZ-UBN"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" id="tqZ-jN-1E7"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="09d-cu-gsS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1801" y="1109"/>
+        </scene>
+        <!--Navigation Controller-->
         <scene sceneID="BUk-6T-bDF">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="prA-kr-BhX" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Groups" id="Ty8-oD-uZz"/>
+                    <tabBarItem key="tabBarItem" systemItem="contacts" id="Ty8-oD-uZz"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="rzF-dL-jTj">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -269,15 +330,19 @@
             <point key="canvasLocation" x="18.840579710144929" y="50.892857142857139"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="pAQ-ke-YkA"/>
-    </inferredMetricsTieBreakers>
     <resources>
+        <image name="calendar" catalog="system" width="128" height="106"/>
+        <systemColor name="linkColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGray4Color">
             <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGray6Color">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
