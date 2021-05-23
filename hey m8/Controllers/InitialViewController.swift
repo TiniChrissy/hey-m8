@@ -5,11 +5,14 @@
 //  Created by Christina Li on 30/4/21.
 //
 
-//sign in code with lots of help from
-// https://medium.com/swlh/google-sign-in-integration-in-ios-90cdd5cb5967
+//Sign in code with lots of help from
+//https://medium.com/swlh/google-sign-in-integration-in-ios-90cdd5cb5967
 
 //For other UI and other sign in apart from Google
 //https://firebase.google.com/docs/auth/ios/firebaseui
+
+//Sync google sign in data to firestore database
+//https://javascript.plainenglish.io/firebase-authentication-with-firestore-database-78e6e4f348c6
 
 
 import UIKit
@@ -63,7 +66,6 @@ class InitialViewController: UIViewController {
        signInButton.heightAnchor.constraint(equalToConstant: 44).isActive = true
        signInButton.widthAnchor.constraint(equalToConstant: 250).isActive = true
  */
-        
        // Add sign-out button
        signOutButton = UIButton()
        signOutButton.layer.cornerRadius = 10.0
@@ -126,7 +128,6 @@ class InitialViewController: UIViewController {
     }
     
     private func updateScreen() {
-        
         if let user = GIDSignIn.sharedInstance()?.currentUser {
             // User signed in
             

@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		6D1DE6153B50B415AC9501C8 /* Pods_hey_m8.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FD3CF426E04CC071A9940AC /* Pods_hey_m8.framework */; };
+		AE04C25D2657C0A400D53865 /* CreateEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE04C25C2657C0A400D53865 /* CreateEventViewController.swift */; };
+		AE04C25F2657C4A000D53865 /* AddLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE04C25E2657C4A000D53865 /* AddLocationViewController.swift */; };
+		AE04C2612657E81F00D53865 /* UIViewController-cli240.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE04C2602657E81F00D53865 /* UIViewController-cli240.swift */; };
 		AE1E79CC263BC6A000839C27 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1E79CB263BC6A000839C27 /* AppDelegate.swift */; };
 		AE1E79CE263BC6A000839C27 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1E79CD263BC6A000839C27 /* SceneDelegate.swift */; };
 		AE1E79D0263BC6A000839C27 /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1E79CF263BC6A000839C27 /* InitialViewController.swift */; };
@@ -26,6 +29,9 @@
 		5FD3CF426E04CC071A9940AC /* Pods_hey_m8.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_hey_m8.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D86C75D435A2141B642F7C4 /* Pods-hey m8.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hey m8.release.xcconfig"; path = "Target Support Files/Pods-hey m8/Pods-hey m8.release.xcconfig"; sourceTree = "<group>"; };
 		AB4BDF44C9CE770BCE6DC2C9 /* Pods-hey m8.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hey m8.debug.xcconfig"; path = "Target Support Files/Pods-hey m8/Pods-hey m8.debug.xcconfig"; sourceTree = "<group>"; };
+		AE04C25C2657C0A400D53865 /* CreateEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEventViewController.swift; sourceTree = "<group>"; };
+		AE04C25E2657C4A000D53865 /* AddLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLocationViewController.swift; sourceTree = "<group>"; };
+		AE04C2602657E81F00D53865 /* UIViewController-cli240.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController-cli240.swift"; sourceTree = "<group>"; };
 		AE1E79C8263BC6A000839C27 /* hey m8.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "hey m8.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE1E79CB263BC6A000839C27 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AE1E79CD263BC6A000839C27 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -91,6 +97,7 @@
 				AE1E79D6263BC6A300839C27 /* LaunchScreen.storyboard */,
 				AE1E79D9263BC6A300839C27 /* Info.plist */,
 				AE9B466E263C507700C179BF /* GoogleService-Info.plist */,
+				AE04C2602657E81F00D53865 /* UIViewController-cli240.swift */,
 				AE9B4674263E70C600C179BF /* Controllers */,
 			);
 			path = "hey m8";
@@ -101,7 +108,9 @@
 			children = (
 				AE1E79CF263BC6A000839C27 /* InitialViewController.swift */,
 				AE9B4670263E67D100C179BF /* MainTabViewController.swift */,
+				AE04C25E2657C4A000D53865 /* AddLocationViewController.swift */,
 				AE9B4679264A346600C179BF /* DateSelectionViewController.swift */,
+				AE04C25C2657C0A400D53865 /* CreateEventViewController.swift */,
 				AE9B4672263E70C100C179BF /* EventsViewController.swift */,
 				AE9B4675263E733800C179BF /* GroupsViewController.swift */,
 			);
@@ -255,9 +264,12 @@
 				AE9B4676263E733800C179BF /* GroupsViewController.swift in Sources */,
 				AE1E79CC263BC6A000839C27 /* AppDelegate.swift in Sources */,
 				AE1E79CE263BC6A000839C27 /* SceneDelegate.swift in Sources */,
+				AE04C2612657E81F00D53865 /* UIViewController-cli240.swift in Sources */,
 				AE9B467A264A346600C179BF /* DateSelectionViewController.swift in Sources */,
 				AE9B4678264A2F8B00C179BF /* CustomCell.swift in Sources */,
+				AE04C25F2657C4A000D53865 /* AddLocationViewController.swift in Sources */,
 				AE9B4673263E70C100C179BF /* EventsViewController.swift in Sources */,
+				AE04C25D2657C0A400D53865 /* CreateEventViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -407,6 +419,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Q7533W8H58;
+				EXCLUDED_ARCHS = ONLY_ACTIVE_ARCH;
 				INFOPLIST_FILE = "hey m8/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -427,11 +440,14 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Q7533W8H58;
+				EXCLUDED_ARCHS = ONLY_ACTIVE_ARCH;
+				"EXCLUDED_ARCHS[sdk=*]" = any;
 				INFOPLIST_FILE = "hey m8/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.heym8;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

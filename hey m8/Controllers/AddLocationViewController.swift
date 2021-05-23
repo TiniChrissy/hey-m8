@@ -1,20 +1,21 @@
 //
-//  MainTabViewController.swift
+//  AddLocationViewController.swift
 //  hey m8
 //
-//  Created by Christina Li on 2/5/21.
+//  Created by Christina Li on 21/5/21.
 //
-// Tab View help done with https://www.youtube.com/watch?v=yzImO9HdbFo
 
 import UIKit
 
-class MainTabViewController: UITabBarController {
+class AddLocationViewController: UIViewController {
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
+    
 
     /*
     // MARK: - Navigation

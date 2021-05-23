@@ -16,19 +16,25 @@ import Firebase
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
         
-        //Firebase stuff
+//        //Firebase stuff
         FirebaseApp.configure()
-        
+//        let db = Firestore.firestore()
+//        
         // Google Auth
         // Initialize sign-in
         GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
-
         GIDSignIn.sharedInstance().delegate = self
-        
         //if user was already signed in
         GIDSignIn.sharedInstance()?.restorePreviousSignIn()
+        
+        //Local emulator settings
+        //COMMENT THIS SECTION OUT FOR REAL CONNECTION
+        let settings = Firestore.firestore().settings
+        settings.host = "localhost:8080"
+        settings.isPersistenceEnabled = false
+        settings.isSSLEnabled = false
+        Firestore.firestore().settings = settings
         return true
     }
 
@@ -83,7 +89,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
             if let error = error {
                 print("Error occurs when authenticate with Firebase: \(error.localizedDescription)")
             }
-                
+            
+            // Save user data into firestore
+            let database = Firestore.firestore()
+            database.collection("users").document(String((authResult?.user.uid)!)).setData([
+                "id" : String((authResult?.user.uid)!),
+                "displayName" : (authResult?.user.displayName)!,
+//                "photoURL" : (authResult?.user.photoURL)!,
+                "email" : (authResult?.user.email)!,
+//                "metadata" : (authResult?.user.metadata)!,
+            ], merge: true)
+            
             // Post notification after user successfully sign in
             NotificationCenter.default.post(name: .signInGoogleCompleted, object: nil)
         }

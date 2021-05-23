@@ -64,7 +64,7 @@
                     <navigationItem key="navigationItem" id="o2s-Hu-NF8">
                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="aND-kv-j1D">
                             <connections>
-                                <segue destination="Bbc-4d-SSl" kind="show" id="KLj-1Y-gBB"/>
+                                <segue destination="Bbc-4d-SSl" kind="show" id="Bqf-mA-2f7"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -76,13 +76,13 @@
         <!--Create Event-->
         <scene sceneID="qmM-3y-Ppk">
             <objects>
-                <viewController id="Bbc-4d-SSl" sceneMemberID="viewController">
+                <viewController id="Bbc-4d-SSl" customClass="CreateEventViewController" customModule="hey_m8" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vYx-bi-78x">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cgl-fB-AfA">
-                                <rect key="frame" x="90" y="188" width="200" height="34"/>
+                                <rect key="frame" x="90" y="188" width="234" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="WvC-7A-1qM"/>
                                 </constraints>
@@ -90,7 +90,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Description (Optional)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3yR-HN-1tY">
-                                <rect key="frame" x="90" y="272" width="200" height="34"/>
+                                <rect key="frame" x="90" y="272" width="234" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="dbm-c4-BDY"/>
                                 </constraints>
@@ -110,7 +110,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Add Location"/>
                                 <connections>
-                                    <segue destination="tDl-lF-bmi" kind="show" id="V31-pi-KxY"/>
+                                    <segue destination="tDl-lF-bmi" kind="show" identifier="addLocationSegue" id="V31-pi-KxY"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5fI-ij-5Sk">
@@ -119,12 +119,15 @@
                                 <state key="normal" title="Link to Group"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jTT-8W-loB">
-                                <rect key="frame" x="138" y="464" width="103" height="30"/>
+                                <rect key="frame" x="138" y="464" width="103" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="linkColor"/>
                                 <state key="normal" title="Create Event">
                                     <color key="titleColor" systemColor="systemGray6Color"/>
                                 </state>
+                                <connections>
+                                    <action selector="createEventButton:" destination="Bbc-4d-SSl" eventType="touchUpInside" id="zNX-WG-C20"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="EhQ-sJ-Q8v"/>
@@ -139,6 +142,10 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Create Event" id="oWA-XM-hi2"/>
+                    <connections>
+                        <outlet property="descriptionTextField" destination="3yR-HN-1tY" id="eEd-qe-N3N"/>
+                        <outlet property="nameTextField" destination="cgl-fB-AfA" id="Ahh-hQ-Re3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QSp-CU-vqZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -216,10 +223,10 @@
             </objects>
             <point key="canvasLocation" x="5443" y="-777"/>
         </scene>
-        <!--View Controller-->
+        <!--Add Location View Controller-->
         <scene sceneID="U83-A4-muJ">
             <objects>
-                <viewController id="tDl-lF-bmi" sceneMemberID="viewController">
+                <viewController id="tDl-lF-bmi" customClass="AddLocationViewController" customModule="hey_m8" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hD5-yA-9o6">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -250,7 +257,7 @@
                     <connections>
                         <segue destination="Goa-ab-8tz" kind="relationship" relationship="viewControllers" id="n3I-rK-0bO"/>
                         <segue destination="prA-kr-BhX" kind="relationship" relationship="viewControllers" id="jim-Rf-C4V"/>
-                        <segue destination="4Yu-KY-9Ou" kind="relationship" relationship="viewControllers" id="3Pd-AC-jEk"/>
+                        <segue destination="Uxw-ru-Qe7" kind="relationship" relationship="viewControllers" id="3Pd-AC-jEk"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2DY-Zq-Nf1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -261,7 +268,7 @@
         <scene sceneID="ax1-rp-shp">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Goa-ab-8tz" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Events" selectedImage="calendar" catalog="system" id="2YK-Ey-wJf"/>
+                    <tabBarItem key="tabBarItem" title="Events" image="calendar" catalog="system" selectedImage="calendar" id="2YK-Ey-wJf"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="gIW-Qm-g0Q">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -286,11 +293,11 @@
                         <viewLayoutGuide key="safeArea" id="6sp-uZ-UBN"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" id="tqZ-jN-1E7"/>
+                    <navigationItem key="navigationItem" id="Gch-oE-tr4"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="09d-cu-gsS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1801" y="1109"/>
+            <point key="canvasLocation" x="2710.144927536232" y="1108.9285714285713"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="BUk-6T-bDF">
@@ -329,9 +336,29 @@
             </objects>
             <point key="canvasLocation" x="18.840579710144929" y="50.892857142857139"/>
         </scene>
+        <!--Settings-->
+        <scene sceneID="KvC-ed-YvV">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Uxw-ru-Qe7" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Settings" image="slider.horizontal.3" catalog="system" id="tqZ-jN-1E7"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="pBr-Fe-AtD">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="4Yu-KY-9Ou" kind="relationship" relationship="rootViewController" id="7qX-pj-bG3"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gaK-oo-sO7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1800.0000000000002" y="1108.9285714285713"/>
+        </scene>
     </scenes>
     <resources>
         <image name="calendar" catalog="system" width="128" height="106"/>
+        <image name="slider.horizontal.3" catalog="system" width="128" height="100"/>
         <systemColor name="linkColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

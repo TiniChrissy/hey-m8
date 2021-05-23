@@ -6,16 +6,36 @@
 //
 
 import UIKit
+import Firebase
 
 class EventsViewController: UIViewController {
 
+    var docRef:DocumentReference!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
     
-
+    //move this
+//    func loadData() {
+//        let eventsRef = database.collection("events")
+//        eventsRef.addSnapshotListener { (querySnapshot, error) in
+//            guard let querySnapshot = querySnapshot else {
+//                os_log("No query snapshot")
+//                return
+//            }
+//            
+//            querySnapshot.documentChanges.forEach { (diff) in
+//                let id = diff.document.documentID
+//                if let name = diff.document.data()["name"],let description = diff.document.data()["description"] {
+//                    os_log("DO SOMETHING WITH THE DATA ")
+//                }
+//            }
+//        }
+//    }
+//    
     /*
     // MARK: - Navigation
 
