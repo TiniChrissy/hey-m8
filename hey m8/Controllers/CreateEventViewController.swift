@@ -14,6 +14,8 @@ class CreateEventViewController: UIViewController {
     var database: Firestore!
     var docRef:DocumentReference!
     
+    var groupID: Int!
+    
     let name = "eventName"
     let eventDescription = "eventDescription"
     
@@ -26,7 +28,7 @@ class CreateEventViewController: UIViewController {
             displayMessagecli240(title: "Error", message: "Please enter a name")
             return
         }
-        guard let name = descriptionTextField.text, name.isEmpty==false else{
+        guard let eventDescription = descriptionTextField.text, name.isEmpty==false else{
 //        guard let ageText = descriptionTextField.text, let age = Int(ageText) else{
             // Age could not be established. Print an error and exit
             displayMessagecli240(title: "Error", message: "Please enter a description")
@@ -41,10 +43,9 @@ class CreateEventViewController: UIViewController {
         
         // Add a new document with a generated ID
         var ref: DocumentReference? = nil
-        ref = database.collection("users").addDocument(data: [
-            "first": "Ada",
-            "last": "Lovelace",
-            "born": 1815
+        ref = database.collection("events").addDocument(data: [
+            "name": name,
+            "description": eventDescription,
         ]) { err in
             if let err = err {
                 print("Error adding document: \(err)")
@@ -52,12 +53,11 @@ class CreateEventViewController: UIViewController {
                 print("Document added with ID: \(ref!.documentID)")
             }
         }
+        
+        //move to QR code screen
+        
     }
     
-//    lazy var database = {
-//        return Firestore.firestore()
-//    } ()
-//
     override func viewDidLoad() {
         super.viewDidLoad()
 

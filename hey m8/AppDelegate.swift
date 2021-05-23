@@ -17,10 +17,9 @@ import Firebase
 class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-//        //Firebase stuff
+//      Firebase stuff
         FirebaseApp.configure()
-//        let db = Firestore.firestore()
-//        
+       
         // Google Auth
         // Initialize sign-in
         GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID

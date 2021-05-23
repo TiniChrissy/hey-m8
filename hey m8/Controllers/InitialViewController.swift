@@ -13,6 +13,8 @@
 
 //Sync google sign in data to firestore database
 //https://javascript.plainenglish.io/firebase-authentication-with-firestore-database-78e6e4f348c6
+//https://stackoverflow.com/questions/60280098/add-user-data-to-firestore-on-sign-up-with-firebase-authentication-with-google-s
+//https://firebase.google.com/docs/firestore/quickstart#ios
 
 
 import UIKit
@@ -30,6 +32,9 @@ class InitialViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        //Use emulator, leads to error, TODO
+//        Auth.auth().useEmulator(withHost:"localhost", port:9099)
         
         // Add greeting label
        greetingLabel = UILabel()
