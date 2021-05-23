@@ -10,17 +10,21 @@
 		6D1DE6153B50B415AC9501C8 /* Pods_hey_m8.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FD3CF426E04CC071A9940AC /* Pods_hey_m8.framework */; };
 		AE04C25D2657C0A400D53865 /* CreateEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE04C25C2657C0A400D53865 /* CreateEventViewController.swift */; };
 		AE04C25F2657C4A000D53865 /* AddLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE04C25E2657C4A000D53865 /* AddLocationViewController.swift */; };
-		AE04C2612657E81F00D53865 /* UIViewController-cli240.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE04C2602657E81F00D53865 /* UIViewController-cli240.swift */; };
+		AE04C263265A6AA300D53865 /* UserGroupsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE04C262265A6AA300D53865 /* UserGroupsTableViewController.swift */; };
+		AE04C267265A6C5D00D53865 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE04C266265A6C5D00D53865 /* Group.swift */; };
+		AE04C269265A75ED00D53865 /* GroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE04C268265A75ED00D53865 /* GroupTableViewCell.swift */; };
 		AE1E79CC263BC6A000839C27 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1E79CB263BC6A000839C27 /* AppDelegate.swift */; };
 		AE1E79CE263BC6A000839C27 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1E79CD263BC6A000839C27 /* SceneDelegate.swift */; };
 		AE1E79D0263BC6A000839C27 /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1E79CF263BC6A000839C27 /* InitialViewController.swift */; };
 		AE1E79D3263BC6A000839C27 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE1E79D1263BC6A000839C27 /* Main.storyboard */; };
 		AE1E79D5263BC6A300839C27 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE1E79D4263BC6A300839C27 /* Assets.xcassets */; };
 		AE1E79D8263BC6A300839C27 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE1E79D6263BC6A300839C27 /* LaunchScreen.storyboard */; };
+		AE3B8840265A7CAE00553783 /* AddMemberSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3B883F265A7CAE00553783 /* AddMemberSearchTableViewController.swift */; };
+		AE3B8842265A7D4C00553783 /* UIViewController-cli240.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3B8841265A7D4C00553783 /* UIViewController-cli240.swift */; };
+		AE3B8844265A7E8500553783 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3B8843265A7E8500553783 /* User.swift */; };
 		AE9B466F263C507700C179BF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AE9B466E263C507700C179BF /* GoogleService-Info.plist */; };
 		AE9B4671263E67D100C179BF /* MainTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9B4670263E67D100C179BF /* MainTabViewController.swift */; };
 		AE9B4673263E70C100C179BF /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9B4672263E70C100C179BF /* EventsViewController.swift */; };
-		AE9B4676263E733800C179BF /* GroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9B4675263E733800C179BF /* GroupsViewController.swift */; };
 		AE9B4678264A2F8B00C179BF /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9B4677264A2F8B00C179BF /* CustomCell.swift */; };
 		AE9B467A264A346600C179BF /* DateSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9B4679264A346600C179BF /* DateSelectionViewController.swift */; };
 /* End PBXBuildFile section */
@@ -31,7 +35,9 @@
 		AB4BDF44C9CE770BCE6DC2C9 /* Pods-hey m8.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hey m8.debug.xcconfig"; path = "Target Support Files/Pods-hey m8/Pods-hey m8.debug.xcconfig"; sourceTree = "<group>"; };
 		AE04C25C2657C0A400D53865 /* CreateEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEventViewController.swift; sourceTree = "<group>"; };
 		AE04C25E2657C4A000D53865 /* AddLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLocationViewController.swift; sourceTree = "<group>"; };
-		AE04C2602657E81F00D53865 /* UIViewController-cli240.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController-cli240.swift"; sourceTree = "<group>"; };
+		AE04C262265A6AA300D53865 /* UserGroupsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserGroupsTableViewController.swift; sourceTree = "<group>"; };
+		AE04C266265A6C5D00D53865 /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
+		AE04C268265A75ED00D53865 /* GroupTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupTableViewCell.swift; sourceTree = "<group>"; };
 		AE1E79C8263BC6A000839C27 /* hey m8.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "hey m8.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE1E79CB263BC6A000839C27 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AE1E79CD263BC6A000839C27 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -40,10 +46,12 @@
 		AE1E79D4263BC6A300839C27 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AE1E79D7263BC6A300839C27 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AE1E79D9263BC6A300839C27 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AE3B883F265A7CAE00553783 /* AddMemberSearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMemberSearchTableViewController.swift; sourceTree = "<group>"; };
+		AE3B8841265A7D4C00553783 /* UIViewController-cli240.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController-cli240.swift"; sourceTree = "<group>"; };
+		AE3B8843265A7E8500553783 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		AE9B466E263C507700C179BF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		AE9B4670263E67D100C179BF /* MainTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabViewController.swift; sourceTree = "<group>"; };
 		AE9B4672263E70C100C179BF /* EventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsViewController.swift; sourceTree = "<group>"; };
-		AE9B4675263E733800C179BF /* GroupsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsViewController.swift; sourceTree = "<group>"; };
 		AE9B4677264A2F8B00C179BF /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		AE9B4679264A346600C179BF /* DateSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateSelectionViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -94,10 +102,13 @@
 				AE1E79D1263BC6A000839C27 /* Main.storyboard */,
 				AE9B4677264A2F8B00C179BF /* CustomCell.swift */,
 				AE1E79D4263BC6A300839C27 /* Assets.xcassets */,
+				AE04C266265A6C5D00D53865 /* Group.swift */,
+				AE3B8843265A7E8500553783 /* User.swift */,
 				AE1E79D6263BC6A300839C27 /* LaunchScreen.storyboard */,
 				AE1E79D9263BC6A300839C27 /* Info.plist */,
 				AE9B466E263C507700C179BF /* GoogleService-Info.plist */,
-				AE04C2602657E81F00D53865 /* UIViewController-cli240.swift */,
+				AE04C268265A75ED00D53865 /* GroupTableViewCell.swift */,
+				AE3B8841265A7D4C00553783 /* UIViewController-cli240.swift */,
 				AE9B4674263E70C600C179BF /* Controllers */,
 			);
 			path = "hey m8";
@@ -109,10 +120,11 @@
 				AE1E79CF263BC6A000839C27 /* InitialViewController.swift */,
 				AE9B4670263E67D100C179BF /* MainTabViewController.swift */,
 				AE04C25E2657C4A000D53865 /* AddLocationViewController.swift */,
+				AE3B883F265A7CAE00553783 /* AddMemberSearchTableViewController.swift */,
 				AE9B4679264A346600C179BF /* DateSelectionViewController.swift */,
+				AE04C262265A6AA300D53865 /* UserGroupsTableViewController.swift */,
 				AE04C25C2657C0A400D53865 /* CreateEventViewController.swift */,
 				AE9B4672263E70C100C179BF /* EventsViewController.swift */,
-				AE9B4675263E733800C179BF /* GroupsViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -261,15 +273,19 @@
 			files = (
 				AE1E79D0263BC6A000839C27 /* InitialViewController.swift in Sources */,
 				AE9B4671263E67D100C179BF /* MainTabViewController.swift in Sources */,
-				AE9B4676263E733800C179BF /* GroupsViewController.swift in Sources */,
 				AE1E79CC263BC6A000839C27 /* AppDelegate.swift in Sources */,
+				AE04C267265A6C5D00D53865 /* Group.swift in Sources */,
 				AE1E79CE263BC6A000839C27 /* SceneDelegate.swift in Sources */,
-				AE04C2612657E81F00D53865 /* UIViewController-cli240.swift in Sources */,
 				AE9B467A264A346600C179BF /* DateSelectionViewController.swift in Sources */,
 				AE9B4678264A2F8B00C179BF /* CustomCell.swift in Sources */,
+				AE04C263265A6AA300D53865 /* UserGroupsTableViewController.swift in Sources */,
+				AE3B8844265A7E8500553783 /* User.swift in Sources */,
 				AE04C25F2657C4A000D53865 /* AddLocationViewController.swift in Sources */,
 				AE9B4673263E70C100C179BF /* EventsViewController.swift in Sources */,
+				AE3B8842265A7D4C00553783 /* UIViewController-cli240.swift in Sources */,
+				AE04C269265A75ED00D53865 /* GroupTableViewCell.swift in Sources */,
 				AE04C25D2657C0A400D53865 /* CreateEventViewController.swift in Sources */,
+				AE3B8840265A7CAE00553783 /* AddMemberSearchTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
