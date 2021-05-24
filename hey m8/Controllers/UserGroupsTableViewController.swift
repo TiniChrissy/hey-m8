@@ -14,7 +14,10 @@ class UserGroupsTableViewController: UITableViewController {
     let CELL_GROUP = "groupCell";
     let CELL_INFO = "infoCell";
     
-    var userGroups: [Group] = []
+    var allGroups: [Group] = [] //allGroups? inclues for users apart from this one.. ??maybe not necessary if i'm just directly adding it to firebase anwyays
+    var userGroups: [Group] = [] //filteredGroups?
+    
+//    weak var memberDelegate: addMemberDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -93,25 +96,25 @@ class UserGroupsTableViewController: UITableViewController {
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "allHeroesSegue" {
-//            let destination = segue.destination as! AllHeroesTableViewController
-//            destination.superHeroDelegate = self
-//        }
-//    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "createGroupSegue" {
+            let destination = segue.destination as! CreateGroupViewController
+            destination.groupDelegate = self
+        }
+    }
     
-    // MARK: - AddSuperHero Delegate
-//    func addSuperHero(newHero: SuperHero) -> Bool {
-//        if userGroups.count >= 6 {
-//            return false
-//        }
-//
-//        tableView.performBatchUpdates({
-//            currentParty.append(newHero)
-//            tableView.insertRows(at: [IndexPath(row: userGroups.count - 1,
-//                                                section: SECTION_GROUP)], with: .automatic)
-//            tableView.reloadSections([SECTION_INFO], with: .automatic)
-//        }, completion: nil)
-//        return true
-//    }
+    //Add to current table and display as well as to firestore
+    func addGroup(newGroup: Group) -> Bool {
+        userGroups.append(newGroup)
+        tableView.beginUpdates()
+        tableView.insertRows(at: [IndexPath(row: userGroups.count - 1, section: 0)],
+                             with: .automatic)
+        tableView.endUpdates()
+        tableView.reloadSections([SECTION_INFO], with: .automatic)
+        
+        
+        return true
+        
+    }
 }
+

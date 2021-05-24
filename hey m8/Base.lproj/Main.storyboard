@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -283,16 +284,16 @@
             </objects>
             <point key="canvasLocation" x="3545" y="1336"/>
         </scene>
-        <!--Groups Table View Controller-->
+        <!--User Groups Table View Controller-->
         <scene sceneID="9AI-h0-Qcg">
             <objects>
-                <tableViewController id="cNB-L7-zbt" customClass="GroupsTableViewController" customModule="hey_m8" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="cNB-L7-zbt" customClass="UserGroupsTableViewController" customModule="hey_m8" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="5xh-L4-7AB">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="76" id="1ic-BD-gRQ" customClass="GroupTableViewCell" customModule="hey_m8" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="groupCell" rowHeight="76" id="1ic-BD-gRQ" customClass="GroupTableViewCell" customModule="hey_m8" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="24.5" width="414" height="76"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1ic-BD-gRQ" id="dev-gu-swL">
@@ -320,7 +321,7 @@
                                     <outlet property="groupNameLabel" destination="zIe-RS-kKh" id="bQd-pI-KmY"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="K9Y-TR-MWV">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="infoCell" id="K9Y-TR-MWV">
                                 <rect key="frame" x="0.0" y="100.5" width="414" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="K9Y-TR-MWV" id="ycj-pc-STI">
@@ -337,7 +338,7 @@
                     <navigationItem key="navigationItem" id="1t9-cX-eBQ">
                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="gPn-MQ-ytH">
                             <connections>
-                                <segue destination="Peb-gD-6dN" kind="show" id="5lZ-a0-ha8"/>
+                                <segue destination="Peb-gD-6dN" kind="show" identifier="createGroupSegue" id="5lZ-a0-ha8"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -349,53 +350,76 @@
         <!--Create Group-->
         <scene sceneID="I6D-at-ViA">
             <objects>
-                <viewController title="Create Group" id="Peb-gD-6dN" sceneMemberID="viewController">
+                <viewController title="Create Group" id="Peb-gD-6dN" customClass="CreateGroupViewController" customModule="hey_m8" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3wS-zW-Ujz">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Group Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cNH-yU-WE8">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Group Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cNH-yU-WE8">
                                 <rect key="frame" x="90" y="148" width="234" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Group Description (Optional)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XWA-rx-LcV">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Group Description (Optional)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XWA-rx-LcV">
                                 <rect key="frame" x="90" y="242" width="234" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YiH-yU-IMo">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YiH-yU-IMo">
                                 <rect key="frame" x="150" y="336" width="114" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="120" id="bvp-PA-533"/>
-                                </constraints>
                                 <state key="normal" title="Add Member"/>
                                 <connections>
-                                    <segue destination="Bqt-Y5-pyv" kind="show" id="FjR-XQ-QRS"/>
+                                    <segue destination="Bqt-Y5-pyv" kind="show" identifier="addMemberSegue" id="FjR-XQ-QRS"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MA4-Ix-PuR">
+                                <rect key="frame" x="100" y="396" width="214" height="30"/>
+                                <color key="backgroundColor" name="AccentColor"/>
+                                <state key="normal" title="Create Group">
+                                    <color key="titleColor" systemColor="systemGray6Color"/>
+                                </state>
+                                <connections>
+                                    <action selector="createGroupButton:" destination="Peb-gD-6dN" eventType="touchUpInside" id="FYe-hy-gUl"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Current Group Members: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TpQ-5F-Cr3">
+                                <rect key="frame" x="69" y="503" width="195" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6by-4c-y4G"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="XWA-rx-LcV" firstAttribute="top" secondItem="cNH-yU-WE8" secondAttribute="bottom" constant="60" id="6hP-VU-TGN"/>
+                            <constraint firstItem="MA4-Ix-PuR" firstAttribute="top" secondItem="YiH-yU-IMo" secondAttribute="bottom" constant="30" id="LvE-WF-Ei4"/>
                             <constraint firstItem="6by-4c-y4G" firstAttribute="trailing" secondItem="XWA-rx-LcV" secondAttribute="trailing" constant="90" id="NGd-9f-wVH"/>
                             <constraint firstItem="cNH-yU-WE8" firstAttribute="top" secondItem="6by-4c-y4G" secondAttribute="top" constant="60" id="PK0-mo-W55"/>
-                            <constraint firstItem="6by-4c-y4G" firstAttribute="bottom" secondItem="YiH-yU-IMo" secondAttribute="bottom" constant="30" id="SCV-af-ChM"/>
                             <constraint firstItem="YiH-yU-IMo" firstAttribute="leading" secondItem="6by-4c-y4G" secondAttribute="leading" constant="150" id="Sry-he-O01"/>
+                            <constraint firstItem="MA4-Ix-PuR" firstAttribute="leading" secondItem="6by-4c-y4G" secondAttribute="leading" constant="100" id="T9L-VY-B68"/>
                             <constraint firstItem="6by-4c-y4G" firstAttribute="trailing" secondItem="cNH-yU-WE8" secondAttribute="trailing" constant="90" id="TX6-9V-EK5"/>
                             <constraint firstItem="6by-4c-y4G" firstAttribute="trailing" secondItem="YiH-yU-IMo" secondAttribute="trailing" constant="150" id="W1b-GZ-M1g"/>
                             <constraint firstItem="YiH-yU-IMo" firstAttribute="top" secondItem="XWA-rx-LcV" secondAttribute="bottom" constant="60" id="YdM-yD-rBR"/>
                             <constraint firstItem="XWA-rx-LcV" firstAttribute="top" secondItem="cNH-yU-WE8" secondAttribute="bottom" constant="60" id="bg1-ur-Und"/>
+                            <constraint firstItem="6by-4c-y4G" firstAttribute="trailing" secondItem="MA4-Ix-PuR" secondAttribute="trailing" constant="100" id="gOo-ND-PTf"/>
+                            <constraint firstItem="6by-4c-y4G" firstAttribute="trailing" secondItem="YiH-yU-IMo" secondAttribute="trailing" constant="150" id="pVt-Hv-55I"/>
                             <constraint firstItem="cNH-yU-WE8" firstAttribute="leading" secondItem="6by-4c-y4G" secondAttribute="leading" constant="90" id="rMx-uL-LBX"/>
                             <constraint firstItem="XWA-rx-LcV" firstAttribute="leading" secondItem="6by-4c-y4G" secondAttribute="leading" constant="90" id="ryZ-lH-NKg"/>
+                            <constraint firstItem="YiH-yU-IMo" firstAttribute="leading" secondItem="6by-4c-y4G" secondAttribute="leading" constant="150" id="sJc-i4-KBn"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Create Group" id="W30-tH-lBh"/>
+                    <connections>
+                        <outlet property="currentMemberNamesLabel" destination="TpQ-5F-Cr3" id="pii-aa-uiw"/>
+                        <outlet property="descriptionTextField" destination="XWA-rx-LcV" id="xTZ-KA-KVw"/>
+                        <outlet property="nameTextField" destination="cNH-yU-WE8" id="272-dh-8qR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hex-hX-5nx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4538" y="435"/>
+            <point key="canvasLocation" x="4511.594202898551" y="434.59821428571428"/>
         </scene>
         <!--Add Member Search Table View Controller-->
         <scene sceneID="BUg-FJ-e6X">
@@ -504,6 +528,9 @@
         <image name="calendar" catalog="system" width="128" height="106"/>
         <image name="person.3.fill" catalog="system" width="128" height="61"/>
         <image name="slider.horizontal.3" catalog="system" width="128" height="100"/>
+        <namedColor name="AccentColor">
+            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="linkColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

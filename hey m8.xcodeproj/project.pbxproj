@@ -22,6 +22,8 @@
 		AE3B8840265A7CAE00553783 /* AddMemberSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3B883F265A7CAE00553783 /* AddMemberSearchTableViewController.swift */; };
 		AE3B8842265A7D4C00553783 /* UIViewController-cli240.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3B8841265A7D4C00553783 /* UIViewController-cli240.swift */; };
 		AE3B8844265A7E8500553783 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3B8843265A7E8500553783 /* User.swift */; };
+		AE3B8846265B3ADF00553783 /* CreateGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3B8845265B3ADF00553783 /* CreateGroupViewController.swift */; };
+		AE3B8848265B3D7F00553783 /* addMemberDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3B8847265B3D7F00553783 /* addMemberDelegate.swift */; };
 		AE9B466F263C507700C179BF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AE9B466E263C507700C179BF /* GoogleService-Info.plist */; };
 		AE9B4671263E67D100C179BF /* MainTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9B4670263E67D100C179BF /* MainTabViewController.swift */; };
 		AE9B4673263E70C100C179BF /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9B4672263E70C100C179BF /* EventsViewController.swift */; };
@@ -49,6 +51,8 @@
 		AE3B883F265A7CAE00553783 /* AddMemberSearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMemberSearchTableViewController.swift; sourceTree = "<group>"; };
 		AE3B8841265A7D4C00553783 /* UIViewController-cli240.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController-cli240.swift"; sourceTree = "<group>"; };
 		AE3B8843265A7E8500553783 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		AE3B8845265B3ADF00553783 /* CreateGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGroupViewController.swift; sourceTree = "<group>"; };
+		AE3B8847265B3D7F00553783 /* addMemberDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addMemberDelegate.swift; sourceTree = "<group>"; };
 		AE9B466E263C507700C179BF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		AE9B4670263E67D100C179BF /* MainTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabViewController.swift; sourceTree = "<group>"; };
 		AE9B4672263E70C100C179BF /* EventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsViewController.swift; sourceTree = "<group>"; };
@@ -107,6 +111,7 @@
 				AE1E79D6263BC6A300839C27 /* LaunchScreen.storyboard */,
 				AE1E79D9263BC6A300839C27 /* Info.plist */,
 				AE9B466E263C507700C179BF /* GoogleService-Info.plist */,
+				AE3B8847265B3D7F00553783 /* addMemberDelegate.swift */,
 				AE04C268265A75ED00D53865 /* GroupTableViewCell.swift */,
 				AE3B8841265A7D4C00553783 /* UIViewController-cli240.swift */,
 				AE9B4674263E70C600C179BF /* Controllers */,
@@ -124,6 +129,7 @@
 				AE9B4679264A346600C179BF /* DateSelectionViewController.swift */,
 				AE04C262265A6AA300D53865 /* UserGroupsTableViewController.swift */,
 				AE04C25C2657C0A400D53865 /* CreateEventViewController.swift */,
+				AE3B8845265B3ADF00553783 /* CreateGroupViewController.swift */,
 				AE9B4672263E70C100C179BF /* EventsViewController.swift */,
 			);
 			path = Controllers;
@@ -271,6 +277,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE3B8848265B3D7F00553783 /* addMemberDelegate.swift in Sources */,
 				AE1E79D0263BC6A000839C27 /* InitialViewController.swift in Sources */,
 				AE9B4671263E67D100C179BF /* MainTabViewController.swift in Sources */,
 				AE1E79CC263BC6A000839C27 /* AppDelegate.swift in Sources */,
@@ -281,6 +288,7 @@
 				AE04C263265A6AA300D53865 /* UserGroupsTableViewController.swift in Sources */,
 				AE3B8844265A7E8500553783 /* User.swift in Sources */,
 				AE04C25F2657C4A000D53865 /* AddLocationViewController.swift in Sources */,
+				AE3B8846265B3ADF00553783 /* CreateGroupViewController.swift in Sources */,
 				AE9B4673263E70C100C179BF /* EventsViewController.swift in Sources */,
 				AE3B8842265A7D4C00553783 /* UIViewController-cli240.swift in Sources */,
 				AE04C269265A75ED00D53865 /* GroupTableViewCell.swift in Sources */,

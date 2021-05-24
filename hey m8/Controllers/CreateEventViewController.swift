@@ -36,11 +36,7 @@ class CreateEventViewController: UIViewController {
         }
         
         let dataToSave: [String:Any] = [name: nameTextField, eventDescription: descriptionTextField]
-        
-//        let newPerson = Person(name: name, age: age)
-        
-//        displayMessagecli240(title:"Greetings", message: newPerson.greeting())
-        
+       
         // Add a new document with a generated ID
         var ref: DocumentReference? = nil
         ref = database.collection("events").addDocument(data: [
@@ -53,9 +49,7 @@ class CreateEventViewController: UIViewController {
                 print("Document added with ID: \(ref!.documentID)")
             }
         }
-        
         //move to QR code screen
-        
     }
     
     override func viewDidLoad() {
