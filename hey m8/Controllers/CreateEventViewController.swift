@@ -23,7 +23,6 @@ class CreateEventViewController: UIViewController {
     @IBOutlet weak var descriptionTextField: UITextField!
     
     @IBAction func createEventButton(_ sender: UIButton) {
-        
         guard let name = nameTextField.text, name.isEmpty==false else{
             displayMessagecli240(title: "Error", message: "Please enter a name")
             return
@@ -49,7 +48,8 @@ class CreateEventViewController: UIViewController {
                 print("Document added with ID: \(ref!.documentID)")
             }
         }
-        //move to QR code screen push view cnotroller? 
+        //move to QR code screen push view cnotroller?
+        navigationController?.pushViewController(<#T##viewController: UIViewController##UIViewController#>, animated: <#T##Bool#>)
     }
     
     override func viewDidLoad() {

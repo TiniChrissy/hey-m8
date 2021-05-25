@@ -22,10 +22,11 @@ class UserGroupsTableViewController: UITableViewController {
 //    weak var memberDelegate: addMemberDelegate?
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
-        //      Production settings
-        //        let settings = FirestoreSettings()
-        //        Firestore.firestore().settings = settings
+//        Production settings
+//        let settings = FirestoreSettings()
+//        Firestore.firestore().settings = settings
         
         //Emulator settings
         let settings = Firestore.firestore().settings
@@ -37,7 +38,17 @@ class UserGroupsTableViewController: UITableViewController {
         //Connect to database
         database = Firestore.firestore()
         
+//        tableView.performBatchUpdates(getAllGroups(), completion: nil)
+
+//        tableView.beginUpdates()
+//        tableView.insertRows(at: [IndexPath(row: userGroups.count - 1, section: 0)],
+//                             with: .automatic)
+//        tableView.endUpdates()
         getAllGroups()
+        tableView.reloadSections([SECTION_GROUP], with: .automatic)
+        
+        
+
     }
 
     // MARK: - Table view data source
@@ -60,21 +71,33 @@ class UserGroupsTableViewController: UITableViewController {
         if indexPath.section == SECTION_GROUP {
             let groupCell =
                 tableView.dequeueReusableCell(withIdentifier: CELL_GROUP, for: indexPath)
-                as! GroupTableViewCell
             let group = userGroups[indexPath.row]
             
-            groupCell.groupNameLabel.text = group.name
-//            
-//            var currentMembersDisplayNamesArray = [String]()
-//         
-//            for member in currentMembers {
-//                currentMembersDisplayNamesArray.append(member.displayName)
-//            }
-//            
-//            let currentMembersDisplayNamesText = currentMembersDisplayNamesArray.joined(separator: ", ")
+            print("about to do the group name")
+            groupCell.textLabel?.text = group.name
             
-            groupCell.groupMembersLabel.text = group.members.joined(separator: ", ")
-            
+            //Get member id and its respective displayName
+            for member in group.members {
+                //need error checking here for if the member doesn't exist otherwise app will crash
+                let docRef = database.collection("users").document(member)
+                docRef.getDocument { (document, error) in
+                    if let document = document, document.exists {
+//                        let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
+                        
+                        let a = document.data()?["displayName"] as! String
+                        
+                        if member != group.members[0] {
+                            groupCell.detailTextLabel?.text?.append(", ")
+                        }
+                        groupCell.detailTextLabel?.text?.append(a)
+//                        print("Document data: \(dataDescription)")
+                    } else {
+                        print("Document does not exist")
+                    }
+                }
+
+            }
+//
             return groupCell
         }
         
@@ -92,6 +115,7 @@ class UserGroupsTableViewController: UITableViewController {
             else {
                 cell.textLabel?.text = "You don't have any groups. Click + to create a new group"
             }
+            return cell
         }
      
         return UITableViewCell()
@@ -128,7 +152,7 @@ class UserGroupsTableViewController: UITableViewController {
         }
     }
     
-    //Add to current table and display as well as to firestore
+    //Add to current table and display
     func addGroup(newGroup: Group) -> Bool {
         userGroups.append(newGroup)
         tableView.beginUpdates()
@@ -139,32 +163,26 @@ class UserGroupsTableViewController: UITableViewController {
         return true
     }
     
-    func getAllGroups() {
+    func getAllGroups() -> Void { //from firestore
         let database = Firestore.firestore()
         database.collection("groups").getDocuments() { (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {
                 for document in querySnapshot!.documents {
-                    print("\(document.documentID) => \(document.data())")
+//                    print("\(document.documentID) => \(document.data())")
                     
                     let groupName = document.data()["name"] as! String
                     let groupId = document.documentID
                     let groupMembers = document.data()["members"] as? Array<String> ?? [""]
-//                    if let groupMembers = document.data()["members"] as? Array<String> {
                     
-//                        let groupMembers = [""]
-//                    }
-                    
-                        
                     let group = Group(name: groupName, groupID: groupId, members: groupMembers)
-                    self.userGroups.append(group)
+                    self.addGroup(newGroup: group)
                 }
             }
         }
         
-        
-        
     }
+
 }
 
