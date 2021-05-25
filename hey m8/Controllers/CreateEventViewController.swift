@@ -49,7 +49,7 @@ class CreateEventViewController: UIViewController {
             }
         }
         //move to QR code screen push view cnotroller?
-        navigationController?.pushViewController(<#T##viewController: UIViewController##UIViewController#>, animated: <#T##Bool#>)
+//        navigationController?.pushViewController(<#T##viewController: UIViewController##UIViewController#>, animated: <#T##Bool#>)
     }
     
     override func viewDidLoad() {

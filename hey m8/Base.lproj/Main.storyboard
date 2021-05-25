@@ -36,27 +36,40 @@
             </objects>
             <point key="canvasLocation" x="928.98550724637687" y="50.892857142857139"/>
         </scene>
-        <!--Events View Controller-->
-        <scene sceneID="3F2-sX-2OO">
+        <!--Events-->
+        <scene sceneID="yXD-CT-QAJ">
             <objects>
-                <viewController storyboardIdentifier="EventsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="xiV-9S-rVW" customClass="EventsViewController" customModule="hey_m8" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Tnw-Pe-EjH">
+                <tableViewController id="t8L-kC-Adz" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="gcW-CP-ly6">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="lmX-sB-e4n"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="o2s-Hu-NF8">
-                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="aND-kv-j1D">
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="WRH-Tj-2tO">
+                                <rect key="frame" x="0.0" y="24.5" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="WRH-Tj-2tO" id="9DT-il-gdS">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="t8L-kC-Adz" id="yGZ-Fd-X5r"/>
+                            <outlet property="delegate" destination="t8L-kC-Adz" id="PdD-uZ-Htf"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Events" id="CN1-23-L1f">
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="Wl1-LM-xyi">
                             <connections>
-                                <segue destination="Bbc-4d-SSl" kind="show" id="Bqf-mA-2f7"/>
+                                <segue destination="Bbc-4d-SSl" kind="show" id="9kx-Cv-Ago"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="9qe-qY-CaC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Yr3-qm-OWA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3600.0000000000005" y="-250.44642857142856"/>
+            <point key="canvasLocation" x="3641" y="-250"/>
         </scene>
         <!--Create Event-->
         <scene sceneID="qmM-3y-Ppk">
@@ -261,14 +274,14 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="xiV-9S-rVW" kind="relationship" relationship="rootViewController" id="7tt-PG-Hgn"/>
+                        <segue destination="t8L-kC-Adz" kind="relationship" relationship="rootViewController" id="qEc-NJ-05J"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CcJ-lM-A67" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2691.304347826087" y="-250.44642857142856"/>
         </scene>
-        <!--View Controller-->
+        <!--Settings-->
         <scene sceneID="YcV-Zr-p5H">
             <objects>
                 <viewController id="4Yu-KY-9Ou" sceneMemberID="viewController">
@@ -278,13 +291,13 @@
                         <viewLayoutGuide key="safeArea" id="6sp-uZ-UBN"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Gch-oE-tr4"/>
+                    <navigationItem key="navigationItem" title="Settings" id="Gch-oE-tr4"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="09d-cu-gsS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3545" y="1336"/>
         </scene>
-        <!--User Groups Table View Controller-->
+        <!--Groups-->
         <scene sceneID="9AI-h0-Qcg">
             <objects>
                 <tableViewController id="cNB-L7-zbt" customClass="UserGroupsTableViewController" customModule="hey_m8" customModuleProvider="target" sceneMemberID="viewController">
@@ -331,7 +344,7 @@
                             <outlet property="delegate" destination="cNB-L7-zbt" id="3xf-OZ-BCI"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="1t9-cX-eBQ">
+                    <navigationItem key="navigationItem" title="Groups" id="1t9-cX-eBQ">
                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="gPn-MQ-ytH">
                             <connections>
                                 <segue destination="Peb-gD-6dN" kind="show" identifier="createGroupSegue" id="5lZ-a0-ha8"/>
