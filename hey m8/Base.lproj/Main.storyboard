@@ -67,7 +67,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cgl-fB-AfA">
-                                <rect key="frame" x="90" y="188" width="200" height="34"/>
+                                <rect key="frame" x="90" y="188" width="234" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="WvC-7A-1qM"/>
                                 </constraints>
@@ -75,7 +75,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Description (Optional)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3yR-HN-1tY">
-                                <rect key="frame" x="90" y="272" width="200" height="34"/>
+                                <rect key="frame" x="90" y="272" width="234" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="dbm-c4-BDY"/>
                                 </constraints>

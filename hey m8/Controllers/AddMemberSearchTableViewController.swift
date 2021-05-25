@@ -105,18 +105,19 @@ class AddMemberSearchTableViewController: UITableViewController, UISearchResults
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let memberDelegate = memberDelegate {
-//            print("in memberDelegate")
-            if memberDelegate.addMember(newMember: filteredUsers[indexPath.row]) {
-                //After we've added a user, we don't want them to show up anymore
-                allUsers.remove(at: indexPath.row)
-                navigationController?.popViewController(animated: true)
-//                print("inside the popview")
-                return
+        if indexPath.section == SECTION_USER {
+            if let memberDelegate = memberDelegate {
+                if memberDelegate.addMember(newMember: filteredUsers[indexPath.row]) {
+                    //After we've added a user, we don't want them to show up anymore
+                    allUsers.remove(at: indexPath.row)
+                    navigationController?.popViewController(animated: true)
+                    return
+                }
+                else {
+                    displayMessagecli240(title: "Group is full", message: "Unable to add more members to group")
+                }
             }
-            else {
-                displayMessagecli240(title: "Group is full", message: "Unable to add more members to group")
-            }
+            
         }
         tableView.deselectRow(at: indexPath, animated: true)
     }

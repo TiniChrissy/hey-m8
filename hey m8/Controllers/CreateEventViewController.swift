@@ -49,7 +49,7 @@ class CreateEventViewController: UIViewController {
                 print("Document added with ID: \(ref!.documentID)")
             }
         }
-        //move to QR code screen
+        //move to QR code screen push view cnotroller? 
     }
     
     override func viewDidLoad() {

@@ -6,8 +6,10 @@
 //
 
 import UIKit
+import FirebaseFirestore
 
 class UserGroupsTableViewController: UITableViewController {
+    var database: Firestore!
 
     let SECTION_GROUP = 0;
     let SECTION_INFO = 1;
@@ -21,6 +23,21 @@ class UserGroupsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //      Production settings
+        //        let settings = FirestoreSettings()
+        //        Firestore.firestore().settings = settings
+        
+        //Emulator settings
+        let settings = Firestore.firestore().settings
+        settings.host = "localhost:8080"
+        settings.isPersistenceEnabled = false
+        settings.isSSLEnabled = false
+        Firestore.firestore().settings = settings
+        
+        //Connect to database
+        database = Firestore.firestore()
+        
+        getAllGroups()
     }
 
     // MARK: - Table view data source
@@ -40,7 +57,6 @@ class UserGroupsTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         if indexPath.section == SECTION_GROUP {
             let groupCell =
                 tableView.dequeueReusableCell(withIdentifier: CELL_GROUP, for: indexPath)
@@ -48,6 +64,15 @@ class UserGroupsTableViewController: UITableViewController {
             let group = userGroups[indexPath.row]
             
             groupCell.groupNameLabel.text = group.name
+//            
+//            var currentMembersDisplayNamesArray = [String]()
+//         
+//            for member in currentMembers {
+//                currentMembersDisplayNamesArray.append(member.displayName)
+//            }
+//            
+//            let currentMembersDisplayNamesText = currentMembersDisplayNamesArray.joined(separator: ", ")
+            
             groupCell.groupMembersLabel.text = group.members.joined(separator: ", ")
             
             return groupCell
@@ -112,6 +137,34 @@ class UserGroupsTableViewController: UITableViewController {
         tableView.endUpdates()
         tableView.reloadSections([SECTION_INFO], with: .automatic)
         return true
+    }
+    
+    func getAllGroups() {
+        let database = Firestore.firestore()
+        database.collection("groups").getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                for document in querySnapshot!.documents {
+                    print("\(document.documentID) => \(document.data())")
+                    
+                    let groupName = document.data()["name"] as! String
+                    let groupId = document.documentID
+                    let groupMembers = document.data()["members"] as? Array<String> ?? [""]
+//                    if let groupMembers = document.data()["members"] as? Array<String> {
+                    
+//                        let groupMembers = [""]
+//                    }
+                    
+                        
+                    let group = Group(name: groupName, groupID: groupId, members: groupMembers)
+                    self.userGroups.append(group)
+                }
+            }
+        }
+        
+        
+        
     }
 }
 
