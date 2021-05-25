@@ -20,7 +20,7 @@ class CreateGroupViewController: UIViewController {
 //    let name = "eventName"
 //    let eventDescription = "eventDescription"
 //
-    var groupDelegate: Any?
+    var groupDelegate: UserGroupsTableViewController?
     var currentMembers = [User]()
     
 //    var temporaryGroup = Group()
@@ -39,18 +39,20 @@ class CreateGroupViewController: UIViewController {
             displayMessagecli240(title: "Error", message: "Please enter a description for your group")
             return
         }
-        
 //        let dataToSave: [String:Any] = [name: nameTextField, eventDescription: descriptionTextField]
-        
-//        let newPerson = Person(name: name, age: age)
-        
-//        displayMessagecli240(title:"Greetings", message: newPerson.greeting())
+
+        //Get member IDs
+        var ids = [String]()
+        for member in currentMembers {
+            ids.append(member.id)
+        }
         
         // Add a new document with a generated ID
         var ref: DocumentReference? = nil
         ref = database.collection("groups").addDocument(data: [
             "name": name,
             "description": groupDescription,
+            "members": ids
         ]) { err in
             if let err = err {
                 print("Error adding document: \(err)")
@@ -59,7 +61,11 @@ class CreateGroupViewController: UIViewController {
             }
         }
         
-        //move to QR code screen
+        let newGroup = Group(name: name, groupID: ref!.documentID, members: ids)
+        
+        groupDelegate?.addGroup(newGroup: newGroup)
+        //move back to groups screen
+        navigationController?.popViewController(animated: true)
     }
 
     //Consider future guard for group with no member? Or perhaps group must default have the person who created the group

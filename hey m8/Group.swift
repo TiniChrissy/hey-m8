@@ -9,15 +9,13 @@ import Foundation
 
 class Group: NSObject {
     var name: String
-    var groupID: Int
+    var groupID: String
     var members: Array<String>
     
-    init(name: String, groupID: Int, members: Array<String>) {
+    init(name: String, groupID: String, members: Array<String>) {
         self.name = name
         self.groupID = groupID
         self.members = members
     }
-    
-    
 }
 

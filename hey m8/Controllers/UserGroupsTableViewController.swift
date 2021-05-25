@@ -111,10 +111,7 @@ class UserGroupsTableViewController: UITableViewController {
                              with: .automatic)
         tableView.endUpdates()
         tableView.reloadSections([SECTION_INFO], with: .automatic)
-        
-        
         return true
-        
     }
 }
 
