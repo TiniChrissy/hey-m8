@@ -21,6 +21,7 @@ class CreateGroupViewController: UIViewController {
 //    let eventDescription = "eventDescription"
 //
     var groupDelegate: Any?
+    var currentMembers = [User]()
     
 //    var temporaryGroup = Group()
     
@@ -94,18 +95,24 @@ class CreateGroupViewController: UIViewController {
     }
     
     //Do I really need to add the whole user or can I just add the user ID?
-    // For now just the ID I guess
+    // For now the whole user I guess
     func addMember(newMember: User) -> Bool {
-//        let newGroup = Group(name: <#T##String#>, groupID: temporaryGroupID, members: <#T##Array<String>#>)
-//        newGroup.members.append(newMember.id)
-//
-        //display it on the label
-//        currentMemberNamesLabel = currentMemberNamesLabel + newMember.displayName
+        currentMembers.append(newMember)
+        var currentMembersDisplayNamesArray = [String]()
+     
+        for member in currentMembers {
+            currentMembersDisplayNamesArray.append(member.displayName)
+        }
         
-        //update the label
+        let currentMembersDisplayNamesText = currentMembersDisplayNamesArray.joined(separator: ", ")
+        
+        //update the label on main thread
+        DispatchQueue.main.async(execute: {
+            self.currentMemberNamesLabel.text = "Current Members: " + currentMembersDisplayNamesText
+           })
         return true
     }
-    
+
     func createTemporaryGroup() {
 //        temporaryGroup = Group(name: "temp", groupID: temporaryGroupID, members: [String]())
     }

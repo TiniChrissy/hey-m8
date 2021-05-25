@@ -67,9 +67,8 @@ class AddMemberSearchTableViewController: UITableViewController, UISearchResults
             let userCell = tableView.dequeueReusableCell(withIdentifier: CELL_USER, for: indexPath)
             let user = filteredUsers[indexPath.row]
             
-            
             userCell.textLabel?.text = user.displayName
-//            userCell.detailTextLabel?.text = meal.instructions
+            userCell.detailTextLabel?.text = user.email
             return userCell
         }
 
@@ -80,7 +79,6 @@ class AddMemberSearchTableViewController: UITableViewController, UISearchResults
         return infoCell
     }
 
-    
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
      if indexPath.section == SECTION_USER {
@@ -89,7 +87,6 @@ class AddMemberSearchTableViewController: UITableViewController, UISearchResults
      // Return false if you do not want the specified item to be editable.
      return true
     }
-
     
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
@@ -109,8 +106,12 @@ class AddMemberSearchTableViewController: UITableViewController, UISearchResults
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let memberDelegate = memberDelegate {
+//            print("in memberDelegate")
             if memberDelegate.addMember(newMember: filteredUsers[indexPath.row]) {
-                navigationController?.popViewController(animated: false)
+                //After we've added a user, we don't want them to show up anymore
+                allUsers.remove(at: indexPath.row)
+                navigationController?.popViewController(animated: true)
+//                print("inside the popview")
                 return
             }
             else {
@@ -119,17 +120,6 @@ class AddMemberSearchTableViewController: UITableViewController, UISearchResults
         }
         tableView.deselectRow(at: indexPath, animated: true)
     }
-    
-//    func createDefaultMeals() {
-//        let potato = IngredientMeasurement(name: "Milk", quantity: "A lot")
-//
-//        let milk = IngredientMeasurement(name: "Milk", quantity: "A little")
-//        let sugar = IngredientMeasurement(name: "Sugar", quantity: "A lot")
-//
-//        allMeals.append(Meal(name: "Potato", instructions: "Put the potato in the oven. Take the potato out of the oven.", ingredients: [potato]))
-//
-//        allMeals.append(Meal(name: "Milkshake", instructions: "Mix it all up.", ingredients: [milk, sugar]))
-//    }
     
     func updateSearchResults(for searchController: UISearchController) {
         guard let searchText = searchController.searchBar.text?.lowercased() else {
@@ -146,16 +136,6 @@ class AddMemberSearchTableViewController: UITableViewController, UISearchResults
 
     }
     
-//    func addMeal(_ newHero: Meal) -> Bool {
-//        tableView.performBatchUpdates({
-//            // Safe because search can't be active when Add button is tapped.
-//            allMeals.append(newHero)
-//            filteredMeals.append(newHero)
-//
-//            tableView.insertRows(at: [IndexPath(row: filteredUsers.count-1, section: SECTION_USER)],with: .automatic)
-//            tableView.reloadSections([SECTION_INFO], with: .automatic)}, completion: nil)
-//        return true
-//    }
     /*
     // Override to support rearranging the table view.
     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
@@ -211,10 +191,8 @@ class AddMemberSearchTableViewController: UITableViewController, UISearchResults
                 }
             }
         }
-        
 
-        
-
+        self.filteredUsers = self.allUsers
     }
 
 
