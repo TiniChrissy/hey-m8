@@ -89,6 +89,7 @@ class UserGroupsTableViewController: UITableViewController {
                         if member != group.members[0] {
                             groupCell.detailTextLabel?.text?.append(", ")
                         }
+
                         groupCell.detailTextLabel?.text?.append(a)
 //                        print("Document data: \(dataDescription)")
                     } else {

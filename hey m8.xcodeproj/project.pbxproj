@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6D1DE6153B50B415AC9501C8 /* Pods_hey_m8.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FD3CF426E04CC071A9940AC /* Pods_hey_m8.framework */; };
 		AE04C25D2657C0A400D53865 /* CreateEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE04C25C2657C0A400D53865 /* CreateEventViewController.swift */; };
 		AE04C25F2657C4A000D53865 /* AddLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE04C25E2657C4A000D53865 /* AddLocationViewController.swift */; };
 		AE04C263265A6AA300D53865 /* UserGroupsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE04C262265A6AA300D53865 /* UserGroupsTableViewController.swift */; };
@@ -24,17 +23,18 @@
 		AE3B8844265A7E8500553783 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3B8843265A7E8500553783 /* User.swift */; };
 		AE3B8846265B3ADF00553783 /* CreateGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3B8845265B3ADF00553783 /* CreateGroupViewController.swift */; };
 		AE3B8848265B3D7F00553783 /* addMemberDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3B8847265B3D7F00553783 /* addMemberDelegate.swift */; };
+		AE3B884A265CEE0100553783 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3B8849265CEE0100553783 /* Event.swift */; };
 		AE9B466F263C507700C179BF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AE9B466E263C507700C179BF /* GoogleService-Info.plist */; };
 		AE9B4671263E67D100C179BF /* MainTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9B4670263E67D100C179BF /* MainTabViewController.swift */; };
 		AE9B4673263E70C100C179BF /* UserEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9B4672263E70C100C179BF /* UserEventsViewController.swift */; };
 		AE9B4678264A2F8B00C179BF /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9B4677264A2F8B00C179BF /* CustomCell.swift */; };
 		AE9B467A264A346600C179BF /* DateSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9B4679264A346600C179BF /* DateSelectionViewController.swift */; };
+		DCFD44002BEE568E9CC30FC6 /* Pods_hey_m8.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF7179FA12A24B4D83EDD70F /* Pods_hey_m8.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		5FD3CF426E04CC071A9940AC /* Pods_hey_m8.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_hey_m8.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		7D86C75D435A2141B642F7C4 /* Pods-hey m8.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hey m8.release.xcconfig"; path = "Target Support Files/Pods-hey m8/Pods-hey m8.release.xcconfig"; sourceTree = "<group>"; };
-		AB4BDF44C9CE770BCE6DC2C9 /* Pods-hey m8.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hey m8.debug.xcconfig"; path = "Target Support Files/Pods-hey m8/Pods-hey m8.debug.xcconfig"; sourceTree = "<group>"; };
+		15074DF54B755E19AC0297F6 /* Pods-hey m8.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hey m8.release.xcconfig"; path = "Target Support Files/Pods-hey m8/Pods-hey m8.release.xcconfig"; sourceTree = "<group>"; };
+		2CCBCCE6729FF57756BBA2F9 /* Pods-hey m8.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hey m8.debug.xcconfig"; path = "Target Support Files/Pods-hey m8/Pods-hey m8.debug.xcconfig"; sourceTree = "<group>"; };
 		AE04C25C2657C0A400D53865 /* CreateEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEventViewController.swift; sourceTree = "<group>"; };
 		AE04C25E2657C4A000D53865 /* AddLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLocationViewController.swift; sourceTree = "<group>"; };
 		AE04C262265A6AA300D53865 /* UserGroupsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserGroupsTableViewController.swift; sourceTree = "<group>"; };
@@ -53,11 +53,13 @@
 		AE3B8843265A7E8500553783 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		AE3B8845265B3ADF00553783 /* CreateGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGroupViewController.swift; sourceTree = "<group>"; };
 		AE3B8847265B3D7F00553783 /* addMemberDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addMemberDelegate.swift; sourceTree = "<group>"; };
+		AE3B8849265CEE0100553783 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		AE9B466E263C507700C179BF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		AE9B4670263E67D100C179BF /* MainTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabViewController.swift; sourceTree = "<group>"; };
 		AE9B4672263E70C100C179BF /* UserEventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEventsViewController.swift; sourceTree = "<group>"; };
 		AE9B4677264A2F8B00C179BF /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		AE9B4679264A346600C179BF /* DateSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateSelectionViewController.swift; sourceTree = "<group>"; };
+		BF7179FA12A24B4D83EDD70F /* Pods_hey_m8.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_hey_m8.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,17 +67,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6D1DE6153B50B415AC9501C8 /* Pods_hey_m8.framework in Frameworks */,
+				DCFD44002BEE568E9CC30FC6 /* Pods_hey_m8.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		A20C6E5016902C343C8D88AD /* Frameworks */ = {
+		10CDD71B1010D50E3E2148F9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				5FD3CF426E04CC071A9940AC /* Pods_hey_m8.framework */,
+				BF7179FA12A24B4D83EDD70F /* Pods_hey_m8.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -86,7 +88,7 @@
 				AE1E79CA263BC6A000839C27 /* hey m8 */,
 				AE1E79C9263BC6A000839C27 /* Products */,
 				E753979DE67D92BCA48A5BD5 /* Pods */,
-				A20C6E5016902C343C8D88AD /* Frameworks */,
+				10CDD71B1010D50E3E2148F9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -109,6 +111,7 @@
 				AE04C266265A6C5D00D53865 /* Group.swift */,
 				AE3B8843265A7E8500553783 /* User.swift */,
 				AE1E79D6263BC6A300839C27 /* LaunchScreen.storyboard */,
+				AE3B8849265CEE0100553783 /* Event.swift */,
 				AE1E79D9263BC6A300839C27 /* Info.plist */,
 				AE9B466E263C507700C179BF /* GoogleService-Info.plist */,
 				AE3B8847265B3D7F00553783 /* addMemberDelegate.swift */,
@@ -127,9 +130,9 @@
 				AE04C25E2657C4A000D53865 /* AddLocationViewController.swift */,
 				AE3B883F265A7CAE00553783 /* AddMemberSearchTableViewController.swift */,
 				AE9B4679264A346600C179BF /* DateSelectionViewController.swift */,
-				AE04C262265A6AA300D53865 /* UserGroupsTableViewController.swift */,
 				AE04C25C2657C0A400D53865 /* CreateEventViewController.swift */,
 				AE3B8845265B3ADF00553783 /* CreateGroupViewController.swift */,
+				AE04C262265A6AA300D53865 /* UserGroupsTableViewController.swift */,
 				AE9B4672263E70C100C179BF /* UserEventsViewController.swift */,
 			);
 			path = Controllers;
@@ -138,8 +141,8 @@
 		E753979DE67D92BCA48A5BD5 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				AB4BDF44C9CE770BCE6DC2C9 /* Pods-hey m8.debug.xcconfig */,
-				7D86C75D435A2141B642F7C4 /* Pods-hey m8.release.xcconfig */,
+				2CCBCCE6729FF57756BBA2F9 /* Pods-hey m8.debug.xcconfig */,
+				15074DF54B755E19AC0297F6 /* Pods-hey m8.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -151,12 +154,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AE1E79DC263BC6A300839C27 /* Build configuration list for PBXNativeTarget "hey m8" */;
 			buildPhases = (
-				14E3DF7E693C0C4D7221EA92 /* [CP] Check Pods Manifest.lock */,
+				C36BB9ED2C971E34D2E4271C /* [CP] Check Pods Manifest.lock */,
 				AE1E79C4263BC6A000839C27 /* Sources */,
 				AE1E79C5263BC6A000839C27 /* Frameworks */,
 				AE1E79C6263BC6A000839C27 /* Resources */,
-				E2C01EEF55CA946783B2BD87 /* [CP] Embed Pods Frameworks */,
-				CA382360AC011F4D91B8D352 /* [CP] Copy Pods Resources */,
+				00646008964A68B664A01621 /* [CP] Embed Pods Frameworks */,
+				D954CB086DE83172256D8266 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -214,7 +217,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		14E3DF7E693C0C4D7221EA92 /* [CP] Check Pods Manifest.lock */ = {
+		00646008964A68B664A01621 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-hey m8/Pods-hey m8-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-hey m8/Pods-hey m8-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-hey m8/Pods-hey m8-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C36BB9ED2C971E34D2E4271C /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -236,7 +256,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		CA382360AC011F4D91B8D352 /* [CP] Copy Pods Resources */ = {
+		D954CB086DE83172256D8266 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -251,23 +271,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-hey m8/Pods-hey m8-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		E2C01EEF55CA946783B2BD87 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-hey m8/Pods-hey m8-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-hey m8/Pods-hey m8-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-hey m8/Pods-hey m8-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -287,6 +290,7 @@
 				AE9B4678264A2F8B00C179BF /* CustomCell.swift in Sources */,
 				AE04C263265A6AA300D53865 /* UserGroupsTableViewController.swift in Sources */,
 				AE3B8844265A7E8500553783 /* User.swift in Sources */,
+				AE3B884A265CEE0100553783 /* Event.swift in Sources */,
 				AE04C25F2657C4A000D53865 /* AddLocationViewController.swift in Sources */,
 				AE3B8846265B3ADF00553783 /* CreateGroupViewController.swift in Sources */,
 				AE9B4673263E70C100C179BF /* UserEventsViewController.swift in Sources */,
@@ -437,17 +441,232 @@
 		};
 		AE1E79DD263BC6A300839C27 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AB4BDF44C9CE770BCE6DC2C9 /* Pods-hey m8.debug.xcconfig */;
+			baseConfigurationReference = 2CCBCCE6729FF57756BBA2F9 /* Pods-hey m8.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Q7533W8H58;
 				EXCLUDED_ARCHS = ONLY_ACTIVE_ARCH;
+				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = "hey m8/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-l\"c++\"",
+					"-l\"icucore\"",
+					"-l\"stdc++\"",
+					"-l\"z\"",
+					"-framework",
+					"\"AppAuth\"",
+					"-framework",
+					"\"CFNetwork\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"CoreTelephony\"",
+					"-framework",
+					"\"CoreText\"",
+					"-framework",
+					"\"FBLPromises\"",
+					"-framework",
+					"\"FBSDKCoreKit\"",
+					"-framework",
+					"\"FBSDKLoginKit\"",
+					"-framework",
+					"\"FSCalendar\"",
+					"-framework",
+					"\"FirebaseAuth\"",
+					"-framework",
+					"\"FirebaseCore\"",
+					"-framework",
+					"\"FirebaseCoreDiagnostics\"",
+					"-framework",
+					"\"FirebaseDatabase\"",
+					"-framework",
+					"\"FirebaseFirestore\"",
+					"-framework",
+					"\"FirebaseFirestoreSwift\"",
+					"-framework",
+					"\"FirebaseStorage\"",
+					"-framework",
+					"\"FirebaseUI\"",
+					"-framework",
+					"\"Foundation\"",
+					"-framework",
+					"\"GTMAppAuth\"",
+					"-framework",
+					"\"GTMSessionFetcher\"",
+					"-framework",
+					"\"GoogleDataTransport\"",
+					"-framework",
+					"\"GoogleSignIn\"",
+					"-framework",
+					"\"GoogleUtilities\"",
+					"-framework",
+					"\"ImageIO\"",
+					"-framework",
+					"\"LocalAuthentication\"",
+					"-framework",
+					"\"MobileCoreServices\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-framework",
+					"\"SDWebImage\"",
+					"-framework",
+					"\"SafariServices\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-framework",
+					"\"UIKit\"",
+					"-framework",
+					"\"absl\"",
+					"-framework",
+					"\"grpc\"",
+					"-framework",
+					"\"grpcpp\"",
+					"-framework",
+					"\"leveldb\"",
+					"-framework",
+					"\"nanopb\"",
+					"-framework",
+					"\"openssl_grpc\"",
+					"-weak_framework",
+					"\"Accelerate\"",
+					"-weak_framework",
+					"\"Accounts\"",
+					"-weak_framework",
+					"\"AdSupport\"",
+					"-weak_framework",
+					"\"AudioToolbox\"",
+					"-weak_framework",
+					"\"AuthenticationServices\"",
+					"-weak_framework",
+					"\"CoreGraphics\"",
+					"-weak_framework",
+					"\"Foundation\"",
+					"-weak_framework",
+					"\"QuartzCore\"",
+					"-weak_framework",
+					"\"Security\"",
+					"-weak_framework",
+					"\"Social\"",
+					"-weak_framework",
+					"\"StoreKit\"",
+					"-weak_framework",
+					"\"UIKit\"",
+				);
+				"OTHER_LDFLAGS[arch=*]" = (
+					"$(inherited)",
+					"-l\"c++\"",
+					"-l\"icucore\"",
+					"-l\"stdc++\"",
+					"-l\"z\"",
+					"-framework",
+					"\"AppAuth\"",
+					"-framework",
+					"\"CFNetwork\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"CoreTelephony\"",
+					"-framework",
+					"\"CoreText\"",
+					"-framework",
+					"\"FBLPromises\"",
+					"-framework",
+					"\"FBSDKCoreKit\"",
+					"-framework",
+					"\"FBSDKLoginKit\"",
+					"-framework",
+					"\"FSCalendar\"",
+					"-framework",
+					"\"FirebaseAuth\"",
+					"-framework",
+					"\"FirebaseCore\"",
+					"-framework",
+					"\"FirebaseCoreDiagnostics\"",
+					"-framework",
+					"\"FirebaseDatabase\"",
+					"-framework",
+					"\"FirebaseFirestore\"",
+					"-framework",
+					"\"FirebaseFirestoreSwift\"",
+					"-framework",
+					"\"FirebaseStorage\"",
+					"-framework",
+					"\"FirebaseUI\"",
+					"-framework",
+					"\"Foundation\"",
+					"-framework",
+					"\"GTMAppAuth\"",
+					"-framework",
+					"\"GTMSessionFetcher\"",
+					"-framework",
+					"\"GoogleDataTransport\"",
+					"-framework",
+					"\"GoogleSignIn\"",
+					"-framework",
+					"\"GoogleUtilities\"",
+					"-framework",
+					"\"ImageIO\"",
+					"-framework",
+					"\"LocalAuthentication\"",
+					"-framework",
+					"\"MobileCoreServices\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-framework",
+					"\"SDWebImage\"",
+					"-framework",
+					"\"SafariServices\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-framework",
+					"\"UIKit\"",
+					"-framework",
+					"\"absl\"",
+					"-framework",
+					"\"grpc\"",
+					"-framework",
+					"\"grpcpp\"",
+					"-framework",
+					"\"leveldb\"",
+					"-framework",
+					"\"nanopb\"",
+					"-framework",
+					"\"openssl_grpc\"",
+					"-weak_framework",
+					"\"Accelerate\"",
+					"-weak_framework",
+					"\"Accounts\"",
+					"-weak_framework",
+					"\"AdSupport\"",
+					"-weak_framework",
+					"\"AudioToolbox\"",
+					"-weak_framework",
+					"\"AuthenticationServices\"",
+					"-weak_framework",
+					"\"CoreGraphics\"",
+					"-weak_framework",
+					"\"Foundation\"",
+					"-weak_framework",
+					"\"QuartzCore\"",
+					"-weak_framework",
+					"\"Security\"",
+					"-weak_framework",
+					"\"Social\"",
+					"-weak_framework",
+					"\"StoreKit\"",
+					"-weak_framework",
+					"\"UIKit\"",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.heym8;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -458,7 +677,7 @@
 		};
 		AE1E79DE263BC6A300839C27 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7D86C75D435A2141B642F7C4 /* Pods-hey m8.release.xcconfig */;
+			baseConfigurationReference = 15074DF54B755E19AC0297F6 /* Pods-hey m8.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -466,12 +685,120 @@
 				DEVELOPMENT_TEAM = Q7533W8H58;
 				EXCLUDED_ARCHS = ONLY_ACTIVE_ARCH;
 				"EXCLUDED_ARCHS[sdk=*]" = any;
+				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = "hey m8/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-l\"c++\"",
+					"-l\"icucore\"",
+					"-l\"stdc++\"",
+					"-l\"z\"",
+					"-framework",
+					"\"AppAuth\"",
+					"-framework",
+					"\"CFNetwork\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"CoreTelephony\"",
+					"-framework",
+					"\"CoreText\"",
+					"-framework",
+					"\"FBLPromises\"",
+					"-framework",
+					"\"FBSDKCoreKit\"",
+					"-framework",
+					"\"FBSDKLoginKit\"",
+					"-framework",
+					"\"FSCalendar\"",
+					"-framework",
+					"\"FirebaseAuth\"",
+					"-framework",
+					"\"FirebaseCore\"",
+					"-framework",
+					"\"FirebaseCoreDiagnostics\"",
+					"-framework",
+					"\"FirebaseDatabase\"",
+					"-framework",
+					"\"FirebaseFirestore\"",
+					"-framework",
+					"\"FirebaseFirestoreSwift\"",
+					"-framework",
+					"\"FirebaseStorage\"",
+					"-framework",
+					"\"FirebaseUI\"",
+					"-framework",
+					"\"Foundation\"",
+					"-framework",
+					"\"GTMAppAuth\"",
+					"-framework",
+					"\"GTMSessionFetcher\"",
+					"-framework",
+					"\"GoogleDataTransport\"",
+					"-framework",
+					"\"GoogleSignIn\"",
+					"-framework",
+					"\"GoogleUtilities\"",
+					"-framework",
+					"\"ImageIO\"",
+					"-framework",
+					"\"LocalAuthentication\"",
+					"-framework",
+					"\"MobileCoreServices\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-framework",
+					"\"SDWebImage\"",
+					"-framework",
+					"\"SafariServices\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-framework",
+					"\"UIKit\"",
+					"-framework",
+					"\"absl\"",
+					"-framework",
+					"\"grpc\"",
+					"-framework",
+					"\"grpcpp\"",
+					"-framework",
+					"\"leveldb\"",
+					"-framework",
+					"\"nanopb\"",
+					"-framework",
+					"\"openssl_grpc\"",
+					"-weak_framework",
+					"\"Accelerate\"",
+					"-weak_framework",
+					"\"Accounts\"",
+					"-weak_framework",
+					"\"AdSupport\"",
+					"-weak_framework",
+					"\"AudioToolbox\"",
+					"-weak_framework",
+					"\"AuthenticationServices\"",
+					"-weak_framework",
+					"\"CoreGraphics\"",
+					"-weak_framework",
+					"\"Foundation\"",
+					"-weak_framework",
+					"\"QuartzCore\"",
+					"-weak_framework",
+					"\"Security\"",
+					"-weak_framework",
+					"\"Social\"",
+					"-weak_framework",
+					"\"StoreKit\"",
+					"-weak_framework",
+					"\"UIKit\"",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.heym8;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
