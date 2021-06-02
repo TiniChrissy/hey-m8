@@ -11,7 +11,7 @@ target 'hey m8' do
   pod 'FirebaseUI'  #For prebuilt UI, doens't include UI for anonymous login
   pod 'JTAppleCalendar'
   pod 'Firebase/Firestore'
-
+  pod 'FSCalendar'
 # Optionally, include the Swift extensions if you're using Swift.
   pod 'FirebaseFirestoreSwift', '~> 8.0-beta'
 

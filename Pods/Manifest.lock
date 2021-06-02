@@ -316,6 +316,7 @@ PODS:
   - FirebaseUI/Storage (10.0.2):
     - Firebase/Storage
     - SDWebImage (~> 5.6)
+  - FSCalendar (2.8.2)
   - GoogleDataTransport (9.0.0):
     - GoogleUtilities/Environment (~> 7.2)
     - nanopb (~> 2.30908.0)
@@ -386,6 +387,7 @@ DEPENDENCIES:
   - Firebase/Firestore
   - FirebaseFirestoreSwift (~> 8.0-beta)
   - FirebaseUI
+  - FSCalendar
   - GoogleSignIn
   - JTAppleCalendar
 
@@ -405,6 +407,7 @@ SPEC REPOS:
     - FirebaseFirestoreSwift
     - FirebaseStorage
     - FirebaseUI
+    - FSCalendar
     - GoogleDataTransport
     - GoogleSignIn
     - GoogleUtilities
@@ -433,6 +436,7 @@ SPEC CHECKSUMS:
   FirebaseFirestoreSwift: 9cb079bd3bc33d90e865e004b1b1cacdb4cc79f2
   FirebaseStorage: 61bcd27880fa17362f68be67d3683d04bfd7b1c7
   FirebaseUI: 59db3d833773f985550897d54ceb811ba37fb9a5
+  FSCalendar: e6a2eb9c571bf0719ed797ef807e08426753c241
   GoogleDataTransport: 11e3a5f2c190327df1a4a5d7e7ae3d4d5b9c9e4c
   GoogleSignIn: 7137d297ddc022a7e0aa4619c86d72c909fa7213
   GoogleUtilities: f8a43108b38a68eebe8b3540e1f4f2d28843ce20
@@ -446,6 +450,6 @@ SPEC CHECKSUMS:
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
   SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
 
-PODFILE CHECKSUM: a8e7020b5fe44d08e457a7c4b0201782f04e8880
+PODFILE CHECKSUM: 520130bbda61392344b274d57d7c50fa1cfca44d
 
 COCOAPODS: 1.10.1

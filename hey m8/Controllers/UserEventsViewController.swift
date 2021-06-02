@@ -81,6 +81,8 @@ class UserEventsTableViewController: UITableViewController {
             }
             else {
                 cell.textLabel?.text = "You don't have any events. Click + to create a new event"
+                cell.textLabel?.numberOfLines=0
+                cell.textLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
             }
             return cell
         }

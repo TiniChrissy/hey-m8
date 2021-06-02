@@ -115,6 +115,8 @@ class UserGroupsTableViewController: UITableViewController {
             }
             else {
                 cell.textLabel?.text = "You don't have any groups. Click + to create a new group"
+                cell.textLabel?.numberOfLines=0
+                cell.textLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
             }
             return cell
         }
