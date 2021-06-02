@@ -20,6 +20,7 @@
 import UIKit
 import GoogleSignIn
 import Firebase
+import SwiftUI
 
 class InitialViewController: UIViewController {
 
@@ -31,6 +32,8 @@ class InitialViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = UIColor(named: "Background Colour")
+
         // Do any additional setup after loading the view.
         
         //Use emulator, leads to error, TODO

@@ -20,6 +20,7 @@ class DateSelectionViewController: UIViewController, FSCalendarDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = UIColor(named: "Background Colour")
         calendar.delegate = self
         calendar.allowsMultipleSelection = true
         
@@ -29,12 +30,20 @@ class DateSelectionViewController: UIViewController, FSCalendarDelegate {
     func datesRange(from: Date, to: Date) -> [Date] {
         // in case of the "from" date is more than "to" date,
         // it should returns an empty array:
-        if from > to { return [Date]() }
+        var start = from
+        var end = to
+        
+        if from > to {
+//            return [Date]()
+            start = to
+            end = from
+            
+        }
 
-        var tempDate = from
+        var tempDate = start
         var array = [tempDate]
 
-        while tempDate < to {
+        while tempDate < end {
             tempDate = Calendar.current.date(byAdding: .day, value: 1, to: tempDate)!
             array.append(tempDate)
         }

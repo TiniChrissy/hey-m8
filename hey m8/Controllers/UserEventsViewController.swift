@@ -22,6 +22,7 @@ class UserEventsTableViewController: UITableViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        self.view.backgroundColor = UIColor(named: "Background Colour")
 //        Production settings
 //        let settings = FirestoreSettings()
 //        Firestore.firestore().settings = settings

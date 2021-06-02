@@ -54,6 +54,7 @@ class CreateEventViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = UIColor(named: "Background Colour")
 
 //      Production settings
 //        let settings = FirestoreSettings()

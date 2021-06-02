@@ -23,6 +23,7 @@ class AddMemberSearchTableViewController: UITableViewController, UISearchResults
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = UIColor(named: "Background Colour")
 //        createDefaultMeals()
         
         getAllUsers()
