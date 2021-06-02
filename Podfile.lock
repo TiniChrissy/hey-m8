@@ -276,6 +276,8 @@ PODS:
     - "gRPC-C++ (~> 1.28.0)"
     - leveldb-library (~> 1.22)
     - nanopb (~> 2.30908.0)
+  - FirebaseFirestoreSwift (8.1.0-beta):
+    - FirebaseFirestore (~> 8.0)
   - FirebaseStorage (8.0.0):
     - FirebaseCore (~> 8.0)
     - GTMSessionFetcher/Core (~> 1.5)
@@ -381,6 +383,8 @@ PODS:
 
 DEPENDENCIES:
   - Firebase/Auth
+  - Firebase/Firestore
+  - FirebaseFirestoreSwift (~> 8.0-beta)
   - FirebaseUI
   - GoogleSignIn
   - JTAppleCalendar
@@ -398,6 +402,7 @@ SPEC REPOS:
     - FirebaseCoreDiagnostics
     - FirebaseDatabase
     - FirebaseFirestore
+    - FirebaseFirestoreSwift
     - FirebaseStorage
     - FirebaseUI
     - GoogleDataTransport
@@ -425,6 +430,7 @@ SPEC CHECKSUMS:
   FirebaseCoreDiagnostics: a31d987ba0fe16d59886a5dbadc2f1de871f88c8
   FirebaseDatabase: 363961e25451425be8b14bb8801a592515ec58f2
   FirebaseFirestore: 7f6576eaca9f821e864c3e917d68aa99f4e6b613
+  FirebaseFirestoreSwift: 9cb079bd3bc33d90e865e004b1b1cacdb4cc79f2
   FirebaseStorage: 61bcd27880fa17362f68be67d3683d04bfd7b1c7
   FirebaseUI: 59db3d833773f985550897d54ceb811ba37fb9a5
   GoogleDataTransport: 11e3a5f2c190327df1a4a5d7e7ae3d4d5b9c9e4c
@@ -440,6 +446,6 @@ SPEC CHECKSUMS:
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
   SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
 
-PODFILE CHECKSUM: 02499bd87f3808b6871c59d9302d2e0be598621e
+PODFILE CHECKSUM: a8e7020b5fe44d08e457a7c4b0201782f04e8880
 
 COCOAPODS: 1.10.1
