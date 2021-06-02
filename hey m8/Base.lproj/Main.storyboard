@@ -165,7 +165,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dHf-Mv-w9h" customClass="FSCalendar">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dHf-Mv-w9h">
                                 <rect key="frame" x="0.0" y="-47" width="414" height="300"/>
                                 <color key="backgroundColor" systemColor="systemGray2Color"/>
                                 <constraints>
