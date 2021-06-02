@@ -9,9 +9,13 @@
 import UIKit
 import FSCalendar
 
-class DateSelectionViewController: UIViewController, FSCalendarDelegate {
+class AddDateRange: UIViewController, FSCalendarDelegate {
     @IBOutlet weak var calendar: FSCalendar!
+    @IBAction func saveDateRange(_ sender: Any) {
+        
+    }
     private var datesRange: [Date]?
+    weak var dateRangeDelegate: CreateEventViewController?
     
     // first date in the range
     private var firstDate: Date?
@@ -23,6 +27,7 @@ class DateSelectionViewController: UIViewController, FSCalendarDelegate {
         self.view.backgroundColor = UIColor(named: "Background Colour")
         calendar.delegate = self
         calendar.allowsMultipleSelection = true
+        calendar.backgroundColor = UIColor(named: "Background Colour")
         
         // Do any additional setup after loading the view.
     }
@@ -79,8 +84,8 @@ class DateSelectionViewController: UIViewController, FSCalendarDelegate {
             
             lastDate = range.last
             
-            for d in range {
-                calendar.select(d)
+            for date in range {
+                calendar.select(date)
             }
             
             datesRange = range
@@ -92,8 +97,8 @@ class DateSelectionViewController: UIViewController, FSCalendarDelegate {
         
         // both are selected:
         if firstDate != nil && lastDate != nil {
-            for d in calendar.selectedDates {
-                calendar.deselect(d)
+            for date in calendar.selectedDates {
+                calendar.deselect(date)
             }
             
             lastDate = nil

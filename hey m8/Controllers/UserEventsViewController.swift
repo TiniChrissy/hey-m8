@@ -65,6 +65,8 @@ class UserEventsTableViewController: UITableViewController {
             
             print("about to do the event name")
             eventCell.textLabel?.text = event.name
+            eventCell.backgroundColor = UIColor(named: "Background Colour")
+            
 
             return eventCell
         }
@@ -74,6 +76,7 @@ class UserEventsTableViewController: UITableViewController {
             
             cell.textLabel?.textColor = .secondaryLabel
             cell.selectionStyle = .none
+            cell.backgroundColor = UIColor(named: "Background Colour")
             
             if userEvents.count == 1 {
                 cell.textLabel?.text = "\(userEvents.count) event"

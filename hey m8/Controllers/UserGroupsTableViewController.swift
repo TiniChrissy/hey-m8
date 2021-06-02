@@ -74,7 +74,7 @@ class UserGroupsTableViewController: UITableViewController {
                 tableView.dequeueReusableCell(withIdentifier: CELL_GROUP, for: indexPath)
             let group = userGroups[indexPath.row]
             
-            print("about to do the group name")
+            groupCell.backgroundColor = UIColor(named: "Background Colour")
             groupCell.textLabel?.text = group.name
             
             //Get member id and its respective displayName
@@ -108,6 +108,7 @@ class UserGroupsTableViewController: UITableViewController {
             
             cell.textLabel?.textColor = .secondaryLabel
             cell.selectionStyle = .none
+            cell.backgroundColor = UIColor(named: "Background Colour")
             
             if userGroups.count == 1 {
                 cell.textLabel?.text = "\(userGroups.count) group"

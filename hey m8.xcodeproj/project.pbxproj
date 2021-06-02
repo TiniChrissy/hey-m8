@@ -28,7 +28,8 @@
 		AE9B4671263E67D100C179BF /* MainTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9B4670263E67D100C179BF /* MainTabViewController.swift */; };
 		AE9B4673263E70C100C179BF /* UserEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9B4672263E70C100C179BF /* UserEventsViewController.swift */; };
 		AE9B4678264A2F8B00C179BF /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9B4677264A2F8B00C179BF /* CustomCell.swift */; };
-		AE9B467A264A346600C179BF /* DateSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9B4679264A346600C179BF /* DateSelectionViewController.swift */; };
+		AE9B467A264A346600C179BF /* AddDateRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9B4679264A346600C179BF /* AddDateRange.swift */; };
+		AEA7DAE22667B5E50057EB60 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA7DAE12667B5E50057EB60 /* SettingsViewController.swift */; };
 		DCFD44002BEE568E9CC30FC6 /* Pods_hey_m8.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF7179FA12A24B4D83EDD70F /* Pods_hey_m8.framework */; };
 /* End PBXBuildFile section */
 
@@ -58,7 +59,8 @@
 		AE9B4670263E67D100C179BF /* MainTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabViewController.swift; sourceTree = "<group>"; };
 		AE9B4672263E70C100C179BF /* UserEventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEventsViewController.swift; sourceTree = "<group>"; };
 		AE9B4677264A2F8B00C179BF /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
-		AE9B4679264A346600C179BF /* DateSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateSelectionViewController.swift; sourceTree = "<group>"; };
+		AE9B4679264A346600C179BF /* AddDateRange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDateRange.swift; sourceTree = "<group>"; };
+		AEA7DAE12667B5E50057EB60 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		BF7179FA12A24B4D83EDD70F /* Pods_hey_m8.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_hey_m8.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -129,11 +131,12 @@
 				AE9B4670263E67D100C179BF /* MainTabViewController.swift */,
 				AE04C25E2657C4A000D53865 /* AddLocationViewController.swift */,
 				AE3B883F265A7CAE00553783 /* AddMemberSearchTableViewController.swift */,
-				AE9B4679264A346600C179BF /* DateSelectionViewController.swift */,
+				AE9B4679264A346600C179BF /* AddDateRange.swift */,
 				AE04C25C2657C0A400D53865 /* CreateEventViewController.swift */,
 				AE3B8845265B3ADF00553783 /* CreateGroupViewController.swift */,
 				AE04C262265A6AA300D53865 /* UserGroupsTableViewController.swift */,
 				AE9B4672263E70C100C179BF /* UserEventsViewController.swift */,
+				AEA7DAE12667B5E50057EB60 /* SettingsViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -285,8 +288,9 @@
 				AE9B4671263E67D100C179BF /* MainTabViewController.swift in Sources */,
 				AE1E79CC263BC6A000839C27 /* AppDelegate.swift in Sources */,
 				AE04C267265A6C5D00D53865 /* Group.swift in Sources */,
+				AEA7DAE22667B5E50057EB60 /* SettingsViewController.swift in Sources */,
 				AE1E79CE263BC6A000839C27 /* SceneDelegate.swift in Sources */,
-				AE9B467A264A346600C179BF /* DateSelectionViewController.swift in Sources */,
+				AE9B467A264A346600C179BF /* AddDateRange.swift in Sources */,
 				AE9B4678264A2F8B00C179BF /* CustomCell.swift in Sources */,
 				AE04C263265A6AA300D53865 /* UserGroupsTableViewController.swift in Sources */,
 				AE3B8844265A7E8500553783 /* User.swift in Sources */,

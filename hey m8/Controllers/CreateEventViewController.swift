@@ -75,12 +75,17 @@ class CreateEventViewController: UIViewController {
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "addLocationSegue" {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "addLocationSegue" {
 //            let destination = segue.destination as! AddLocationViewController
-//            destination.event = self}
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-//    }
+//            destination.event = self
+        }
+        if segue.identifier == "addDateRangeSegue" {
+            let destination = segue.destination as! AddDateRange
+            destination.dateRangeDelegate = self
+            
+        }
+    }
     
+   
 }
