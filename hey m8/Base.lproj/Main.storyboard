@@ -6,7 +6,6 @@
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
-        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -39,16 +38,24 @@
         <!--Events-->
         <scene sceneID="yXD-CT-QAJ">
             <objects>
-                <tableViewController id="t8L-kC-Adz" sceneMemberID="viewController">
+                <tableViewController id="t8L-kC-Adz" customClass="UserEventsTableViewController" customModule="hey_m8" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="gcW-CP-ly6">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="WRH-Tj-2tO">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="eventCell" id="WRH-Tj-2tO">
                                 <rect key="frame" x="0.0" y="24.5" width="414" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="WRH-Tj-2tO" id="9DT-il-gdS">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="infoCell" id="5MO-0f-oSb">
+                                <rect key="frame" x="0.0" y="68" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5MO-0f-oSb" id="8jb-wa-nou">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
@@ -61,6 +68,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Events" id="CN1-23-L1f">
                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="Wl1-LM-xyi">
+                            <color key="tintColor" name="Global Tint"/>
                             <connections>
                                 <segue destination="Bbc-4d-SSl" kind="show" id="9kx-Cv-Ago"/>
                             </connections>
@@ -119,7 +127,7 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jTT-8W-loB">
                                 <rect key="frame" x="138" y="464" width="103" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="linkColor"/>
+                                <color key="backgroundColor" name="Global Tint"/>
                                 <state key="normal" title="Create Event">
                                     <color key="titleColor" systemColor="systemGray6Color"/>
                                 </state>
@@ -157,69 +165,34 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dHf-Mv-w9h" customClass="FSCalendar">
+                                <rect key="frame" x="0.0" y="-47" width="414" height="300"/>
+                                <color key="backgroundColor" systemColor="systemGray2Color"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="d4H-io-uQp"/>
+                                </constraints>
+                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Select date range of your event" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IJx-QD-l3W">
-                                <rect key="frame" x="88" y="170" width="239" height="21"/>
+                                <rect key="frame" x="88" y="-268" width="239" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="dMQ-OZ-6XI" customClass="JTACMonthView" customModule="JTAppleCalendar">
-                                <rect key="frame" x="20" y="231" width="374" height="212"/>
-                                <color key="backgroundColor" systemColor="systemGray4Color"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="214" id="RfR-QU-OIJ"/>
-                                </constraints>
-                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="x5g-hd-sh0">
-                                    <size key="itemSize" width="128" height="128"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="CustomCell" reuseIdentifier="CustomCell" id="z1O-Sl-zJ4" customClass="CustomCell" customModule="hey_m8" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="42" width="128" height="128"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="LLy-iJ-PhQ">
-                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UJ4-8a-VQ0">
-                                                    <rect key="frame" x="43" y="53.5" width="42" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="UJ4-8a-VQ0" firstAttribute="centerY" secondItem="LLy-iJ-PhQ" secondAttribute="centerY" id="4Zi-xu-Zb3"/>
-                                                <constraint firstItem="UJ4-8a-VQ0" firstAttribute="centerX" secondItem="LLy-iJ-PhQ" secondAttribute="centerX" id="C9J-TQ-3tc"/>
-                                            </constraints>
-                                        </collectionViewCellContentView>
-                                        <color key="backgroundColor" red="0.57045853140000002" green="0.57047235969999999" blue="0.57046490910000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <connections>
-                                            <outlet property="dataLabel" destination="UJ4-8a-VQ0" id="ula-m4-LRB"/>
-                                        </connections>
-                                    </collectionViewCell>
-                                </cells>
-                                <connections>
-                                    <outlet property="ibCalendarDataSource" destination="ffN-pu-fnG" id="zeZ-b9-BHj"/>
-                                    <outlet property="ibCalendarDelegate" destination="ffN-pu-fnG" id="owO-nt-gsU"/>
-                                </connections>
-                            </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="DpD-12-ztH"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="DpD-12-ztH" firstAttribute="trailing" secondItem="dMQ-OZ-6XI" secondAttribute="trailing" id="4J1-dh-BuI"/>
-                            <constraint firstItem="dMQ-OZ-6XI" firstAttribute="top" secondItem="IJx-QD-l3W" secondAttribute="bottom" id="baN-Q7-h2m"/>
-                            <constraint firstItem="dMQ-OZ-6XI" firstAttribute="leading" secondItem="DpD-12-ztH" secondAttribute="leading" id="yBy-eR-jtz"/>
+                            <constraint firstItem="DpD-12-ztH" firstAttribute="trailing" secondItem="dHf-Mv-w9h" secondAttribute="trailing" id="154-AN-cQd"/>
+                            <constraint firstItem="DpD-12-ztH" firstAttribute="bottom" secondItem="dHf-Mv-w9h" secondAttribute="bottom" constant="560" id="O7L-am-8lo"/>
+                            <constraint firstItem="dHf-Mv-w9h" firstAttribute="leading" secondItem="DpD-12-ztH" secondAttribute="leading" id="Xvh-eD-rBB"/>
+                            <constraint firstItem="dHf-Mv-w9h" firstAttribute="top" secondItem="IJx-QD-l3W" secondAttribute="bottom" constant="200" id="jSq-5y-Rz8"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Date range Picker" id="8DE-5S-04i"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qOi-Tx-uRk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5443" y="-777"/>
+            <point key="canvasLocation" x="5442.0289855072469" y="-777.45535714285711"/>
         </scene>
         <!--Add Location View Controller-->
         <scene sceneID="U83-A4-muJ">
@@ -251,6 +224,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="selectedImageTintColor" name="Global Tint"/>
                     </tabBar>
                     <connections>
                         <segue destination="Goa-ab-8tz" kind="relationship" relationship="viewControllers" id="n3I-rK-0bO"/>
@@ -271,6 +245,9 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="gIW-Qm-g0Q">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" name="Global Tint"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -305,6 +282,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <view key="tableFooterView" contentMode="scaleToFill" id="38a-UJ-MXC">
+                            <rect key="frame" x="0.0" y="168.50000034679067" width="414" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="groupCell" textLabel="IK2-Oc-Cdo" detailTextLabel="mWV-rx-ppv" rowHeight="76" style="IBUITableViewCellStyleSubtitle" id="1ic-BD-gRQ" customClass="GroupTableViewCell" customModule="hey_m8" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="24.5" width="414" height="76"/>
@@ -494,6 +476,9 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="pBr-Fe-AtD">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" name="Global Tint"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -508,11 +493,17 @@
         <scene sceneID="3V5-JV-Toz">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5eV-jl-pxB" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Groups" image="person.3.fill" catalog="system" id="Ryw-De-y1X"/>
+                    <tabBarItem key="tabBarItem" title="Groups" image="person.3.fill" catalog="system" id="Ryw-De-y1X">
+                        <color key="badgeColor" name="Global Tint"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="CkS-bW-BPI">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" name="Global Tint"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" name="Global Tint"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -524,21 +515,22 @@
             <point key="canvasLocation" x="2689.8550724637685" y="434.59821428571428"/>
         </scene>
     </scenes>
+    <color key="tintColor" name="Global Tint"/>
     <resources>
         <image name="calendar" catalog="system" width="128" height="106"/>
         <image name="person.3.fill" catalog="system" width="128" height="61"/>
         <image name="slider.horizontal.3" catalog="system" width="128" height="100"/>
         <namedColor name="AccentColor">
-            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.40900000929832458" green="0.69800001382827759" blue="0.72500002384185791" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <systemColor name="linkColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
+        <namedColor name="Global Tint">
+            <color red="0.40900000929832458" green="0.69800001382827759" blue="0.72500002384185791" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
-        <systemColor name="systemGray4Color">
-            <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="systemGray2Color">
+            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray6Color">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -6,28 +6,17 @@ target 'hey m8' do
   use_frameworks!
 
   # Pods for hey m8
-	pod 'GoogleSignIn'
+  pod 'GoogleSignIn'
   pod 'Firebase/Auth' 
   pod 'FirebaseUI'  #For prebuilt UI, doens't include UI for anonymous login
-
   pod 'JTAppleCalendar'
-
-pod 'Firebase/Firestore'
+  pod 'Firebase/Firestore'
 
 # Optionally, include the Swift extensions if you're using Swift.
-pod 'FirebaseFirestoreSwift'
+  pod 'FirebaseFirestoreSwift', '~> 8.0-beta'
 
 
 end
 
   # add pods for desired Firebase products
   # https://firebase.google.com/docs/ios/setup#available-pods
-
-post_install do |installer|
-  installer.pods_project.targets.each do |target|
-    target.build_configurations.each do |config|
-      config.build_settings['ENABLE_BITCODE'] = 'NO'
-        config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '14.0'
-    end
-  end
-end

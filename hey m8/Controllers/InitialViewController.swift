@@ -126,11 +126,12 @@ class InitialViewController: UIViewController {
             try Auth.auth().signOut()
             
             // Update screen after user successfully signed out
-            updateScreen()
+//            updateScreen()
         } catch let error as NSError {
             print ("Error signing out from Firebase: %@", error)
         }
     }
+    
     
     private func updateScreen() {
         if let user = GIDSignIn.sharedInstance()?.currentUser {
@@ -158,5 +159,6 @@ class InitialViewController: UIViewController {
              signOutButton.isHidden = true
         }
     }
+ 
 }
 
