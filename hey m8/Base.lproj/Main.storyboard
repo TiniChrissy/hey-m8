@@ -267,23 +267,17 @@
             </objects>
             <point key="canvasLocation" x="5442.0289855072469" y="-777.45535714285711"/>
         </scene>
-        <!--Add Location View Controller-->
+        <!--Add location-->
         <scene sceneID="U83-A4-muJ">
             <objects>
                 <viewController id="tDl-lF-bmi" customClass="AddLocationViewController" customModule="hey_m8" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hD5-yA-9o6">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="nKJ-li-260">
-                                <rect key="frame" x="20" y="122" width="374" height="691"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </mapView>
-                        </subviews>
                         <viewLayoutGuide key="safeArea" id="X2V-Jb-XSr"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="hwb-mJ-coi"/>
+                    <navigationItem key="navigationItem" title="Add location" id="hwb-mJ-coi"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mbq-fp-S2X" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -441,6 +435,11 @@
                                 <rect key="frame" x="0.0" y="441" width="414" height="372"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" name="Background Colour"/>
+                                <view key="tableFooterView" contentMode="scaleToFill" id="0dK-ok-g1C">
+                                    <rect key="frame" x="0.0" y="136.00000034679067" width="414" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" name="Background Colour"/>
+                                </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="memberCell" id="4cn-th-8Z5">
                                         <rect key="frame" x="0.0" y="24.5" width="414" height="43.5"/>
@@ -469,24 +468,6 @@
                                     <outlet property="delegate" destination="Peb-gD-6dN" id="pAd-cC-0qy"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MA4-Ix-PuR">
-                                <rect key="frame" x="200" y="403" width="214" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" name="AccentColor"/>
-                                <state key="normal" title="Create Group">
-                                    <color key="titleColor" systemColor="systemGray6Color"/>
-                                </state>
-                                <connections>
-                                    <action selector="createGroupButton:" destination="Peb-gD-6dN" eventType="touchUpInside" id="FYe-hy-gUl"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Current Members:" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" highlighted="YES" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TpQ-5F-Cr3">
-                                <rect key="frame" x="20" y="340" width="297" height="98"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6by-4c-y4G"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -507,7 +488,6 @@
                     </view>
                     <navigationItem key="navigationItem" title="Create Group" id="W30-tH-lBh"/>
                     <connections>
-                        <outlet property="currentMemberNamesLabel" destination="TpQ-5F-Cr3" id="pii-aa-uiw"/>
                         <outlet property="descriptionTextField" destination="XWA-rx-LcV" id="xTZ-KA-KVw"/>
                         <outlet property="membersTable" destination="4Pa-hG-ngR" id="b1t-IP-k7a"/>
                         <outlet property="nameTextField" destination="cNH-yU-WE8" id="272-dh-8qR"/>

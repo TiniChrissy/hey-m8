@@ -144,7 +144,6 @@ class CreateGroupViewController: UIViewController, UITableViewDelegate,  UITable
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == SECTION_USER {
-            print("in user section")
             let userCell = tableView.dequeueReusableCell(withIdentifier: CELL_USER, for: indexPath)
             let user = currentMembers[indexPath.row]
             
@@ -164,7 +163,6 @@ class CreateGroupViewController: UIViewController, UITableViewDelegate,  UITable
     // Override to support conditional editing of the table view.
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
      if indexPath.section == SECTION_USER {
-        
          return true
      }
      // Return false if you do not want the specified item to be editable.
@@ -178,15 +176,6 @@ class CreateGroupViewController: UIViewController, UITableViewDelegate,  UITable
             currentMembers.remove(at: indexPath.row)
             membersTable.deleteRows(at: [indexPath], with: .fade)
             membersTable.reloadSections([SECTION_USER], with: .automatic)
-//             // Delete the row from the data source
-//             tableView.performBatchUpdates({
-//                if let index = self.allUsers.firstIndex(of: currentMembers[indexPath.row]) {
-//                    self.allUsers.remove(at: index)
-//                }
-//                 self.currentMembers.remove(at: indexPath.row)
-//                 self.tableView.deleteRows(at: [indexPath], with: .fade)
-//                 self.tableView.reloadSections([SECTION_CREATE], with: .automatic)
-//             }, completion: nil)
          }
         
     }

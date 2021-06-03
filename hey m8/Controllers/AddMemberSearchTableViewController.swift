@@ -24,8 +24,7 @@ class AddMemberSearchTableViewController: UITableViewController, UISearchResults
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor(named: "Background Colour")
-//        createDefaultMeals()
-        
+
         getAllUsers()
         filteredUsers = allUsers
         
@@ -129,12 +128,11 @@ class AddMemberSearchTableViewController: UITableViewController, UISearchResults
 
         if searchText.count > 0 {
             filteredUsers = allUsers.filter({ (user: User) -> Bool in
-                return (user.displayName.lowercased().contains(searchText))
+                return (user.displayName.lowercased().contains(searchText) || ((user.email?.lowercased().contains(searchText))) != nil)
             })
         } else{
             filteredUsers = allUsers}
         tableView.reloadData()
-
     }
     
     /*
