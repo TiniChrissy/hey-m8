@@ -4,35 +4,128 @@
 //
 //  Created by Christina Li on 21/5/21.
 //
-// https://medium.com/@pravinbendre772/search-for-places-and-display-results-using-mapkit-a987bd6504df
+//https://dev.to/edmondso006/swift-5-location-search-with-auto-complete-location-suggestions-20a1
 
 import UIKit
 import MapKit
 
-class AddLocationViewController: UIViewController, UISearchResultsUpdating {
+class AddLocationViewController: UIViewController, UISearchBarDelegate, MKLocalSearchCompleterDelegate {
+    @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var searchResultsTable: UITableView!
+    
+    weak var locationDelegate: CreateEventViewController?
+    
+    // Create a seach completer object
+    var searchCompleter = MKLocalSearchCompleter()
+    
+    // These are the results that are returned from the searchCompleter & what we are displaying
+    // on the searchResultsTable
+    var searchResults = [MKLocalSearchCompletion]()
 
-
-    let mapView = MKMapView()
-    let searchVC = UISearchController(searchResultsController: LocationResultsViewController())
-        
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor(named: "Background Colour")
-        view.addSubview(mapView)
-        searchVC.searchBar.backgroundColor = .secondarySystemBackground
-        searchVC.searchResultsUpdater = self
-        navigationItem.searchController = searchVC
         
+        //Set up the delgates & the dataSources of both the searchbar & searchResultsTableView
+        searchCompleter.delegate = self
+        searchBar?.delegate = self
+        searchResultsTable?.delegate = self
+        searchResultsTable?.dataSource = self
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        mapView.frame = view.bounds
-        mapView.frame = CGRect(x: 0, y: view.safeAreaInsets.top, width: view.frame.size.width, height: view.frame.size.height - view.safeAreaInsets.top)
+    // This method declares that whenever the text in the searchbar is change to also update
+    // the query that the searchCompleter will search based off of
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        searchCompleter.queryFragment = searchText
+    }
+    
+    // This method declares gets called whenever the searchCompleter has new search results
+    // If you wanted to do any filter of the locations that are displayed on the the table view
+    // this would be the place to do it.
+    func completerDidUpdateResults(_ completer: MKLocalSearchCompleter) {
+        
+        // Setting our searcResults variable to the results that the searchCompleter returned
+        searchResults = completer.results
+        
+        // Reload the tableview with our new searchResults
+        searchResultsTable.reloadData()
+    }
+    
+    // This method is called when there was an error with the searchCompleter
+    func completer(_ completer: MKLocalSearchCompleter, didFailWithError error: Error) {
+        // Error
     }
 
-    func updateSearchResults(for searchController: UISearchController) {
-    
-    }
 
 }
+
+// Setting up extensions for the table view
+extension AddLocationViewController: UITableViewDataSource {
+    // This method declares the number of sections that we want in our table.
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    // This method declares how many rows are the in the table
+    // We want this to be the number of current search results that the
+    // Completer has generated for us
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return searchResults.count
+    }
+    
+    // This method delcares the cells that are table is going to show at a particular index
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        // Get the specific searchResult at the particular index
+        let searchResult = searchResults[indexPath.row]
+        
+        //Create  a new UITableViewCell object
+        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: nil)
+        
+        //Set the content of the cell to our searchResult data
+        cell.textLabel?.text = searchResult.title
+        cell.detailTextLabel?.text = searchResult.subtitle
+        
+        return cell
+    }
+}
+
+extension AddLocationViewController: UITableViewDelegate {
+    // This method declares the behavior of what is to happen when the row is selected
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        let result = searchResults[indexPath.row] //Result is a MKLocalSearchCompletion
+        
+        let searchRequest = MKLocalSearch.Request(completion: result)
+        
+        let search = MKLocalSearch(request: searchRequest) //search is a MKLocalSearch
+//        print("search", search.type)
+        search.start { (response, error) in
+            guard let coordinate = response?.mapItems[0].placemark.coordinate else {
+                return
+            }
+            
+            guard let name = response?.mapItems[0].name else {
+                return
+            }
+            
+            guard let MKMapItem = response?.mapItems[0] else {
+                return
+            }
+
+            self.locationDelegate?.addLocation(newLocation: MKMapItem)
+            self.navigationController?.popViewController(animated: true)
+            
+//            if (error != nil) {
+//                displayMessagecli240(title: "Error", message: "I'm not srue what the issue was sorry")
+//            }
+            return
+
+            
+//            let lat = coordinate.latitude
+//            let lon = coordinate.longitude
+        }
+    }
+}
+
+

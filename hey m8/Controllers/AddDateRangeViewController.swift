@@ -9,7 +9,7 @@
 import UIKit
 import FSCalendar
 
-class AddDateRange: UIViewController, FSCalendarDelegate {
+class AddDateRangeViewController: UIViewController, FSCalendarDelegate {
     @IBOutlet weak var calendar: FSCalendar!
     @IBAction func saveDateRange(_ sender: Any) {
         if let dateRangeDelegate = dateRangeDelegate {

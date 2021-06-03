@@ -8,6 +8,7 @@
 import UIKit
 import Firebase
 import OSLog
+import MapKit
 
 class CreateEventViewController: UIViewController {
     
@@ -19,6 +20,7 @@ class CreateEventViewController: UIViewController {
 //    let name = "eventName"
 //    let eventDescription = "eventDescription"
     var currentDateRange = [Date]()
+    var currentLocation = MKMapItem()
     
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var descriptionTextField: UITextField!
@@ -96,20 +98,23 @@ class CreateEventViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "addLocationSegue" {
-//            let destination = segue.destination as! AddLocationViewController
-//            destination.event = self
+            let destination = segue.destination as! AddLocationViewController
+            destination.locationDelegate = self
         }
         if segue.identifier == "addDateRangeSegue" {
-            let destination = segue.destination as! AddDateRange
+            let destination = segue.destination as! AddDateRangeViewController
             destination.dateRangeDelegate = self
-            print("set self as delegate")
-            
         }
     }
     
     func addDateRange(newDateRange: [Date]) -> Bool {
         currentDateRange = newDateRange
-//        print(currentDateRange)
+        return true
+    }
+    
+    func addLocation(newLocation: MKMapItem) -> Bool {
+        currentLocation = newLocation
+        print(currentLocation.name ?? "",  currentLocation.placemark.title ?? "", "look")
         return true
     }
     

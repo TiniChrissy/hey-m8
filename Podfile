@@ -14,6 +14,7 @@ target 'hey m8' do
   pod 'FSCalendar'
 # Optionally, include the Swift extensions if you're using Swift.
   pod 'FirebaseFirestoreSwift', '~> 8.0-beta'
+  pod 'GooglePlaces'
 
 
 end
