@@ -19,6 +19,8 @@ class CreateEventViewController: UIViewController {
     let name = "eventName"
     let eventDescription = "eventDescription"
     
+    var currentDateRange = [Date]()
+    
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var descriptionTextField: UITextField!
     
@@ -83,8 +85,28 @@ class CreateEventViewController: UIViewController {
         if segue.identifier == "addDateRangeSegue" {
             let destination = segue.destination as! AddDateRange
             destination.dateRangeDelegate = self
+            print("set self as delegate")
             
         }
+    }
+    
+    func addDateRange(newDateRange: [Date]) -> Bool {
+        currentDateRange = newDateRange
+        print(currentDateRange)
+//        currentDateRange.append(newDateRange)
+//        var currentDateRangeDisplayNamesArray = [String]()
+//
+//        for member in currentDateRange {
+//            currentMembersDisplayNamesArray.append(member.displayName)
+//        }
+//
+//        let currentMembersDisplayNamesText = currentMembersDisplayNamesArray.joined(separator: ", ")
+        
+        //update the label on main thread
+//        DispatchQueue.main.async(execute: {
+//            self.currentMemberNamesLabel.text = "Current Members: " + currentMembersDisplayNamesText
+//           })
+        return true
     }
     
    

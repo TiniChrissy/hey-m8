@@ -12,14 +12,21 @@ import FSCalendar
 class AddDateRange: UIViewController, FSCalendarDelegate {
     @IBOutlet weak var calendar: FSCalendar!
     @IBAction func saveDateRange(_ sender: Any) {
-        
+        if let dateRangeDelegate = dateRangeDelegate {
+            print("indaterangedelegate")
+            if dateRangeDelegate.addDateRange(newDateRange: datesRange ?? [Date]()) {
+                navigationController?.popViewController(animated: true)
+                return
+            }
+            else {
+                displayMessagecli240(title: "Invalid Date Range", message: "Please try another selection of dates")
+            }
+        }
     }
-    private var datesRange: [Date]?
-    weak var dateRangeDelegate: CreateEventViewController?
     
-    // first date in the range
+    weak var dateRangeDelegate: CreateEventViewController?
+    private var datesRange: [Date]?
     private var firstDate: Date?
-    // last date in the range
     private var lastDate: Date?
     
     override func viewDidLoad() {
@@ -28,8 +35,6 @@ class AddDateRange: UIViewController, FSCalendarDelegate {
         calendar.delegate = self
         calendar.allowsMultipleSelection = true
         calendar.backgroundColor = UIColor(named: "Background Colour")
-        
-        // Do any additional setup after loading the view.
     }
     
     func datesRange(from: Date, to: Date) -> [Date] {
@@ -42,7 +47,6 @@ class AddDateRange: UIViewController, FSCalendarDelegate {
 //            return [Date]()
             start = to
             end = from
-            
         }
 
         var tempDate = start

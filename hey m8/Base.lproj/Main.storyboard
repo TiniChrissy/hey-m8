@@ -102,46 +102,41 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cgl-fB-AfA">
-                                <rect key="frame" x="90" y="188" width="234" height="34"/>
+                                <rect key="frame" x="117" y="382" width="180" height="34"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="200" id="WvC-7A-1qM"/>
+                                    <constraint firstAttribute="width" constant="180" id="STF-bJ-3pO"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Description (Optional)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3yR-HN-1tY">
-                                <rect key="frame" x="90" y="272" width="234" height="34"/>
+                                <rect key="frame" x="117" y="431" width="180" height="34"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="200" id="dbm-c4-BDY"/>
+                                    <constraint firstAttribute="width" constant="180" id="g38-51-okF"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UeM-YC-wJc">
-                                <rect key="frame" x="122" y="333" width="136" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UeM-YC-wJc">
+                                <rect key="frame" x="139" y="480" width="136" height="30"/>
                                 <state key="normal" title="Choose Date Range"/>
                                 <connections>
                                     <segue destination="ffN-pu-fnG" kind="show" id="pAQ-ke-YkA"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zo0-Gv-Fww">
-                                <rect key="frame" x="144" y="371" width="90" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zo0-Gv-Fww">
+                                <rect key="frame" x="162" y="515" width="90" height="30"/>
                                 <state key="normal" title="Add Location"/>
                                 <connections>
                                     <segue destination="tDl-lF-bmi" kind="show" identifier="addLocationSegue" id="V31-pi-KxY"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5fI-ij-5Sk">
-                                <rect key="frame" x="144" y="409" width="93" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Link to Group"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jTT-8W-loB">
-                                <rect key="frame" x="138" y="464" width="103" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jTT-8W-loB">
+                                <rect key="frame" x="147" y="680" width="120" height="30"/>
                                 <color key="backgroundColor" name="Global Tint"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="Kut-5G-SKE"/>
+                                </constraints>
                                 <state key="normal" title="Create Event">
                                     <color key="titleColor" systemColor="systemGray6Color"/>
                                 </state>
@@ -149,16 +144,26 @@
                                     <action selector="createEventButton:" destination="Bbc-4d-SSl" eventType="touchUpInside" id="zNX-WG-C20"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5fI-ij-5Sk">
+                                <rect key="frame" x="160.5" y="550" width="93" height="30"/>
+                                <state key="normal" title="Link to Group"/>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="EhQ-sJ-Q8v"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="cgl-fB-AfA" firstAttribute="top" secondItem="EhQ-sJ-Q8v" secondAttribute="top" constant="100" id="0hU-IT-GIg"/>
-                            <constraint firstItem="EhQ-sJ-Q8v" firstAttribute="trailing" secondItem="cgl-fB-AfA" secondAttribute="trailing" constant="90" id="1Y6-Ye-PUt"/>
-                            <constraint firstItem="EhQ-sJ-Q8v" firstAttribute="trailing" secondItem="3yR-HN-1tY" secondAttribute="trailing" constant="90" id="IFo-4e-BlC"/>
-                            <constraint firstItem="3yR-HN-1tY" firstAttribute="leading" secondItem="EhQ-sJ-Q8v" secondAttribute="leading" constant="90" id="PaS-8t-Gh2"/>
-                            <constraint firstItem="3yR-HN-1tY" firstAttribute="top" secondItem="cgl-fB-AfA" secondAttribute="bottom" constant="50" id="scw-pN-cPg"/>
-                            <constraint firstItem="cgl-fB-AfA" firstAttribute="leading" secondItem="EhQ-sJ-Q8v" secondAttribute="leading" constant="90" id="uka-hl-wmJ"/>
+                            <constraint firstItem="UeM-YC-wJc" firstAttribute="centerX" secondItem="vYx-bi-78x" secondAttribute="centerX" id="0dY-sJ-kWK"/>
+                            <constraint firstItem="5fI-ij-5Sk" firstAttribute="top" secondItem="Zo0-Gv-Fww" secondAttribute="bottom" constant="5" id="GTI-vt-h2H"/>
+                            <constraint firstItem="3yR-HN-1tY" firstAttribute="centerX" secondItem="vYx-bi-78x" secondAttribute="centerX" id="HYT-kl-1EZ"/>
+                            <constraint firstItem="3yR-HN-1tY" firstAttribute="top" secondItem="cgl-fB-AfA" secondAttribute="bottom" constant="15" id="HlQ-hm-4Nh"/>
+                            <constraint firstItem="jTT-8W-loB" firstAttribute="centerX" secondItem="vYx-bi-78x" secondAttribute="centerX" id="MuG-A2-gxp"/>
+                            <constraint firstItem="cgl-fB-AfA" firstAttribute="centerX" secondItem="vYx-bi-78x" secondAttribute="centerX" id="RJO-D5-lM4"/>
+                            <constraint firstItem="Zo0-Gv-Fww" firstAttribute="top" secondItem="UeM-YC-wJc" secondAttribute="bottom" constant="5" id="Rct-Xo-yDL"/>
+                            <constraint firstItem="3yR-HN-1tY" firstAttribute="centerY" secondItem="vYx-bi-78x" secondAttribute="centerY" id="cmh-OZ-sU5"/>
+                            <constraint firstItem="Zo0-Gv-Fww" firstAttribute="centerX" secondItem="vYx-bi-78x" secondAttribute="centerX" id="cyX-bY-N7q"/>
+                            <constraint firstItem="UeM-YC-wJc" firstAttribute="top" secondItem="3yR-HN-1tY" secondAttribute="bottom" constant="15" id="hKk-0E-C48"/>
+                            <constraint firstItem="5fI-ij-5Sk" firstAttribute="centerX" secondItem="vYx-bi-78x" secondAttribute="centerX" id="qLe-y1-5ua"/>
+                            <constraint firstItem="jTT-8W-loB" firstAttribute="top" secondItem="5fI-ij-5Sk" secondAttribute="bottom" constant="100" id="wSq-Xf-zjh"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Create Event" id="oWA-XM-hi2"/>
@@ -180,7 +185,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6ow-Jc-kwt" customClass="FSCalendar">
-                                <rect key="frame" x="50" y="134" width="314" height="300"/>
+                                <rect key="frame" x="50" y="138" width="314" height="175"/>
                                 <color key="backgroundColor" name="Background Colour"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="300" id="o3s-zK-HRN"/>
@@ -214,7 +219,7 @@
                                 </connections>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nQQ-SZ-Amu">
-                                <rect key="frame" x="150" y="452" width="114" height="30"/>
+                                <rect key="frame" x="150" y="343" width="114" height="30"/>
                                 <state key="normal" title="Save date range"/>
                                 <connections>
                                     <action selector="saveDateRange:" destination="ffN-pu-fnG" eventType="touchUpInside" id="eVH-Ss-bP9"/>
@@ -293,6 +298,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="gIW-Qm-g0Q">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" name="Background Colour"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" name="Global Tint"/>
                         </textAttributes>
