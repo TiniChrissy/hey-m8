@@ -16,9 +16,8 @@ class CreateEventViewController: UIViewController {
     
     var groupID: Int!
     
-    let name = "eventName"
-    let eventDescription = "eventDescription"
-    
+//    let name = "eventName"
+//    let eventDescription = "eventDescription"
     var currentDateRange = [Date]()
     
     @IBOutlet weak var nameTextField: UITextField!
@@ -30,19 +29,37 @@ class CreateEventViewController: UIViewController {
             return
         }
         guard let eventDescription = descriptionTextField.text, name.isEmpty==false else{
-//        guard let ageText = descriptionTextField.text, let age = Int(ageText) else{
-            // Age could not be established. Print an error and exit
             displayMessagecli240(title: "Error", message: "Please enter a description")
             return
         }
         
-        let dataToSave: [String:Any] = [name: nameTextField, eventDescription: descriptionTextField]
+        if currentDateRange.isEmpty {
+            displayMessagecli240(title: "Error", message: "Please select a date range")
+            return
+        }
+        
+//        let dataToSave: [String:Any] = [name: nameTextField, eventDescription: descriptionTextField]
        
         // Add a new document with a generated ID
         var ref: DocumentReference? = nil
         ref = database.collection("events").addDocument(data: [
             "name": name,
             "description": eventDescription,
+            
+//            currentDateRange.forEach({ Date in
+//                ref.collection("dateRange").document("time").setData([
+//                    "name": "Los Angeles",
+//                    "state": "CA",
+//                    "country": "USA"
+//                ]) { err in
+//                    if let err = err {
+//                        print("Error writing document: \(err)")
+//                    } else {
+//                        print("Document successfully written!")
+//                    }
+//                }
+//            })
+
         ]) { err in
             if let err = err {
                 print("Error adding document: \(err)")
@@ -92,20 +109,7 @@ class CreateEventViewController: UIViewController {
     
     func addDateRange(newDateRange: [Date]) -> Bool {
         currentDateRange = newDateRange
-        print(currentDateRange)
-//        currentDateRange.append(newDateRange)
-//        var currentDateRangeDisplayNamesArray = [String]()
-//
-//        for member in currentDateRange {
-//            currentMembersDisplayNamesArray.append(member.displayName)
-//        }
-//
-//        let currentMembersDisplayNamesText = currentMembersDisplayNamesArray.joined(separator: ", ")
-        
-        //update the label on main thread
-//        DispatchQueue.main.async(execute: {
-//            self.currentMemberNamesLabel.text = "Current Members: " + currentMembersDisplayNamesText
-//           })
+//        print(currentDateRange)
         return true
     }
     

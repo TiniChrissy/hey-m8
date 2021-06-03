@@ -66,7 +66,7 @@ class AddDateRange: UIViewController, FSCalendarDelegate {
             firstDate = date
             datesRange = [firstDate!]
             
-            print("datesRange contains: \(datesRange!)")
+//            print("datesRange contains: \(datesRange!)")
             
             return
         }
@@ -79,7 +79,7 @@ class AddDateRange: UIViewController, FSCalendarDelegate {
                 firstDate = date
                 datesRange = [firstDate!]
                 
-                print("datesRange contains: \(datesRange!)")
+//                print("datesRange contains: \(datesRange!)")
                 
                 return
             }
@@ -94,7 +94,7 @@ class AddDateRange: UIViewController, FSCalendarDelegate {
             
             datesRange = range
             
-            print("datesRange contains: \(datesRange!)")
+//            print("datesRange contains: \(datesRange!)")
             
             return
         }
@@ -110,7 +110,7 @@ class AddDateRange: UIViewController, FSCalendarDelegate {
             
             datesRange = []
             
-            print("datesRange contains: \(datesRange!)")
+//            print("datesRange contains: \(datesRange!)")
         }
     }
     
