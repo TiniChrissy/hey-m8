@@ -18,6 +18,8 @@ class UserEventsTableViewController: UITableViewController {
     
     var allEvents: [Event] = [] //allEvents? inclues for users apart from this one.. ??maybe not necessary if i'm just directly adding it to firebase anwyays
     var userEvents: [Event] = [] //filteredEvents?
+    
+    var eventToBeSent: Event?
 
     override func viewDidLoad() {
         
@@ -117,32 +119,19 @@ class UserEventsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == SECTION_EVENT {
-            navigationController?.popViewController(animated: true)
-//            if let memberDelegate = memberDelegate {
-//                if memberDelegate.addMember(newMember: filteredUsers[indexPath.row]) {
-//                    //After we've added a user, we don't want them to show up anymore
-//                    allUsers.remove(at: indexPath.row)
-//
-//                    return
-//                }
-//                else {
-//                    displayMessagecli240(title: "Group is full", message: "Unable to add more members to group")
-//                }
-//            }
-            
+            self.eventToBeSent = userEvents[indexPath.row]
+            self.performSegue(withIdentifier: "eventDetailsSegue", sender: self)
         }
         tableView.deselectRow(at: indexPath, animated: true)
     }
-
-    
     
     // MARK: - Navigation
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "createEventSegue" {
-            let destination = segue.destination as! CreateEventViewController
-            //            destination.eventDelegate = self
+        if segue.identifier == "eventDetailsSegue" {
+            let destination = segue.destination as! EventDetailsViewController
+            destination.event = eventToBeSent
         }
     }
     

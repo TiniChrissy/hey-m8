@@ -35,6 +35,7 @@ class AddDateRangeViewController: UIViewController, FSCalendarDelegate {
         calendar.delegate = self
         calendar.allowsMultipleSelection = true
         calendar.backgroundColor = UIColor(named: "Background Colour")
+        calendar.appearance.headerMinimumDissolvedAlpha = 0.0;
     }
     
     func datesRange(from: Date, to: Date) -> [Date] {
@@ -44,19 +45,19 @@ class AddDateRangeViewController: UIViewController, FSCalendarDelegate {
         var end = to
         
         if from > to {
-//            return [Date]()
+            //            return [Date]()
             start = to
             end = from
         }
-
+        
         var tempDate = start
         var array = [tempDate]
-
+        
         while tempDate < end {
             tempDate = Calendar.current.date(byAdding: .day, value: 1, to: tempDate)!
             array.append(tempDate)
         }
-
+        
         return array
     }
     
@@ -65,9 +66,6 @@ class AddDateRangeViewController: UIViewController, FSCalendarDelegate {
         if firstDate == nil {
             firstDate = date
             datesRange = [firstDate!]
-            
-//            print("datesRange contains: \(datesRange!)")
-            
             return
         }
         
@@ -78,9 +76,6 @@ class AddDateRangeViewController: UIViewController, FSCalendarDelegate {
                 calendar.deselect(firstDate!)
                 firstDate = date
                 datesRange = [firstDate!]
-                
-//                print("datesRange contains: \(datesRange!)")
-                
                 return
             }
             
@@ -93,9 +88,6 @@ class AddDateRangeViewController: UIViewController, FSCalendarDelegate {
             }
             
             datesRange = range
-            
-//            print("datesRange contains: \(datesRange!)")
-            
             return
         }
         
@@ -109,26 +101,24 @@ class AddDateRangeViewController: UIViewController, FSCalendarDelegate {
             firstDate = nil
             
             datesRange = []
-            
-//            print("datesRange contains: \(datesRange!)")
         }
     }
     
     func calendar(_ calendar: FSCalendar, didDeselect date: Date, at monthPosition: FSCalendarMonthPosition) {
         // both are selected:
         
-        // NOTE: the is a REDUANDENT CODE:
-        if firstDate != nil && lastDate != nil {
-            for d in calendar.selectedDates {
-                calendar.deselect(d)
-            }
-            
-            lastDate = nil
-            firstDate = nil
-            
-            datesRange = []
-            print("datesRange contains: \(datesRange!)")
-        }
+        //        // NOTE: the is a REDUANDENT CODE:
+        //        if firstDate != nil && lastDate != nil {
+        //            for d in calendar.selectedDates {
+        //                calendar.deselect(d)
+        //            }
+        //
+        //            lastDate = nil
+        //            firstDate = nil
+        //
+        //            datesRange = []
+        //            print("datesRange contains: \(datesRange!)")
     }
 }
+
 

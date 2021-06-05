@@ -117,11 +117,7 @@
 				AE1E79D6263BC6A300839C27 /* LaunchScreen.storyboard */,
 				AE9B4677264A2F8B00C179BF /* CustomCell.swift */,
 				AE1E79D4263BC6A300839C27 /* Assets.xcassets */,
-				AE04C266265A6C5D00D53865 /* Group.swift */,
-				AE3B8843265A7E8500553783 /* User.swift */,
-				AE3B8849265CEE0100553783 /* Event.swift */,
-				AEB4970F266A316B008007D9 /* PotentialTime.swift */,
-				AEB49711266A317E008007D9 /* PotentialLocation.swift */,
+				AEB49715266B5530008007D9 /* Classes */,
 				AE1E79D9263BC6A300839C27 /* Info.plist */,
 				AE9B466E263C507700C179BF /* GoogleService-Info.plist */,
 				AE3B8847265B3D7F00553783 /* addMemberDelegate.swift */,
@@ -148,6 +144,18 @@
 				AEA7DAE12667B5E50057EB60 /* SettingsViewController.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		AEB49715266B5530008007D9 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				AE04C266265A6C5D00D53865 /* Group.swift */,
+				AE3B8843265A7E8500553783 /* User.swift */,
+				AE3B8849265CEE0100553783 /* Event.swift */,
+				AEB4970F266A316B008007D9 /* PotentialTime.swift */,
+				AEB49711266A317E008007D9 /* PotentialLocation.swift */,
+			);
+			path = Classes;
 			sourceTree = "<group>";
 		};
 		E753979DE67D92BCA48A5BD5 /* Pods */ = {

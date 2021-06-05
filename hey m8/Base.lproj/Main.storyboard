@@ -198,17 +198,73 @@
             </objects>
             <point key="canvasLocation" x="4511.594202898551" y="-250.44642857142856"/>
         </scene>
-        <!--View Controller-->
+        <!--Select available dates-->
         <scene sceneID="ghb-JY-FJZ">
             <objects>
-                <viewController id="3Ww-yv-VNS" sceneMemberID="viewController">
+                <viewController id="3Ww-yv-VNS" customClass="EventDetailsViewController" customModule="hey_m8" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uLM-QG-el1">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bIS-aJ-8SE" customClass="FSCalendar">
+                                <rect key="frame" x="15" y="118" width="384" height="200"/>
+                                <color key="backgroundColor" name="Background Colour"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="Go6-jI-4cD"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="cmf-bj-Cwi"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="todayColor">
+                                        <color key="value" name="Grey"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="selectionColor">
+                                        <color key="value" name="Global Tint"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="titleWeekendColor">
+                                        <color key="value" name="AccentColor"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="headerTitleColor">
+                                        <color key="value" name="AccentColor"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="subtitleWeekendColor">
+                                        <color key="value" name="AccentColor"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="firstWeekday">
+                                        <integer key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="weekdayTextColor">
+                                        <color key="value" name="AccentColor"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="dataSource" destination="ffN-pu-fnG" id="FYH-TO-WtT"/>
+                                    <outlet property="delegate" destination="ffN-pu-fnG" id="QJB-r3-uHt"/>
+                                </connections>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WIf-v0-Oui">
+                                <rect key="frame" x="179.5" y="348" width="55" height="30"/>
+                                <state key="normal" title="Confirm"/>
+                                <connections>
+                                    <action selector="confirmAvailability:" destination="3Ww-yv-VNS" eventType="touchUpInside" id="m6p-h0-Wmd"/>
+                                    <action selector="saveDateRange:" destination="ffN-pu-fnG" eventType="touchUpInside" id="2Ot-Qa-1CW"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="dex-lO-xIN"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="WIf-v0-Oui" firstAttribute="centerX" secondItem="uLM-QG-el1" secondAttribute="centerX" id="2z5-1Q-F5N"/>
+                            <constraint firstItem="WIf-v0-Oui" firstAttribute="top" secondItem="bIS-aJ-8SE" secondAttribute="bottom" constant="30" id="j3U-Ug-uza"/>
+                            <constraint firstItem="bIS-aJ-8SE" firstAttribute="leading" secondItem="dex-lO-xIN" secondAttribute="leading" constant="15" id="kjB-ty-H0N"/>
+                            <constraint firstItem="bIS-aJ-8SE" firstAttribute="top" secondItem="dex-lO-xIN" secondAttribute="top" constant="30" id="m1N-Nd-ptG"/>
+                            <constraint firstItem="bIS-aJ-8SE" firstAttribute="centerX" secondItem="uLM-QG-el1" secondAttribute="centerX" id="pNS-Fr-Nkr"/>
+                            <constraint firstItem="dex-lO-xIN" firstAttribute="trailing" secondItem="bIS-aJ-8SE" secondAttribute="trailing" constant="15" id="yzI-dv-s0B"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="iWl-VB-7Xd"/>
+                    <navigationItem key="navigationItem" title="Select available dates" id="iWl-VB-7Xd"/>
+                    <connections>
+                        <outlet property="calendar" destination="bIS-aJ-8SE" id="Jex-2G-R2D"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V3K-o6-lSx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

@@ -14,9 +14,6 @@ class CreateEventViewController: UIViewController {
     
     var database: Firestore!
     var docRef:DocumentReference!
-    
-
-    
 //    let name = "eventName"
 //    let eventDescription = "eventDescription"
 //    var currentDateRange = [Date]()
@@ -74,11 +71,28 @@ class CreateEventViewController: UIViewController {
         // Add a new document with a generated ID
         var ref: DocumentReference? = nil
         do {
-            try database.collection("events").addDocument(from: event)
+            ref = try database.collection("events").addDocument(from: event)
             print("event should be in firestore")
+
+            print("potential time shoud be added :S")
         } catch let error {
             print("Error writing event to Firestore: \(error)")
         }
+        
+        if let a = event.times {
+            for time in a {
+                do {
+                    try database.collection("events").document(ref!.documentID).collection("potential times").addDocument(from: time)
+                    
+                } catch let error {
+                    print("Couldn't add times to the event:", error )
+                }
+               
+            }
+        }
+        
+        
+ 
 //        ref = database.collection("events").addDocument(from: event)
         
         
