@@ -20,6 +20,7 @@ class UserGroupsTableViewController: UITableViewController {
     var userGroups: [Group] = [] //filteredGroups?
     
 //    weak var memberDelegate: addMemberDelegate?
+    weak var eventDelegate: CreateEventViewController?
     
     override func viewDidLoad() {
         
@@ -145,6 +146,13 @@ class UserGroupsTableViewController: UITableViewController {
                 tableView.reloadSections([SECTION_INFO], with: .automatic)
             }, completion: nil)
         }
+    }
+    
+    // This method declares the behavior of what is to happen when the row is selected
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        eventDelegate?.addGroup(newGroup: userGroups[indexPath.row].id)
+        navigationController?.popViewController(animated: true)
     }
     
     // MARK: - Navigation

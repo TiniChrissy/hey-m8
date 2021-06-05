@@ -2999,10 +2999,6 @@ THE SOFTWARE.
    limitations under the License.
 
 
-## GooglePlaces
-
-Copyright 2021 Google
-
 ## GoogleSignIn
 
 Copyright 2019 Google

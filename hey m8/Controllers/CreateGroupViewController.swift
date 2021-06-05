@@ -127,7 +127,6 @@ class CreateGroupViewController: UIViewController, UITableViewDelegate,  UITable
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        print("numberOfSections called")
         return 2
     }
 

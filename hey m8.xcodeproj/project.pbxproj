@@ -30,6 +30,8 @@
 		AE9B4678264A2F8B00C179BF /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9B4677264A2F8B00C179BF /* CustomCell.swift */; };
 		AE9B467A264A346600C179BF /* AddDateRangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9B4679264A346600C179BF /* AddDateRangeViewController.swift */; };
 		AEA7DAE22667B5E50057EB60 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA7DAE12667B5E50057EB60 /* SettingsViewController.swift */; };
+		AEB49710266A316B008007D9 /* PotentialTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB4970F266A316B008007D9 /* PotentialTime.swift */; };
+		AEB49712266A317E008007D9 /* PotentialLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB49711266A317E008007D9 /* PotentialLocation.swift */; };
 		AEF72F472668ACEA00D510F7 /* LocationResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF72F462668ACEA00D510F7 /* LocationResultsViewController.swift */; };
 		DCFD44002BEE568E9CC30FC6 /* Pods_hey_m8.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF7179FA12A24B4D83EDD70F /* Pods_hey_m8.framework */; };
 /* End PBXBuildFile section */
@@ -62,6 +64,8 @@
 		AE9B4677264A2F8B00C179BF /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		AE9B4679264A346600C179BF /* AddDateRangeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDateRangeViewController.swift; sourceTree = "<group>"; };
 		AEA7DAE12667B5E50057EB60 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		AEB4970F266A316B008007D9 /* PotentialTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PotentialTime.swift; sourceTree = "<group>"; };
+		AEB49711266A317E008007D9 /* PotentialLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PotentialLocation.swift; sourceTree = "<group>"; };
 		AEF72F462668ACEA00D510F7 /* LocationResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationResultsViewController.swift; sourceTree = "<group>"; };
 		BF7179FA12A24B4D83EDD70F /* Pods_hey_m8.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_hey_m8.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -110,12 +114,14 @@
 				AE1E79CB263BC6A000839C27 /* AppDelegate.swift */,
 				AE1E79CD263BC6A000839C27 /* SceneDelegate.swift */,
 				AE1E79D1263BC6A000839C27 /* Main.storyboard */,
+				AE1E79D6263BC6A300839C27 /* LaunchScreen.storyboard */,
 				AE9B4677264A2F8B00C179BF /* CustomCell.swift */,
 				AE1E79D4263BC6A300839C27 /* Assets.xcassets */,
 				AE04C266265A6C5D00D53865 /* Group.swift */,
 				AE3B8843265A7E8500553783 /* User.swift */,
-				AE1E79D6263BC6A300839C27 /* LaunchScreen.storyboard */,
 				AE3B8849265CEE0100553783 /* Event.swift */,
+				AEB4970F266A316B008007D9 /* PotentialTime.swift */,
+				AEB49711266A317E008007D9 /* PotentialLocation.swift */,
 				AE1E79D9263BC6A300839C27 /* Info.plist */,
 				AE9B466E263C507700C179BF /* GoogleService-Info.plist */,
 				AE3B8847265B3D7F00553783 /* addMemberDelegate.swift */,
@@ -295,8 +301,10 @@
 				AE1E79CE263BC6A000839C27 /* SceneDelegate.swift in Sources */,
 				AE9B467A264A346600C179BF /* AddDateRangeViewController.swift in Sources */,
 				AEF72F472668ACEA00D510F7 /* LocationResultsViewController.swift in Sources */,
+				AEB49710266A316B008007D9 /* PotentialTime.swift in Sources */,
 				AE9B4678264A2F8B00C179BF /* CustomCell.swift in Sources */,
 				AE04C263265A6AA300D53865 /* UserGroupsTableViewController.swift in Sources */,
+				AEB49712266A317E008007D9 /* PotentialLocation.swift in Sources */,
 				AE3B8844265A7E8500553783 /* User.swift in Sources */,
 				AE3B884A265CEE0100553783 /* Event.swift in Sources */,
 				AE04C25F2657C4A000D53865 /* AddLocationViewController.swift in Sources */,

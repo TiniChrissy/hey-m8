@@ -116,12 +116,12 @@ class UserEventsTableViewController: UITableViewController {
     }
     
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "createEventSegue" {
             let destination = segue.destination as! CreateEventViewController
-//            destination.eventDelegate = self
+            //            destination.eventDelegate = self
         }
     }
     
@@ -143,14 +143,22 @@ class UserEventsTableViewController: UITableViewController {
                 print("Error getting documents: \(err)")
             } else {
                 for document in querySnapshot!.documents {
-//                    print("\(document.documentID) => \(document.data())")
-                    
-                    let eventName = document.data()["name"] as! String
-                    let eventId = document.documentID
-                    let eventMembers = document.data()["members"] as? Array<String> ?? [""]
-                    
-                    let event = Event(name: eventName, eventID: eventId)
-                    self.addEvent(newEvent: event)
+                    do {
+                        let event = try document.data(as: Event.self)
+                        self.addEvent(newEvent: event!)
+                    }
+                    catch {
+                        print(error)
+                    }
+                    //                    print("\(document.documentID) => \(document.data())")
+                    //
+                    //                    let eventName = document.data()["name"] as! String
+                    //                    let eventId = document.documentID
+                    //                    let eventMembers = document.data()["members"] as? Array<String> ?? [""]
+                    //
+                    //                    let event = Event(name: eventName, descriptor: nil, groupId: <#T##Int#>, times: <#T##Array<PotentialTime>#>, locations: <#T##Array<PotentialLocation>#>)
+                    //                    let event = Event(name: eventName, eventID: eventId)
+                    //                    self.addEvent(newEvent: event)
                 }
             }
         }

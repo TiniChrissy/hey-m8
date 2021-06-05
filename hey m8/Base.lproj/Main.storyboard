@@ -148,7 +148,7 @@
                                 <rect key="frame" x="160.5" y="550" width="93" height="30"/>
                                 <state key="normal" title="Link to Group"/>
                                 <connections>
-                                    <segue destination="cNB-L7-zbt" kind="show" id="HvO-aA-eSf"/>
+                                    <segue destination="cNB-L7-zbt" kind="show" identifier="linkToGroupSegue" id="HvO-aA-eSf"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -446,7 +446,10 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YiH-yU-IMo">
-                                <rect key="frame" x="150" y="336" width="114" height="30"/>
+                                <rect key="frame" x="162.5" y="336" width="89" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="70" id="R5u-5p-kVL"/>
+                                </constraints>
                                 <state key="normal" title="Add Member"/>
                                 <connections>
                                     <segue destination="Bqt-Y5-pyv" kind="show" identifier="addMemberSegue" id="FjR-XQ-QRS"/>
@@ -496,15 +499,12 @@
                             <constraint firstItem="XWA-rx-LcV" firstAttribute="top" secondItem="cNH-yU-WE8" secondAttribute="bottom" constant="60" id="6hP-VU-TGN"/>
                             <constraint firstItem="6by-4c-y4G" firstAttribute="trailing" secondItem="XWA-rx-LcV" secondAttribute="trailing" constant="90" id="NGd-9f-wVH"/>
                             <constraint firstItem="cNH-yU-WE8" firstAttribute="top" secondItem="6by-4c-y4G" secondAttribute="top" constant="60" id="PK0-mo-W55"/>
-                            <constraint firstItem="YiH-yU-IMo" firstAttribute="leading" secondItem="6by-4c-y4G" secondAttribute="leading" constant="150" id="Sry-he-O01"/>
                             <constraint firstItem="6by-4c-y4G" firstAttribute="trailing" secondItem="cNH-yU-WE8" secondAttribute="trailing" constant="90" id="TX6-9V-EK5"/>
-                            <constraint firstItem="6by-4c-y4G" firstAttribute="trailing" secondItem="YiH-yU-IMo" secondAttribute="trailing" constant="150" id="W1b-GZ-M1g"/>
                             <constraint firstItem="YiH-yU-IMo" firstAttribute="top" secondItem="XWA-rx-LcV" secondAttribute="bottom" constant="60" id="YdM-yD-rBR"/>
+                            <constraint firstItem="YiH-yU-IMo" firstAttribute="centerX" secondItem="3wS-zW-Ujz" secondAttribute="centerX" id="aRH-4u-0ya"/>
                             <constraint firstItem="XWA-rx-LcV" firstAttribute="top" secondItem="cNH-yU-WE8" secondAttribute="bottom" constant="60" id="bg1-ur-Und"/>
-                            <constraint firstItem="6by-4c-y4G" firstAttribute="trailing" secondItem="YiH-yU-IMo" secondAttribute="trailing" constant="150" id="pVt-Hv-55I"/>
                             <constraint firstItem="cNH-yU-WE8" firstAttribute="leading" secondItem="6by-4c-y4G" secondAttribute="leading" constant="90" id="rMx-uL-LBX"/>
                             <constraint firstItem="XWA-rx-LcV" firstAttribute="leading" secondItem="6by-4c-y4G" secondAttribute="leading" constant="90" id="ryZ-lH-NKg"/>
-                            <constraint firstItem="YiH-yU-IMo" firstAttribute="leading" secondItem="6by-4c-y4G" secondAttribute="leading" constant="150" id="sJc-i4-KBn"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Create Group" id="W30-tH-lBh"/>
