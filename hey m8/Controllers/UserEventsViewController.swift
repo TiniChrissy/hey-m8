@@ -115,6 +115,27 @@ class UserEventsTableViewController: UITableViewController {
         }
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == SECTION_EVENT {
+            navigationController?.popViewController(animated: true)
+//            if let memberDelegate = memberDelegate {
+//                if memberDelegate.addMember(newMember: filteredUsers[indexPath.row]) {
+//                    //After we've added a user, we don't want them to show up anymore
+//                    allUsers.remove(at: indexPath.row)
+//
+//                    return
+//                }
+//                else {
+//                    displayMessagecli240(title: "Group is full", message: "Unable to add more members to group")
+//                }
+//            }
+            
+        }
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+
+    
+    
     // MARK: - Navigation
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation

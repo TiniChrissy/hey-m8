@@ -6,6 +6,7 @@
 //
 // Help decoding https://stackoverflow.com/questions/61488292/custom-class-conformance-to-mkannotation-and-codable/61491122#61491122
 // Useful codable reference https://peterfriese.dev/firestore-codable-the-comprehensive-guide/#mapping-simple-types-using-codable
+//Currently PotentialLocation is a map in firestore. I was originally hoping to have this as a separate document inside Event but I will keep going with this, I think this is actually fine. 
 
 import Foundation
 import FirebaseFirestoreSwift

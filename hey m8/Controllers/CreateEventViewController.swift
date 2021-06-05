@@ -120,7 +120,6 @@ class CreateEventViewController: UIViewController {
     // MARK: - Navigation
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "addLocationSegue" {
             let destination = segue.destination as! AddLocationViewController
@@ -137,8 +136,6 @@ class CreateEventViewController: UIViewController {
     }
     
     func addDateRange(newDateRange: [Date]) -> Bool {
-//        currentDateRange = newDateRange
-        
         newDateRange.forEach { date in
             potentialTimes.append(PotentialTime(time: date, votes: nil))
         }
@@ -146,8 +143,6 @@ class CreateEventViewController: UIViewController {
     }
     
     func addLocation(newLocation: MKMapItem) -> Bool {
-//        currentLocation = newLocation
-//        print(currentLocation.name ?? "",  currentLocation.placemark.title ?? "", "look")
         location = newLocation
         return true
     }
