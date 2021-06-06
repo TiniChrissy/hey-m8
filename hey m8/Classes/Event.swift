@@ -7,6 +7,7 @@
 
 import Foundation
 import FirebaseFirestoreSwift
+import Firebase
 
 class Event: NSObject, Codable {
     internal init(name: String, descriptor: String? = nil, groupId: String, times: Array<PotentialTime>, locations: PotentialLocation) {
@@ -17,7 +18,7 @@ class Event: NSObject, Codable {
         self.locations = locations
     }
     
-    @DocumentID var id: String?
+    @DocumentID var id: DocumentReference?
     var name: String
     var descriptor: String?
     var groupId: String
@@ -25,12 +26,14 @@ class Event: NSObject, Codable {
     var locations: PotentialLocation
     
     private enum CodingKeys: String, CodingKey {
-        case name, descriptor, groupId, locations
+        case name, descriptor, groupId, locations, id
     }
     
     required init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
 
+//        id = try values.decode(String.self, forKey: .id)
+        id = try values.decode(DocumentID<DocumentReference>.self, forKey: .id).wrappedValue
         name = try values.decodeIfPresent(String.self, forKey: .name)!
         descriptor = try values.decodeIfPresent(String.self, forKey: .descriptor)
         groupId = try values.decodeIfPresent(String.self, forKey: .groupId)!

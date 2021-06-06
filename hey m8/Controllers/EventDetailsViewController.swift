@@ -11,59 +11,55 @@ import FirebaseFirestore
 
 class EventDetailsViewController: UIViewController, FSCalendarDelegate, FSCalendarDelegateAppearance {
     var database: Firestore!
-
+    
     weak var dateRangeDelegate: CreateEventViewController?
     private var datesRange: [Date]?
     private var firstDate: Date?
     private var lastDate: Date?
-    var event: Event?
+    var event: Event!
     
     @IBOutlet weak var calendar: FSCalendar!
     @IBAction func confirmAvailability(_ sender: Any) {
-//        let potentialTime = event?.times.first{$0.time == date}
-//        if potentialTime?.votes ?? 0 > 0 {
-//            return otherVotedDateColour
-//        }
-        /*
-        if datesRange != nil {
-            for date in datesRange! {
-                let potentialTime = event?.times.first{$0.time == date}
-                let votes = potentialTime?.votes ?? 0
-                print("votes increase by 1 at date: ", date)
-                
-                let washingtonRef = database.collection("events").document(event?.id ?? "").updateData([
-                    "times"
-                ]) //maybe i should do error handling with this unwrap, check that event has id? but it really must have one
-
-                // Set the "capital" field of the city 'DC'
-                washingtonRef.updateData([
-                    "votes": votes + 1
-                ]) { err in
-                    if let err = err {
-                        print("Error updating document: \(err)")
-                    } else {
-                        print("Document successfully updated")
+        let eventDocument = database.collection("events").document(event.id?.documentID ?? "")
+        let potentialTimesCollection = eventDocument.collection("potential times")
+        
+        potentialTimesCollection.getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                for document in querySnapshot!.documents {
+                    let result = Result {
+                        try document.data(as: PotentialTime.self)
+                    }
+                    switch result {
+                    case .success(let potentialTime):
+                        if let potentialTime = potentialTime {
+                            let ID = document.documentID
+                            
+                            //Cast vote if in selected date range
+                            self.datesRange?.forEach({ date in
+//                                let potentialTime = self.event?.times?.first{$0.time == date}
+                                if date == potentialTime.time {
+                                    potentialTimesCollection.document(ID).updateData([
+                                        "vote": FieldValue.increment(Int64(1))
+                                    ])
+                                }
+                            })
+                        } else {
+                            // A nil value was successfully initialized from the DocumentSnapshot,
+                            // or the DocumentSnapshot was nil.
+                            print("Document does not exist")
+                        }
+                    case .failure(let error):
+                        // A `City` value could not be initialized from the DocumentSnapshot.
+                        print("Error decoding city: \(error)")
                     }
                 }
             }
-            
-            // To update age and favorite color:
-            db.collection("users").document("frank").updateData([
-                "age": 13,
-                "favorites.color": "Red"
-            ]) { err in
-                if let err = err {
-                    print("Error updating document: \(err)")
-                } else {
-                    print("Document successfully updated")
-                }
-            }
-            
         }
- */
 
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor(named: "Background Colour")
@@ -81,7 +77,7 @@ class EventDetailsViewController: UIViewController, FSCalendarDelegate, FSCalend
         
         //Connect to database
         database = Firestore.firestore()
-
+        
     }
     
     func datesRange(from: Date, to: Date) -> [Date] {
@@ -108,8 +104,10 @@ class EventDetailsViewController: UIViewController, FSCalendarDelegate, FSCalend
     }
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        
         // nothing selected:
         if firstDate == nil {
+            print("first")
             firstDate = date
             datesRange = [firstDate!]
             return
@@ -117,6 +115,7 @@ class EventDetailsViewController: UIViewController, FSCalendarDelegate, FSCalend
         
         // only first date is selected:
         if firstDate != nil && lastDate == nil {
+            print("second")
             // handle the case of if the last date is less than the first date:
             if date <= firstDate! {
                 calendar.deselect(firstDate!)
@@ -126,7 +125,6 @@ class EventDetailsViewController: UIViewController, FSCalendarDelegate, FSCalend
             }
             
             let range = datesRange(from: firstDate!, to: date)
-            
             lastDate = range.last
             
             for date in range {
@@ -139,6 +137,7 @@ class EventDetailsViewController: UIViewController, FSCalendarDelegate, FSCalend
         
         // both are selected:
         if firstDate != nil && lastDate != nil {
+            print("third")
             for date in calendar.selectedDates {
                 calendar.deselect(date)
             }
@@ -165,9 +164,9 @@ class EventDetailsViewController: UIViewController, FSCalendarDelegate, FSCalend
         //            datesRange = []
         //            print("datesRange contains: \(datesRange!)")
     }
-
+    
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, fillDefaultColorFor date: Date) -> UIColor? {
-        print("call fillDefaultColorFor", date)
+        //        print("call fillDefaultColorFor", date)
         let otherVotedDateColour = UIColor(named: "Light Pink")
         
         let potentialTime = event?.times?.first{$0.time == date}
@@ -180,38 +179,35 @@ class EventDetailsViewController: UIViewController, FSCalendarDelegate, FSCalend
         }
         return UIColor(named: "Background Colour")
     }
-//    self.presentDatesArray = ["2016-04-03",
-//            "2016-04-06",
-//            "2016-04-12",
-//            "2016-04-25"];
-//
-//            self.absentDatesArray = ["2016-04-10",
-//                "2016-04-18",
-//                "2016-04-15",
-//                "2016-04-16"];
-
-//
-//        func calendar(calendar: FSCalendar!, appearance: FSCalendarAppearance!, titleDefaultColorForDate date: NSDate!) -> UIColor!
-//        {
-//            let dateString: String = calendar.stringFromDate(date, format: "yyyy-MM-dd")
-//
-//
-//            if presentDatesArray.containsObject(dateString)
-//            {
-//                return UIColor.greenColor()
-//            }
-//            else if absentDatesArray.containsObject(dateString)
-//            {
-//                return UIColor.redColor()
-//            }
-//            else
-//            {
-//                return nil
-//            }
-//        }
-
-
-
+    //    self.presentDatesArray = ["2016-04-03",
+    //            "2016-04-06",
+    //            "2016-04-12",
+    //            "2016-04-25"];
+    //
+    //            self.absentDatesArray = ["2016-04-10",
+    //                "2016-04-18",
+    //                "2016-04-15",
+    //                "2016-04-16"];
+    
+    //
+    //        func calendar(calendar: FSCalendar!, appearance: FSCalendarAppearance!, titleDefaultColorForDate date: NSDate!) -> UIColor!
+    //        {
+    //            let dateString: String = calendar.stringFromDate(date, format: "yyyy-MM-dd")
+    //
+    //
+    //            if presentDatesArray.containsObject(dateString)
+    //            {
+    //                return UIColor.greenColor()
+    //            }
+    //            else if absentDatesArray.containsObject(dateString)
+    //            {
+    //                return UIColor.redColor()
+    //            }
+    //            else
+    //            {
+    //                return nil
+    //            }
+    //        }
     
 }
 

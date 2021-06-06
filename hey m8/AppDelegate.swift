@@ -34,10 +34,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         settings.isPersistenceEnabled = false
         settings.isSSLEnabled = false
         Firestore.firestore().settings = settings
-        
-//        UINavigationBar.appearance().co
-        
-        
         return true
     }
 
