@@ -14,7 +14,7 @@ class CreateGroupViewController: UIViewController, UITableViewDelegate,  UITable
     let SECTION_CREATE = 1
     
     let CELL_USER = "memberCell"
-    let CELL_CREATE = "createButtonCell"
+//    let CELL_CREATE = "createButtonCell"
     @IBOutlet weak var membersTable: UITableView!
     var database: Firestore!
     var docRef:DocumentReference!
@@ -28,8 +28,8 @@ class CreateGroupViewController: UIViewController, UITableViewDelegate,  UITable
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var descriptionTextField: UITextField!
     
-    @IBAction func createGroupButton(_ sender: UIButton) {
-//        createGroup()
+    @IBAction func createGroupButton(_ sender: Any) {
+        createGroup()
     }
 
     func createGroup() {
@@ -127,7 +127,7 @@ class CreateGroupViewController: UIViewController, UITableViewDelegate,  UITable
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 1
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -151,12 +151,13 @@ class CreateGroupViewController: UIViewController, UITableViewDelegate,  UITable
             return userCell
         }
 
-        let createCell = tableView.dequeueReusableCell(withIdentifier: CELL_CREATE, for: indexPath)
-        createCell.textLabel?.text = "Create Group"
-        createCell.textLabel?.textAlignment = .center
-        createCell.textLabel?.textColor = UIColor(named: "Background Colour")
+//        let createCell = tableView.dequeueReusableCell(withIdentifier: CELL_CREATE, for: indexPath)
+//        createCell.textLabel?.text = "Create Group"
+//        createCell.textLabel?.textAlignment = .center
+//        createCell.textLabel?.textColor = UIColor(named: "Background Colour")
     
-        return createCell
+//        return createCell
+        return UITableViewCell() //should not happen
     }
 
     // Override to support conditional editing of the table view.

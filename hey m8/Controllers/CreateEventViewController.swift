@@ -108,8 +108,8 @@ class CreateEventViewController: UIViewController {
 //                print("Document added with ID: \(ref!.documentID)")
 //            }
 //        }
-        //move to QR code screen push view cnotroller?
-//        navigationController?.pushViewController(<#T##viewController: UIViewController##UIViewController#>, animated: <#T##Bool#>)
+//        move to QR code screen push view cnotroller?
+//        navigationController?.pushViewController(EventShareViewController, animated: true)
     }
     
     override func viewDidLoad() {
