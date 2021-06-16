@@ -14,102 +14,18 @@ class CreateEventViewController: UIViewController {
     
     var database: Firestore!
     var docRef:DocumentReference!
-//    let name = "eventName"
-//    let eventDescription = "eventDescription"
-//    var currentDateRange = [Date]()
-//    var currentLocation = MKMapItem()
     
     var potentialTimes = [PotentialTime]()
     var location = MKMapItem()
+    var groupID: String!
+    
+    var eventID: String!
     
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var descriptionTextField: UITextField!
-    var groupID: String!
-    
     @IBAction func createEventButton(_ sender: UIButton) {
-        guard let name = nameTextField.text, name.isEmpty==false else{
-            displayMessagecli240(title: "Error", message: "Please enter a name")
-            return
-        }
-        guard let eventDescription = descriptionTextField.text, name.isEmpty==false else{
-            displayMessagecli240(title: "Error", message: "Please enter a description")
-            return
-        }
-        guard groupID != nil else{
-            displayMessagecli240(title: "Error", message: "Please select a group")
-            return
-        }
-        
-        if potentialTimes.isEmpty {
-            displayMessagecli240(title: "Error", message: "Please select a date range")
-            return
-        }
-        //..I don't think I actually need to do any encoding?
-//        do {
-//          let event = Event(name: name,
-//                            descriptor: eventDescription,
-//                            groupId: groupID,
-//                            times: potentialTimes,
-//                            locations: potentialLocations)
-//          let encoder = JSONEncoder()
-//          let data = try encoder.encode(event)
-//        }
-//        catch {
-//          print("Error when trying to encode book: \(error)")
-//        }
-        
-//        let dataToSave: [String:Any] = [name: nameTextField, eventDescription: descriptionTextField]
-       
-        let potentialLocations = PotentialLocation(location: location, votes: nil)
-        let event = Event(name: name,
-                                    descriptor: eventDescription,
-                                    groupId: groupID,
-                                    times: potentialTimes,
-                                    locations: potentialLocations)
-
-     
-        // Add a new document with a generated ID
-        var ref: DocumentReference? = nil
-        do {
-            ref = try database.collection("events").addDocument(from: event)
-            print("event should be in firestore")
-
-            print("potential time shoud be added :S")
-        } catch let error {
-            print("Error writing event to Firestore: \(error)")
-        }
-        
-        if let a = event.times {
-            for time in a {
-                do {
-                    try database.collection("events").document(ref!.documentID).collection("potential times").addDocument(from: time)
-                    
-                } catch let error {
-                    print("Couldn't add times to the event:", error )
-                }
-               
-            }
-        }
-        
-        
- 
-//        ref = database.collection("events").addDocument(from: event)
-        
-        
-        // Add a new document with a generated ID
-//        var ref: DocumentReference? = nil
-//        ref = database.collection("events").addDocument(data: [
-//            "name": name,
-//            "description": eventDescription,
-//        ]) { err in
-//            if let err = err {
-//                print("Error adding document: \(err)")
-//            } else {
-//                print("Document added with ID: \(ref!.documentID)")
-//            }
-//        }
-//        move to QR code screen push view cnotroller?
-//        navigationController?.pushViewController(EventShareViewController, animated: true)
+        print("inside programtic text bit")
+       saveEvent()
     }
     
     override func viewDidLoad() {
@@ -147,6 +63,12 @@ class CreateEventViewController: UIViewController {
             let destination = segue.destination as! UserGroupsTableViewController
             destination.eventDelegate = self
         }
+        if segue.identifier == "shareEventSegue" {
+            let destination = segue.destination as! EventShareViewController
+            destination.eventDelegate = self
+            print("inside the seguebit")
+        }
+
     }
     
     func addDateRange(newDateRange: [Date]) -> Bool {
@@ -165,5 +87,61 @@ class CreateEventViewController: UIViewController {
         groupID = newGroup
         return true
     }
+    func saveEvent() {
+        guard let name = nameTextField.text, name.isEmpty==false else{
+            displayMessagecli240(title: "Error", message: "Please enter a name")
+            return
+        }
+        guard let eventDescription = descriptionTextField.text, name.isEmpty==false else{
+            displayMessagecli240(title: "Error", message: "Please enter a description")
+            return
+        }
+        guard groupID != nil else{
+            displayMessagecli240(title: "Error", message: "Please select a group")
+            return
+        }
+        
+        if potentialTimes.isEmpty {
+            displayMessagecli240(title: "Error", message: "Please select a date range")
+            return
+        }
+        
+        let potentialLocations = PotentialLocation(location: location, votes: nil)
+        let event = Event(name: name,
+                          descriptor: eventDescription,
+                          groupId: groupID,
+                          times: potentialTimes,
+                          locations: potentialLocations)
+        
+        
+        // Add a new document with a generated ID
+        var ref: DocumentReference? = nil
+        do {
+            ref = try database.collection("events").addDocument(from: event)
+            print("event should be in firestore")
+            eventID = ref?.documentID
+            
+        } catch let error {
+            print("Error writing event to Firestore: \(error)")
+        }
+        
+        if let a = event.times {
+            for time in a {
+                do {
+                    try database.collection("events").document(ref!.documentID).collection("potential times").addDocument(from: time)
+                    print("potential time shoud be added :S")
+                    
+                } catch let error {
+                    print("Couldn't add times to the event:", error )
+                }
+               
+            }
+        }
+    }
+    
+    
+    
+    
+    
    
 }
