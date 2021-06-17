@@ -25,8 +25,6 @@ class EventShareViewController: UIViewController {
             QRCode.image = tempCode
             shareCode.text = String(code?.prefix(4) ?? "")
         }
-
-        // Do any additional setup after loading the view.
     }
     
     func generateQRCode(from input: String) -> UIImage? {

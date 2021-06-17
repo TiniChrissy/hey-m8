@@ -64,8 +64,7 @@ class UserEventsTableViewController: UITableViewController {
             let eventCell =
                 tableView.dequeueReusableCell(withIdentifier: CELL_GROUP, for: indexPath)
             let event = userEvents[indexPath.row]
-            
-            print("about to do the event name")
+
             eventCell.textLabel?.text = event.name
             eventCell.backgroundColor = UIColor(named: "Background Colour")
             

@@ -17,10 +17,4 @@ class PotentialTime: NSObject, Codable {
     @DocumentID var id: String?
     var time: Date
     var votes: Int? //TODO: Array of id of people who voted for this in future
-
-//    init(id: String, time: Date) {
-//        self.id = id
-//        self.time = time
-//        self.votes = 0
-//    }
 }

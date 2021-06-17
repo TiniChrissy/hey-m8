@@ -13,7 +13,11 @@ class EventDetailsViewController: UIViewController, FSCalendarDelegate, FSCalend
     var database: Firestore!
     
     weak var dateRangeDelegate: CreateEventViewController?
-    private var datesRange: [Date]?
+//    private var votedDatesRange: [PotentialTime]?
+//    var votedDatesRange:[PotentialTime] = []
+//    var cards = [Car]()
+    var votedDatesRange = [PotentialTime]()
+    private var currentUserDatesRange: [Date]?
     private var firstDate: Date?
     private var lastDate: Date?
     var event: Event!
@@ -37,7 +41,7 @@ class EventDetailsViewController: UIViewController, FSCalendarDelegate, FSCalend
                             let ID = document.documentID
                             
                             //Cast vote if in selected date range
-                            self.datesRange?.forEach({ date in
+                            self.currentUserDatesRange?.forEach({ date in
 //                                let potentialTime = self.event?.times?.first{$0.time == date}
                                 if date == potentialTime.time {
                                     potentialTimesCollection.document(ID).updateData([
@@ -78,6 +82,9 @@ class EventDetailsViewController: UIViewController, FSCalendarDelegate, FSCalend
         //Connect to database
         database = Firestore.firestore()
         
+
+        
+        
     }
     
     func datesRange(from: Date, to: Date) -> [Date] {
@@ -109,7 +116,7 @@ class EventDetailsViewController: UIViewController, FSCalendarDelegate, FSCalend
         if firstDate == nil {
             print("first")
             firstDate = date
-            datesRange = [firstDate!]
+            currentUserDatesRange = [firstDate!]
             return
         }
         
@@ -120,7 +127,7 @@ class EventDetailsViewController: UIViewController, FSCalendarDelegate, FSCalend
             if date <= firstDate! {
                 calendar.deselect(firstDate!)
                 firstDate = date
-                datesRange = [firstDate!]
+                currentUserDatesRange = [firstDate!]
                 return
             }
             
@@ -131,7 +138,7 @@ class EventDetailsViewController: UIViewController, FSCalendarDelegate, FSCalend
                 calendar.select(date)
             }
             
-            datesRange = range
+            currentUserDatesRange = range
             return
         }
         
@@ -145,70 +152,94 @@ class EventDetailsViewController: UIViewController, FSCalendarDelegate, FSCalend
             lastDate = nil
             firstDate = nil
             
-            datesRange = []
+            currentUserDatesRange = []
         }
     }
     
     func calendar(_ calendar: FSCalendar, didDeselect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        // both are selected:
-        
-        //        // NOTE: the is a REDUANDENT CODE:
-        //        if firstDate != nil && lastDate != nil {
-        //            for d in calendar.selectedDates {
-        //                calendar.deselect(d)
-        //            }
-        //
-        //            lastDate = nil
-        //            firstDate = nil
-        //
-        //            datesRange = []
-        //            print("datesRange contains: \(datesRange!)")
     }
     
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, fillDefaultColorFor date: Date) -> UIColor? {
-        //        print("call fillDefaultColorFor", date)
-        let otherVotedDateColour = UIColor(named: "Light Pink")
+        var color = UIColor(named: "Background Colour")
+        getPotentialTimes(completionHandler: { (success) -> UIColor in
+            if success {
+                print("get potential times should be completely done")
+//                print(self.votedDatesRange)
+                let otherVotedDateColour = UIColor(named: "Light pink")
+                for potentialTime in self.votedDatesRange {
+                    if potentialTime.time == date {
+                        color = otherVotedDateColour
+//                        let insideColor = otherVotedDateColour
+                        print("tried to set colour of voted date")
+                        print("color", color)
+                        return color!
+                    }
+                }
+            } else {
+                print("false", self.votedDatesRange)
+                
+            }
+            print("color inside completion", color)
+//            print(insideColor)
+            return color!
+        })
         
-        let potentialTime = event?.times?.first{$0.time == date}
-        if potentialTime?.votes ?? 0 > 0 {
-            return otherVotedDateColour
-        }
-        
+        print("color just after getpotentialTimes", color)
+
+//        print("r", r)
         if Calendar.current.isDateInToday(date) {
             return UIColor(named: "AccentColor")
         }
-        return UIColor(named: "Background Colour")
+//        print("color before return", color)
+        return color
     }
-    //    self.presentDatesArray = ["2016-04-03",
-    //            "2016-04-06",
-    //            "2016-04-12",
-    //            "2016-04-25"];
-    //
-    //            self.absentDatesArray = ["2016-04-10",
-    //                "2016-04-18",
-    //                "2016-04-15",
-    //                "2016-04-16"];
     
-    //
-    //        func calendar(calendar: FSCalendar!, appearance: FSCalendarAppearance!, titleDefaultColorForDate date: NSDate!) -> UIColor!
-    //        {
-    //            let dateString: String = calendar.stringFromDate(date, format: "yyyy-MM-dd")
-    //
-    //
-    //            if presentDatesArray.containsObject(dateString)
-    //            {
-    //                return UIColor.greenColor()
-    //            }
-    //            else if absentDatesArray.containsObject(dateString)
-    //            {
-    //                return UIColor.redColor()
-    //            }
-    //            else
-    //            {
-    //                return nil
-    //            }
-    //        }
+    typealias CompletionHandler = (_ success:Bool) -> UIColor
     
+    func getPotentialTimes(completionHandler: @escaping CompletionHandler) {
+        let eventDocument = database.collection("events").document(event.id?.documentID ?? "")
+        let potentialTimesCollection = eventDocument.collection("potential times")
+        
+        potentialTimesCollection.getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                for document in querySnapshot!.documents {
+                    let result = Result {
+                        try document.data(as: PotentialTime.self)
+                    }
+                    switch result {
+                    case .success(let potentialTime):
+                        if let potentialTime = potentialTime {
+                            let ID = document.documentID
+                            self.votedDatesRange.append(potentialTime)
+//                            print("potentialTime inside",potentialTime)
+                        } else {
+                            // A nil value was successfully initialized from the DocumentSnapshot,
+                            // or the DocumentSnapshot was nil.
+                            print("Document does not exist")
+                        }
+                    case .failure(let error):
+                        // A `City` value could not be initialized from the DocumentSnapshot.
+                        print("Error decoding city: \(error)")
+                    }
+                }
+            }
+            //Here is where I believe the completion handler should go. It is exactly at this point that we are sure the async code has run.
+//            print("here is where the completion handler should be i think and therefore votedDatesRange works", self.votedDatesRange)
+            let flag = true // true if download succeed,false otherwise
+            completionHandler(flag)
+            
+        }
+//        print("entire function ended votedDatesRange", self.votedDatesRange)
+        
+       
+        
+        print("should also be empty", self.votedDatesRange)
+
+    }
+
+
 }
 
 
