@@ -81,8 +81,15 @@ class EventDetailsViewController: UIViewController, FSCalendarDelegate, FSCalend
         
         //Connect to database
         database = Firestore.firestore()
+        getPotentialTimes()
+//        do {
+//            sleep(5)
+//        }
         
-
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) { // Change `2.0` to the desired number of seconds.
+           // Code you want to be delayed
+            print("voted dates range", self.votedDatesRange)
+        }
         
         
     }
@@ -161,31 +168,25 @@ class EventDetailsViewController: UIViewController, FSCalendarDelegate, FSCalend
     
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, fillDefaultColorFor date: Date) -> UIColor? {
         var color = UIColor(named: "Background Colour")
-        getPotentialTimes(completionHandler: { (success) -> UIColor in
-            if success {
-                print("get potential times should be completely done")
-//                print(self.votedDatesRange)
-                let otherVotedDateColour = UIColor(named: "Light pink")
-                for potentialTime in self.votedDatesRange {
-                    if potentialTime.time == date {
-                        color = otherVotedDateColour
-//                        let insideColor = otherVotedDateColour
-                        print("tried to set colour of voted date")
-                        print("color", color)
-                        return color!
-                    }
-                }
-            } else {
-                print("false", self.votedDatesRange)
-                
-            }
-            print("color inside completion", color)
-//            print(insideColor)
-            return color!
-        })
+//        var test = UIColor()
+        // Need to get the colour from this but for some reason
         
+        let otherVotedDateColour = UIColor(named: "Light pink")
+        for potentialTime in self.votedDatesRange {
+            if potentialTime.time == date {
+                color = otherVotedDateColour
+//                let insideColor = otherVotedDateColour
+//                test = otherVotedDateColour!
+//                        print("tried to set colour of voted date")
+                        print("color", color)
+
+                return color!
+            }
+        }
+
         print("color just after getpotentialTimes", color)
 
+       
 //        print("r", r)
         if Calendar.current.isDateInToday(date) {
             return UIColor(named: "AccentColor")
@@ -196,7 +197,7 @@ class EventDetailsViewController: UIViewController, FSCalendarDelegate, FSCalend
     
     typealias CompletionHandler = (_ success:Bool) -> UIColor
     
-    func getPotentialTimes(completionHandler: @escaping CompletionHandler) {
+    func getPotentialTimes(){
         let eventDocument = database.collection("events").document(event.id?.documentID ?? "")
         let potentialTimesCollection = eventDocument.collection("potential times")
         
@@ -227,15 +228,12 @@ class EventDetailsViewController: UIViewController, FSCalendarDelegate, FSCalend
             }
             //Here is where I believe the completion handler should go. It is exactly at this point that we are sure the async code has run.
 //            print("here is where the completion handler should be i think and therefore votedDatesRange works", self.votedDatesRange)
-            let flag = true // true if download succeed,false otherwise
-            completionHandler(flag)
             
+//            let flag = true // true if download succeed,false otherwise
+//            completionHandler(flag)
+
         }
-//        print("entire function ended votedDatesRange", self.votedDatesRange)
-        
-       
-        
-        print("should also be empty", self.votedDatesRange)
+//        print("should also be empty", self.votedDatesRange)
 
     }
 
