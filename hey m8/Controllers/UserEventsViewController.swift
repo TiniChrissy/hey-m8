@@ -22,7 +22,6 @@ class UserEventsTableViewController: UITableViewController {
     var eventToBeSent: Event?
 
     override func viewDidLoad() {
-        
         super.viewDidLoad()
         self.view.backgroundColor = UIColor(named: "Background Colour")
 //        Production settings

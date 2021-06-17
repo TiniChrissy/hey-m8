@@ -43,7 +43,6 @@ class CreateGroupViewController: UIViewController, UITableViewDelegate,  UITable
             displayMessagecli240(title: "Error", message: "Please enter a description for your group")
             return
         }
-//        let dataToSave: [String:Any] = [name: nameTextField, eventDescription: descriptionTextField]
 
         //Get member IDs
         var ids = [String]()

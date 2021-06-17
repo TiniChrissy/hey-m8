@@ -6,23 +6,24 @@
 //
 
 import UIKit
-import FSCalendar
 import FirebaseFirestore
 
-class EventDetailsViewController: UIViewController, FSCalendarDelegate, FSCalendarDelegateAppearance {
+class EventDetailsViewController: UIViewController, UITableViewDelegate,  UITableViewDataSource {
     var database: Firestore!
     
+    @IBOutlet weak var tableView: UITableView!
     weak var dateRangeDelegate: CreateEventViewController?
-//    private var votedDatesRange: [PotentialTime]?
-//    var votedDatesRange:[PotentialTime] = []
-//    var cards = [Car]()
     var votedDatesRange = [PotentialTime]()
     private var currentUserDatesRange: [Date]?
     private var firstDate: Date?
     private var lastDate: Date?
     var event: Event!
     
-    @IBOutlet weak var calendar: FSCalendar!
+    let SECTION_DATE = 0
+    let SECTION_COUNT = 1
+    let CELL_DATE = "dateCell"
+    let CELL_COUNT = "dateCountCell"
+    
     @IBAction func confirmAvailability(_ sender: Any) {
         let eventDocument = database.collection("events").document(event.id?.documentID ?? "")
         let potentialTimesCollection = eventDocument.collection("potential times")
@@ -67,10 +68,6 @@ class EventDetailsViewController: UIViewController, FSCalendarDelegate, FSCalend
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor(named: "Background Colour")
-        calendar.delegate = self
-        calendar.allowsMultipleSelection = true
-        calendar.backgroundColor = UIColor(named: "Background Colour")
-        calendar.appearance.headerMinimumDissolvedAlpha = 0.0;
         
         //Emulator settings
         let settings = Firestore.firestore().settings
@@ -81,123 +78,104 @@ class EventDetailsViewController: UIViewController, FSCalendarDelegate, FSCalend
         
         //Connect to database
         database = Firestore.firestore()
-        getPotentialTimes()
-//        do {
-//            sleep(5)
-//        }
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) { // Change `2.0` to the desired number of seconds.
-           // Code you want to be delayed
-            print("voted dates range", self.votedDatesRange)
-        }
-        
-        
-    }
-    
-    func datesRange(from: Date, to: Date) -> [Date] {
-        // in case of the "from" date is more than "to" date,
-        // it should returns an empty array:
-        var start = from
-        var end = to
-        
-        if from > to {
-            //            return [Date]()
-            start = to
-            end = from
-        }
-        
-        var tempDate = start
-        var array = [tempDate]
-        
-        while tempDate < end {
-            tempDate = Calendar.current.date(byAdding: .day, value: 1, to: tempDate)!
-            array.append(tempDate)
-        }
-        
-        return array
-    }
-    
-    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        
-        // nothing selected:
-        if firstDate == nil {
-            print("first")
-            firstDate = date
-            currentUserDatesRange = [firstDate!]
-            return
-        }
-        
-        // only first date is selected:
-        if firstDate != nil && lastDate == nil {
-            print("second")
-            // handle the case of if the last date is less than the first date:
-            if date <= firstDate! {
-                calendar.deselect(firstDate!)
-                firstDate = date
-                currentUserDatesRange = [firstDate!]
-                return
+ 
+        getPotentialTimes(completionHandler: { (success) -> Void in
+            // When download completes,control flow goes here.
+            if success {
+                self.tableView.reloadSections([self.SECTION_DATE], with: .automatic)
+            } else {
+                // download fail
             }
-            
-            let range = datesRange(from: firstDate!, to: date)
-            lastDate = range.last
-            
-            for date in range {
-                calendar.select(date)
-            }
-            
-            currentUserDatesRange = range
-            return
-        }
-        
-        // both are selected:
-        if firstDate != nil && lastDate != nil {
-            print("third")
-            for date in calendar.selectedDates {
-                calendar.deselect(date)
-            }
-            
-            lastDate = nil
-            firstDate = nil
-            
-            currentUserDatesRange = []
-        }
+        })
     }
-    
-    func calendar(_ calendar: FSCalendar, didDeselect date: Date, at monthPosition: FSCalendarMonthPosition) {
-    }
-    
-    func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, fillDefaultColorFor date: Date) -> UIColor? {
-        var color = UIColor(named: "Background Colour")
-//        var test = UIColor()
-        // Need to get the colour from this but for some reason
-        
-        let otherVotedDateColour = UIColor(named: "Light pink")
-        for potentialTime in self.votedDatesRange {
-            if potentialTime.time == date {
-                color = otherVotedDateColour
-//                let insideColor = otherVotedDateColour
-//                test = otherVotedDateColour!
-//                        print("tried to set colour of voted date")
-                        print("color", color)
 
-                return color!
-            }
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        switch section {
+            case SECTION_DATE:
+                print("number of rows", votedDatesRange.count)
+                return votedDatesRange.count
+                
+            case SECTION_COUNT:
+                return 1
+            default:
+                return 0
+        }
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.section == SECTION_DATE {
+            print("in date section")
+            let timeCell = tableView.dequeueReusableCell(withIdentifier: CELL_DATE, for: indexPath)
+            let time = votedDatesRange[indexPath.row]
+            
+            let formatter1 = DateFormatter()
+            formatter1.dateStyle = .short
+            
+            timeCell.textLabel?.text = formatter1.string(from: time.time)
+            let str1 = "\(time.votes)"
+            timeCell.detailTextLabel?.text = str1
+//                String(time.votes ?? "0")
+//                String(format: "%d", time.votes ?? "0")
+            return timeCell
         }
 
-        print("color just after getpotentialTimes", color)
+//        let createCell = tableView.dequeueReusableCell(withIdentifier: CELL_CREATE, for: indexPath)
+//        createCell.textLabel?.text = "Create Group"
+//        createCell.textLabel?.textAlignment = .center
+//        createCell.textLabel?.textColor = UIColor(named: "Background Colour")
+    
+//        return createCell
+        return UITableViewCell() //should not happen
+    }
 
-       
-//        print("r", r)
-        if Calendar.current.isDateInToday(date) {
-            return UIColor(named: "AccentColor")
-        }
-//        print("color before return", color)
-        return color
+    // Override to support conditional editing of the table view.
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+     if indexPath.section == SECTION_DATE {
+         return true
+     }
+     // Return false if you do not want the specified item to be editable.
+     return true
     }
     
-    typealias CompletionHandler = (_ success:Bool) -> UIColor
+    // Override to support editing the table view.
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+         if editingStyle == .delete && indexPath.section == SECTION_DATE {
+//            print("trying to delete a member from group")
+//            currentMembers.remove(at: indexPath.row)
+//            membersTable.deleteRows(at: [indexPath], with: .fade)
+//            membersTable.reloadSections([SECTION_USER], with: .automatic)
+         }
+        
+    }
     
-    func getPotentialTimes(){
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == SECTION_DATE {
+            
+//            if let memberDelegate = memberDelegate {
+//                if memberDelegate.addMember(newMember: currentMembers[indexPath.row]) {
+//                    //After we've added a user, we don't want them to show up anymore
+//                    allUsers.remove(at: indexPath.row)
+//                    navigationController?.popViewController(animated: true)
+//                    return
+//                }
+//                else {
+//                    displayMessagecli240(title: "Group is full", message: "Unable to add more members to group")
+//                }
+//            }
+            
+        }
+        if indexPath.section == SECTION_COUNT {
+//            createGroup()
+        }
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    typealias CompletionHandler = (_ success:Bool) -> Void
+    func getPotentialTimes(completionHandler: @escaping CompletionHandler) {
         let eventDocument = database.collection("events").document(event.id?.documentID ?? "")
         let potentialTimesCollection = eventDocument.collection("potential times")
         
@@ -228,17 +206,19 @@ class EventDetailsViewController: UIViewController, FSCalendarDelegate, FSCalend
             }
             //Here is where I believe the completion handler should go. It is exactly at this point that we are sure the async code has run.
 //            print("here is where the completion handler should be i think and therefore votedDatesRange works", self.votedDatesRange)
+            let flag = true // true if download succeed,false otherwise
+            completionHandler(flag)
             
-//            let flag = true // true if download succeed,false otherwise
-//            completionHandler(flag)
-
         }
-//        print("should also be empty", self.votedDatesRange)
+//        print("entire function ended votedDatesRange", self.votedDatesRange)
+        
+       
+        
+        print("should also be empty", self.votedDatesRange)
 
     }
 
 
 }
-
-
-
+    
+    
