@@ -15,7 +15,7 @@ class CreateEventViewController: UIViewController {
     var database: Firestore!
     var docRef:DocumentReference!
     
-    var potentialTimes = [PotentialTime]()
+    var potentialDates = [PotentialDate]()
     var location = MKMapItem()
     var groupID: String!
     
@@ -26,17 +26,23 @@ class CreateEventViewController: UIViewController {
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var descriptionTextField: UITextField!
     @IBAction func createEventButton(_ sender: UIButton) {
-       saveEvent()
+        saveEvent()
+        
+        //Not working
+        DispatchQueue.main.async{
+            print("should be reloading data here")
+            self.allEventsDelegate?.tableView.reloadData()
+        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor(named: "Background Colour")
-
-//      Production settings
-//        let settings = FirestoreSettings()
-//        Firestore.firestore().settings = settings
-
+        
+        //      Production settings
+        //        let settings = FirestoreSettings()
+        //        Firestore.firestore().settings = settings
+        
         //Emulator settings
         let settings = Firestore.firestore().settings
         settings.host = "localhost:8080"
@@ -47,7 +53,7 @@ class CreateEventViewController: UIViewController {
         //Connect to database
         database = Firestore.firestore()
     }
-
+    
     // MARK: - Navigation
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -68,12 +74,12 @@ class CreateEventViewController: UIViewController {
             let destination = segue.destination as! EventShareViewController
             destination.eventDelegate = self
         }
-
+        
     }
     
     func addDateRange(newDateRange: [Date]) -> Bool {
         newDateRange.forEach { date in
-            potentialTimes.append(PotentialTime(time: date, votes: nil))
+            potentialDates.append(PotentialDate(time: date, votes: nil))
         }
         return true
     }
@@ -102,7 +108,7 @@ class CreateEventViewController: UIViewController {
             return
         }
         
-        if potentialTimes.isEmpty {
+        if potentialDates.isEmpty {
             displayMessagecli240(title: "Error", message: "Please select a date range")
             return
         }
@@ -111,8 +117,8 @@ class CreateEventViewController: UIViewController {
         let event = Event(name: name,
                           descriptor: eventDescription,
                           groupId: groupID,
-                          times: potentialTimes,
-                          locations: potentialLocations)
+                          times: potentialDates,
+                          location: potentialLocations)
         
         // Add a new document with a generated ID
         var ref: DocumentReference? = nil
@@ -133,16 +139,10 @@ class CreateEventViewController: UIViewController {
                 } catch let error {
                     print("Couldn't add times to the event:", error )
                 }
-               
+                
             }
         }
-        allEventsDelegate?.tableView.reloadData()
-//        allEventsDelegate?.tableView.reloadSections([allEventsDelegate?.SECTION_EVENT], with: .automatic)
+        
     }
-    
-    
-    
-    
-    
-   
+
 }

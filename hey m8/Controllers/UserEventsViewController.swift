@@ -16,7 +16,6 @@ class UserEventsTableViewController: UITableViewController {
     let CELL_GROUP = "eventCell";
     let CELL_INFO = "infoCell";
     
-    var allEvents: [Event] = [] //allEvents? inclues for users apart from this one.. ??maybe not necessary if i'm just directly adding it to firebase anwyays
     var userEvents: [Event] = [] //filteredEvents?
     
     var eventToBeSent: Event?
@@ -24,6 +23,7 @@ class UserEventsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor(named: "Background Colour")
+        
 //        Production settings
 //        let settings = FirestoreSettings()
 //        Firestore.firestore().settings = settings
@@ -40,6 +40,9 @@ class UserEventsTableViewController: UITableViewController {
 
         getAllEvents()
         tableView.reloadSections([SECTION_EVENT], with: .automatic)
+        
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
     }
 
     // MARK: - Table view data source
@@ -66,7 +69,7 @@ class UserEventsTableViewController: UITableViewController {
 
             eventCell.textLabel?.text = event.name
             eventCell.backgroundColor = UIColor(named: "Background Colour")
-            
+            eventCell.detailTextLabel?.text = event.location.location.placemark.title
 
             return eventCell
         }
@@ -135,7 +138,6 @@ class UserEventsTableViewController: UITableViewController {
         if segue.identifier == "createEventSegue" {
             let destination = segue.destination as! CreateEventViewController
             destination.allEventsDelegate = self
-            print("allEventsDelegate set")
         }
     }
     
@@ -166,9 +168,11 @@ class UserEventsTableViewController: UITableViewController {
                     }
                 }
             }
+            
         }
-        
     }
+    
+    
 
 }
 

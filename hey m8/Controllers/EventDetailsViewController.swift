@@ -15,8 +15,8 @@ class EventDetailsViewController: UIViewController, UITableViewDelegate,  UITabl
     @IBOutlet weak var tableView: UITableView!
     
     weak var dateRangeDelegate: CreateEventViewController?
-    var votedDatesRange = [PotentialTime]()
-    var selectedDates = [PotentialTime]()
+    var votedDatesRange = [PotentialDate]()
+    var selectedDates = [PotentialDate]()
     private var firstDate: Date?
     private var lastDate: Date?
     var event: Event!
@@ -31,27 +31,31 @@ class EventDetailsViewController: UIViewController, UITableViewDelegate,  UITabl
             displayMessagecli240(title: "Invalid Date Range", message: "Please vote for at least one date")
         }
         let eventDocument = database.collection("events").document(event.id?.documentID ?? "")
-        let potentialTimesCollection = eventDocument.collection("potential times")
+        let potentialDatesCollection = eventDocument.collection("potential times")
         
-        potentialTimesCollection.getDocuments() { (querySnapshot, err) in
+        potentialDatesCollection.getDocuments() { (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {
                 for document in querySnapshot!.documents {
                     let result = Result {
-                        try document.data(as: PotentialTime.self)
+                        try document.data(as: PotentialDate.self)
                     }
                     switch result {
-                    case .success(let potentialTime):
-                        if let potentialTime = potentialTime {
+                    case .success(let potentialDate):
+                        if let potentialDate = potentialDate {
                             let ID = document.documentID
                             
+                            //For each date the user has selected
                             self.selectedDates.forEach({ date in
-                                if date.time == potentialTime.time {
-                                    potentialTimesCollection.document(ID).updateData([
+                                // check it against each potential date
+                                if date.time == potentialDate.time {
+                                    // If it matches, increment the vote on firestore
+                                    potentialDatesCollection.document(ID).updateData([
                                         "vote": FieldValue.increment(Int64(1))
                                     ])
                                     
+                                    //Update the vote locally as well
                                     if let i = self.votedDatesRange.firstIndex(where: {$0.time == date.time}) {
                                         if self.votedDatesRange[i].votes == nil {
                                             self.votedDatesRange[i].votes = 1
@@ -69,13 +73,13 @@ class EventDetailsViewController: UIViewController, UITableViewDelegate,  UITabl
                             print("Document does not exist")
                         }
                     case .failure(let error):
-                        // A `potentialTime` value could not be initialized from the DocumentSnapshot.
+                        // A `potentialDate` value could not be initialized from the DocumentSnapshot.
                         print("Error decoding city: \(error)")
                     }
                 }
             }
+            // Here is before the end of the completion. i.e, here is where to write code for after network calls have run
             self.selectedDates.removeAll()
-//            self.dateRangeDelegate
             self.navigationController?.popViewController(animated: true)
         }
         
@@ -98,18 +102,16 @@ class EventDetailsViewController: UIViewController, UITableViewDelegate,  UITabl
         //Connect to database
         database = Firestore.firestore()
         
-        getPotentialTimes(completionHandler: { (success) -> Void in
+        // After data is retrieved, update the table
+        getPotentialDates(completionHandler: { (success) -> Void in
             if success {
                 self.tableView.reloadSections([self.SECTION_DATE], with: .automatic)
-                self.votedDatesRange.forEach({ potentialTime in
-                })
-                
                 self.tableView.reloadSections([self.SECTION_COUNT], with: .automatic)
             } else {
                 // placeholder
             }
         })
-        tableView?.allowsMultipleSelection = true
+        tableView.allowsMultipleSelection = true
         tableView.allowsSelection = true
         tableView.isUserInteractionEnabled = true
     }
@@ -135,10 +137,10 @@ class EventDetailsViewController: UIViewController, UITableViewDelegate,  UITabl
             timeCell.backgroundColor = UIColor(named: "Background Colour")
             let time = votedDatesRange[indexPath.row]
             
-            let formatter1 = DateFormatter()
-            formatter1.dateStyle = .short
+            let formatter = DateFormatter()
+            formatter.dateStyle = .short
             
-            timeCell.textLabel?.text = formatter1.string(from: time.time)
+            timeCell.textLabel?.text = formatter.string(from: time.time)
 
             if time.votes == nil {
                 time.votes = 0
@@ -162,7 +164,6 @@ class EventDetailsViewController: UIViewController, UITableViewDelegate,  UITabl
         if indexPath.section == SECTION_COUNT {
             let countCell = tableView.dequeueReusableCell(withIdentifier: CELL_COUNT, for: indexPath)
             countCell.backgroundColor = UIColor(named: "Background Colour")
-            //            countCell.textLabel?.text = String(votedDatesRange.count) + " available dates for you to choose from"
             
             if votedDatesRange.count == 0 {
                 countCell.textLabel?.text = "No available dates for you to choose from"
@@ -221,32 +222,35 @@ class EventDetailsViewController: UIViewController, UITableViewDelegate,  UITabl
         return true
     }
     typealias CompletionHandler = (_ success:Bool) -> Void
-    func getPotentialTimes(completionHandler: @escaping CompletionHandler) {
+    func getPotentialDates(completionHandler: @escaping CompletionHandler) {
         let eventDocument = database.collection("events").document(event.id?.documentID ?? "")
-        let potentialTimesCollection = eventDocument.collection("potential times")
+        let potentialDatesCollection = eventDocument.collection("potential times")
         
-        potentialTimesCollection.getDocuments() { (querySnapshot, err) in
+        potentialDatesCollection.getDocuments() { (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {
                 for document in querySnapshot!.documents {
                     let result = Result {
-                        try document.data(as: PotentialTime.self)
+                        try document.data(as: PotentialDate.self)
                         
                     }
                     switch result {
-                    case .success(let potentialTime):
-                        if let potentialTime = potentialTime {
+                    case .success(let potentialDate):
+                        //If the type is correct
+                        if let potentialDate = potentialDate {
                             let data = document.data()
-                            potentialTime.votes = data["vote"] as? Int
-                            self.votedDatesRange.append(potentialTime)
+                            //Have to manually set this for some reason, the decoding doesn't seem to work correctly
+                            potentialDate.votes = data["vote"] as? Int
+                            
+                            self.votedDatesRange.append(potentialDate)
                         } else {
                             // A nil value was successfully initialized from the DocumentSnapshot,
                             // or the DocumentSnapshot was nil.
                             print("Document does not exist")
                         }
                     case .failure(let error):
-                        // A `PotentialTime` value could not be initialized from the DocumentSnapshot.
+                        // A `PotentialDate` value could not be initialized from the DocumentSnapshot.
                         print("Error decoding city: \(error)")
                     }
                 }

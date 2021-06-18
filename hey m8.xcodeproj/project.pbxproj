@@ -31,7 +31,7 @@
 		AE9B467A264A346600C179BF /* AddDateRangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9B4679264A346600C179BF /* AddDateRangeViewController.swift */; };
 		AEA7DAE22667B5E50057EB60 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA7DAE12667B5E50057EB60 /* SettingsViewController.swift */; };
 		AEB400952678C1DC0039A5D9 /* EventShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB400942678C1DC0039A5D9 /* EventShareViewController.swift */; };
-		AEB49710266A316B008007D9 /* PotentialTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB4970F266A316B008007D9 /* PotentialTime.swift */; };
+		AEB49710266A316B008007D9 /* PotentialDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB4970F266A316B008007D9 /* PotentialDate.swift */; };
 		AEB49712266A317E008007D9 /* PotentialLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB49711266A317E008007D9 /* PotentialLocation.swift */; };
 		AEB49714266B4FCF008007D9 /* EventDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB49713266B4FCF008007D9 /* EventDetailsViewController.swift */; };
 		DCFD44002BEE568E9CC30FC6 /* Pods_hey_m8.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF7179FA12A24B4D83EDD70F /* Pods_hey_m8.framework */; };
@@ -66,7 +66,7 @@
 		AE9B4679264A346600C179BF /* AddDateRangeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDateRangeViewController.swift; sourceTree = "<group>"; };
 		AEA7DAE12667B5E50057EB60 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		AEB400942678C1DC0039A5D9 /* EventShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventShareViewController.swift; sourceTree = "<group>"; };
-		AEB4970F266A316B008007D9 /* PotentialTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PotentialTime.swift; sourceTree = "<group>"; };
+		AEB4970F266A316B008007D9 /* PotentialDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PotentialDate.swift; sourceTree = "<group>"; };
 		AEB49711266A317E008007D9 /* PotentialLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PotentialLocation.swift; sourceTree = "<group>"; };
 		AEB49713266B4FCF008007D9 /* EventDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailsViewController.swift; sourceTree = "<group>"; };
 		BF7179FA12A24B4D83EDD70F /* Pods_hey_m8.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_hey_m8.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -155,7 +155,7 @@
 				AE04C266265A6C5D00D53865 /* Group.swift */,
 				AE3B8843265A7E8500553783 /* User.swift */,
 				AE3B8849265CEE0100553783 /* Event.swift */,
-				AEB4970F266A316B008007D9 /* PotentialTime.swift */,
+				AEB4970F266A316B008007D9 /* PotentialDate.swift */,
 				AEB49711266A317E008007D9 /* PotentialLocation.swift */,
 			);
 			path = Classes;
@@ -311,7 +311,7 @@
 				AEA7DAE22667B5E50057EB60 /* SettingsViewController.swift in Sources */,
 				AE1E79CE263BC6A000839C27 /* SceneDelegate.swift in Sources */,
 				AE9B467A264A346600C179BF /* AddDateRangeViewController.swift in Sources */,
-				AEB49710266A316B008007D9 /* PotentialTime.swift in Sources */,
+				AEB49710266A316B008007D9 /* PotentialDate.swift in Sources */,
 				AE9B4678264A2F8B00C179BF /* CustomCell.swift in Sources */,
 				AE04C263265A6AA300D53865 /* UserGroupsTableViewController.swift in Sources */,
 				AEB400952678C1DC0039A5D9 /* EventShareViewController.swift in Sources */,

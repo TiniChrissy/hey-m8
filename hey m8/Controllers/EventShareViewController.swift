@@ -10,10 +10,16 @@
 import UIKit
 
 class EventShareViewController: UIViewController {
-
+    
     @IBOutlet weak var QRCode: UIImageView!
     @IBOutlet weak var shareCode: UILabel!
     
+    @IBAction func goBackToMainEventPage(_ sender: Any) {
+        
+        let userEventsViewController = self.navigationController?.viewControllers[(self.navigationController?.viewControllers.count)! - 3] as? UserEventsTableViewController
+        self.navigationController?.popToViewController(userEventsViewController!, animated: true)
+        
+    }
     weak var eventDelegate: CreateEventViewController?
     
     override func viewDidLoad() {
@@ -29,27 +35,17 @@ class EventShareViewController: UIViewController {
     
     func generateQRCode(from input: String) -> UIImage? {
         let data = input.data(using: String.Encoding.ascii)
-
+        
         if let filter = CIFilter(name: "CIQRCodeGenerator") {
             filter.setValue(data, forKey: "inputMessage")
             let transform = CGAffineTransform(scaleX: 3, y: 3)
-
+            
             if let output = filter.outputImage?.transformed(by: transform) {
                 return UIImage(ciImage: output)
             }
         }
-
+        
         return nil
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

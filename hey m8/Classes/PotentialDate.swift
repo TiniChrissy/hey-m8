@@ -8,7 +8,7 @@
 import Foundation
 import FirebaseFirestoreSwift
 
-class PotentialTime: NSObject, Codable {
+class PotentialDate: NSObject, Codable {
     internal init(time: Date, votes: Int? = nil) {
         self.time = time
         self.votes = votes

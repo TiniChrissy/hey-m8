@@ -41,14 +41,10 @@ class AddLocationViewController: UIViewController, UISearchBarDelegate, MKLocalS
     }
     
     // This method declares gets called whenever the searchCompleter has new search results
-    // If you wanted to do any filter of the locations that are displayed on the the table view
-    // this would be the place to do it.
+    // Filter locations here
     func completerDidUpdateResults(_ completer: MKLocalSearchCompleter) {
-        
-        // Setting our searcResults variable to the results that the searchCompleter returned
+        // Setting our searchResults variable to the results that the searchCompleter returned
         searchResults = completer.results
-        
-        // Reload the tableview with our new searchResults
         searchResultsTable.reloadData()
     }
     
@@ -56,7 +52,6 @@ class AddLocationViewController: UIViewController, UISearchBarDelegate, MKLocalS
     func completer(_ completer: MKLocalSearchCompleter, didFailWithError error: Error) {
         // Error
     }
-
 
 }
 
@@ -116,15 +111,9 @@ extension AddLocationViewController: UITableViewDelegate {
 
             self.locationDelegate?.addLocation(newLocation: MKMapItem)
             self.navigationController?.popViewController(animated: true)
-            
-//            if (error != nil) {
-//                displayMessagecli240(title: "Error", message: "I'm not srue what the issue was sorry")
-//            }
+
             return
 
-            
-//            let lat = coordinate.latitude
-//            let lon = coordinate.longitude
         }
     }
 }

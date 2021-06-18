@@ -13,7 +13,6 @@ class AddDateRangeViewController: UIViewController, FSCalendarDelegate {
     @IBOutlet weak var calendar: FSCalendar!
     @IBAction func saveDateRange(_ sender: Any) {
         if let dateRangeDelegate = dateRangeDelegate {
-            print("indaterangedelegate")
             if dateRangeDelegate.addDateRange(newDateRange: datesRange ?? [Date]()) {
                 navigationController?.popViewController(animated: true)
                 return

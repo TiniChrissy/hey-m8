@@ -10,35 +10,33 @@ import FirebaseFirestoreSwift
 import Firebase
 
 class Event: NSObject, Codable {
-    internal init(name: String, descriptor: String? = nil, groupId: String, times: Array<PotentialTime>, locations: PotentialLocation) {
+    internal init(name: String, descriptor: String? = nil, groupId: String, times: Array<PotentialDate>, location: PotentialLocation) {
         self.name = name
         self.descriptor = descriptor
         self.groupId = groupId
         self.times = times
-        self.locations = locations
+        self.location = location
     }
     
     @DocumentID var id: DocumentReference?
     var name: String
     var descriptor: String?
     var groupId: String
-    var times: Array<PotentialTime>?
-    var locations: PotentialLocation
+    var times: Array<PotentialDate>?
+    var location: PotentialLocation
     
     private enum CodingKeys: String, CodingKey {
-        case name, descriptor, groupId, locations, id
+        case name, descriptor, groupId, location, id
     }
     
     required init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
 
-//        id = try values.decode(String.self, forKey: .id)
         id = try values.decode(DocumentID<DocumentReference>.self, forKey: .id).wrappedValue
         name = try values.decodeIfPresent(String.self, forKey: .name)!
         descriptor = try values.decodeIfPresent(String.self, forKey: .descriptor)
         groupId = try values.decodeIfPresent(String.self, forKey: .groupId)!
-        locations = try values.decodeIfPresent(PotentialLocation.self, forKey: .locations)!
-
+        location = try values.decodeIfPresent(PotentialLocation.self, forKey: .location)!
     }
     
     func encode(to encoder: Encoder) throws {
@@ -47,10 +45,8 @@ class Event: NSObject, Codable {
         try container.encodeIfPresent(descriptor, forKey: .descriptor)
         try container.encode(name, forKey: .name)
         try container.encode(groupId, forKey: .groupId)
-        try container.encode(locations, forKey: .locations)
-        
-//        try container.encode(location.placemark.coordinate.latitude, forKey: .latitude)
-//        try container.encode(location.placemark.coordinate.longitude, forKey: .longitude)
+        try container.encode(location, forKey: .location)
+
     }
         
 }

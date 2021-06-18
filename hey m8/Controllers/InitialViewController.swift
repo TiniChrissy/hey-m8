@@ -25,20 +25,14 @@ import SwiftUI
 class InitialViewController: UIViewController {
     
     @IBOutlet weak var googleSignInButton: GIDSignInButton!
-    
-    //   var signInButton: UIButton!
+
     var signOutButton: UIButton!
     var greetingLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor(named: "Light pink")
-        
-        // Do any additional setup after loading the view.
-        
-        //Use emulator, leads to error, TODO
-        //        Auth.auth().useEmulator(withHost:"localhost", port:9099)
-        
+
         // Add greeting label
         greetingLabel = UILabel()
         greetingLabel.text = "Log in or sign up to hey m8"
@@ -46,8 +40,15 @@ class InitialViewController: UIViewController {
         //       greetingLabel.backgroundColor = .tertiarySystemFill
         view.addSubview(greetingLabel)
         greetingLabel.translatesAutoresizingMaskIntoConstraints = false
+ 
+        let margins = view.layoutMarginsGuide
+//        greetingLabel.leadingAnchor.constraint(equalTo: margins.leadingAnchor, constant: 20).isActive = true
+//        greetingLabel.trailingAnchor.constraint(equalTo: margins.trailingAnchor, constant: 20).isActive = true
+        greetingLabel.topAnchor.constraint(equalTo: margins.topAnchor, constant: 50).isActive = true
+        greetingLabel.bottomAnchor.constraint(equalTo: margins.bottomAnchor, constant: 20).isActive = true
+
         greetingLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        greetingLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -80).isActive = true
+//        greetingLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -80).isActive = true
         greetingLabel.heightAnchor.constraint(equalToConstant: 54).isActive = true
         greetingLabel.widthAnchor.constraint(equalToConstant: 300).isActive = true
         
@@ -57,23 +58,7 @@ class InitialViewController: UIViewController {
         } else {
             googleSignInButton.colorScheme = GIDSignInButtonColorScheme.light
         }
-        //       googleSignInButton.style = GIDSignInButtonStyle.iconOnly
-        //
-        /*
-         // Add sign-in button
-         signInButton = UIButton()
-         signInButton.layer.cornerRadius = 10.0
-         signInButton.setTitle("Sign in with Google", for: .normal)
-         signInButton.setTitleColor(.white, for: .normal)
-         signInButton.backgroundColor = .systemRed
-         //       signInButton.addTarget(self, action: #selector(signInButtonTapped(_:)), for: .touchUpInside)
-         view.addSubview(signInButton)
-         signInButton.translatesAutoresizingMaskIntoConstraints = false
-         signInButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-         signInButton.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-         signInButton.heightAnchor.constraint(equalToConstant: 44).isActive = true
-         signInButton.widthAnchor.constraint(equalToConstant: 250).isActive = true
-         */
+        
         // Add sign-out button
         signOutButton = UIButton()
         signOutButton.layer.cornerRadius = 10.0
@@ -94,9 +79,6 @@ class InitialViewController: UIViewController {
         // Let GIDSignIn know that this view controller is presenter of the sign-in sheet
         GIDSignIn.sharedInstance()?.presentingViewController = self
         
-        // Automatically sign in the user.
-        //        GIDSignIn.sharedInstance()?.restorePreviousSignIn()
-        
         // Register notification to update screen after user successfully signed in
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(userDidSignInGoogle(_:)),
@@ -109,8 +91,6 @@ class InitialViewController: UIViewController {
     
     // MARK:- Notification
     @objc private func userDidSignInGoogle(_ notification: Notification) {
-        // Update screen after user successfully signed in
-        //        updateScreen()
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let mainTabViewController = storyboard.instantiateViewController(identifier: "MainTabViewController")
@@ -127,9 +107,6 @@ class InitialViewController: UIViewController {
         // Sign out from Firebase
         do {
             try Auth.auth().signOut()
-            
-            // Update screen after user successfully signed out
-            //            updateScreen()
         } catch let error as NSError {
             print ("Error signing out from Firebase: %@", error)
         }

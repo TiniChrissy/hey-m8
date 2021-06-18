@@ -16,10 +16,8 @@ class UserGroupsTableViewController: UITableViewController {
     let CELL_GROUP = "groupCell";
     let CELL_INFO = "infoCell";
     
-    var allGroups: [Group] = [] //allGroups? inclues for users apart from this one.. ??maybe not necessary if i'm just directly adding it to firebase anwyays
-    var userGroups: [Group] = [] //filteredGroups?
+    var userGroups: [Group] = []
     
-//    weak var memberDelegate: addMemberDelegate?
     weak var eventDelegate: CreateEventViewController?
     
     override func viewDidLoad() {
@@ -40,17 +38,8 @@ class UserGroupsTableViewController: UITableViewController {
         //Connect to database
         database = Firestore.firestore()
         
-//        tableView.performBatchUpdates(getAllGroups(), completion: nil)
-
-//        tableView.beginUpdates()
-//        tableView.insertRows(at: [IndexPath(row: userGroups.count - 1, section: 0)],
-//                             with: .automatic)
-//        tableView.endUpdates()
         getAllGroups()
         tableView.reloadSections([SECTION_GROUP], with: .automatic)
-        
-        
-
     }
 
     // MARK: - Table view data source
@@ -84,15 +73,13 @@ class UserGroupsTableViewController: UITableViewController {
                 let docRef = database.collection("users").document(member)
                 docRef.getDocument { (document, error) in
                     if let document = document, document.exists {
-//                        let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
-                        
-                        let a = document.data()?["displayName"] as! String
+                        let nameAsString = document.data()?["displayName"] as! String
                         
                         if member != group.members[0] {
                             groupCell.detailTextLabel?.text?.append(", ")
                         }
 
-                        groupCell.detailTextLabel?.text?.append(a)
+                        groupCell.detailTextLabel?.text?.append(nameAsString)
                     } else {
                         print("Document does not exist")
                     }
@@ -133,7 +120,6 @@ class UserGroupsTableViewController: UITableViewController {
         return false
     }
     
-
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete && indexPath.section == SECTION_GROUP {
@@ -174,15 +160,13 @@ class UserGroupsTableViewController: UITableViewController {
         return true
     }
     
-    func getAllGroups() -> Void { //from firestore
+    func getAllGroups() -> Void { //From firestore
         let database = Firestore.firestore()
         database.collection("groups").getDocuments() { (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {
                 for document in querySnapshot!.documents {
-//                    print("\(document.documentID) => \(document.data())")
-                    
                     let groupName = document.data()["name"] as! String
                     let groupId = document.documentID
                     let groupMembers = document.data()["members"] as? Array<String> ?? [""]
