@@ -9,9 +9,11 @@ import UIKit
 
 class SettingsViewController: UIViewController {
 
+    @IBOutlet weak var textView: UITextView!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor(named: "Background Colour")
+        textView.isEditable = false
 
         // Do any additional setup after loading the view.
     }

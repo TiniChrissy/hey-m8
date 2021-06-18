@@ -4,6 +4,7 @@
 //
 //  Created by Christina Li on 5/6/21.
 //
+//https://stackoverflow.com/questions/30401439/how-could-i-create-a-function-with-a-completion-handler-in-swift
 
 import UIKit
 import FirebaseFirestore
@@ -101,8 +102,6 @@ class EventDetailsViewController: UIViewController, UITableViewDelegate,  UITabl
             if success {
                 self.tableView.reloadSections([self.SECTION_DATE], with: .automatic)
                 self.votedDatesRange.forEach({ potentialTime in
-                    print("date", potentialTime.time)
-                    print("votes", potentialTime.votes)
                 })
                 
                 self.tableView.reloadSections([self.SECTION_COUNT], with: .automatic)
@@ -140,8 +139,7 @@ class EventDetailsViewController: UIViewController, UITableViewDelegate,  UITabl
             formatter1.dateStyle = .short
             
             timeCell.textLabel?.text = formatter1.string(from: time.time)
-            
-            print("this should not be zero", time.votes)
+
             if time.votes == nil {
                 time.votes = 0
             }
@@ -232,7 +230,6 @@ class EventDetailsViewController: UIViewController, UITableViewDelegate,  UITabl
                 print("Error getting documents: \(err)")
             } else {
                 for document in querySnapshot!.documents {
-                    print("document", document.data())
                     let result = Result {
                         try document.data(as: PotentialTime.self)
                         
@@ -240,9 +237,8 @@ class EventDetailsViewController: UIViewController, UITableViewDelegate,  UITabl
                     switch result {
                     case .success(let potentialTime):
                         if let potentialTime = potentialTime {
-                            let a = document.data()
-                            let ID = document.documentID
-                            potentialTime.votes = a["vote"] as? Int
+                            let data = document.data()
+                            potentialTime.votes = data["vote"] as? Int
                             self.votedDatesRange.append(potentialTime)
                         } else {
                             // A nil value was successfully initialized from the DocumentSnapshot,
@@ -250,14 +246,12 @@ class EventDetailsViewController: UIViewController, UITableViewDelegate,  UITabl
                             print("Document does not exist")
                         }
                     case .failure(let error):
-                        // A `City` value could not be initialized from the DocumentSnapshot.
+                        // A `PotentialTime` value could not be initialized from the DocumentSnapshot.
                         print("Error decoding city: \(error)")
                     }
                 }
             }
-            //Here is where I believe the completion handler should go. It is exactly at this point that we are sure the async code has run.
-            //            print("here is where the completion handler should be i think and therefore votedDatesRange works", self.votedDatesRange)
-            let flag = true // true if download succeed,false otherwise
+            let flag = true // true if function succeed,false otherwise
             completionHandler(flag)
             
         }

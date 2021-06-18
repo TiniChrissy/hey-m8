@@ -26,7 +26,6 @@ class CreateEventViewController: UIViewController {
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var descriptionTextField: UITextField!
     @IBAction func createEventButton(_ sender: UIButton) {
-        print("inside programtic text bit")
        saveEvent()
     }
     

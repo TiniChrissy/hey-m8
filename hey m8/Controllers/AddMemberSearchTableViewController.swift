@@ -36,12 +36,6 @@ class AddMemberSearchTableViewController: UITableViewController, UISearchResults
         
         // This view controller decides how the search controller is presented
         definesPresentationContext = true
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
     // MARK: - Table view data source
@@ -134,32 +128,7 @@ class AddMemberSearchTableViewController: UITableViewController, UISearchResults
             filteredUsers = allUsers}
         tableView.reloadData()
     }
-    
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
 
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-    
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "createOrEditMealSegue" {
-//            let destination = segue.destination as! CreateOrEditMealTableViewController
-//            destination.mealDelegate = self}
-//        // Get the new view controller using segue.destination.
-//        // Pass the selected object to the new view controller.
-//    }
     func getAllUsers() {
         //Local emulator settings
         //COMMENT THIS SECTION OUT FOR REAL CONNECTION
@@ -179,14 +148,6 @@ class AddMemberSearchTableViewController: UITableViewController, UISearchResults
                     print("\(document.documentID) => \(document.data())")
                     let user = User(id: document.documentID, displayName: document.data()["displayName"] as! String)
                     self.allUsers.append(user)
-//                    do {
-//                        if let user = try document.data(as: User.self) {
-//                            print(user.displayName)
-//                        }
-//                    } catch let error as NSError {
-//                        print("error: \(error.localizedDescription)")
-//                    }
-                    
                 }
             }
         }

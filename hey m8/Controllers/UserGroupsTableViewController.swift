@@ -93,14 +93,12 @@ class UserGroupsTableViewController: UITableViewController {
                         }
 
                         groupCell.detailTextLabel?.text?.append(a)
-//                        print("Document data: \(dataDescription)")
                     } else {
                         print("Document does not exist")
                     }
                 }
 
             }
-//
             return groupCell
         }
         

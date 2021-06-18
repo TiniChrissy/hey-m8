@@ -31,6 +31,7 @@ class AddLocationViewController: UIViewController, UISearchBarDelegate, MKLocalS
         searchBar?.delegate = self
         searchResultsTable?.delegate = self
         searchResultsTable?.dataSource = self
+        searchResultsTable.backgroundColor = UIColor(named: "Background Colour")
     }
     
     // This method declares that whenever the text in the searchbar is change to also update
@@ -84,6 +85,7 @@ extension AddLocationViewController: UITableViewDataSource {
         //Set the content of the cell to our searchResult data
         cell.textLabel?.text = searchResult.title
         cell.detailTextLabel?.text = searchResult.subtitle
+        cell.backgroundColor = UIColor(named: "Background Colour")
         
         return cell
     }
@@ -99,7 +101,6 @@ extension AddLocationViewController: UITableViewDelegate {
         let searchRequest = MKLocalSearch.Request(completion: result)
         
         let search = MKLocalSearch(request: searchRequest) //search is a MKLocalSearch
-//        print("search", search.type)
         search.start { (response, error) in
             guard let coordinate = response?.mapItems[0].placemark.coordinate else {
                 return

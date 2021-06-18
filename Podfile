@@ -9,7 +9,6 @@ target 'hey m8' do
   pod 'GoogleSignIn'
   pod 'Firebase/Auth' 
   pod 'FirebaseUI'  #For prebuilt UI, doens't include UI for anonymous login
-  pod 'JTAppleCalendar'
   pod 'Firebase/Firestore'
   pod 'FSCalendar'
 # Optionally, include the Swift extensions if you're using Swift.

@@ -105,19 +105,7 @@ class AddDateRangeViewController: UIViewController, FSCalendarDelegate {
     }
     
     func calendar(_ calendar: FSCalendar, didDeselect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        // both are selected:
-        
-        //        // NOTE: the is a REDUANDENT CODE:
-        //        if firstDate != nil && lastDate != nil {
-        //            for d in calendar.selectedDates {
-        //                calendar.deselect(d)
-        //            }
-        //
-        //            lastDate = nil
-        //            firstDate = nil
-        //
-        //            datesRange = []
-        //            print("datesRange contains: \(datesRange!)")
+
     }
 }
 

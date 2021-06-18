@@ -69,8 +69,9 @@ class CreateGroupViewController: UIViewController, UITableViewDelegate,  UITable
         groupDelegate?.addGroup(newGroup: newGroup)
         //move back to groups screen
         navigationController?.popViewController(animated: true)
+        
+        //TODO: Create group with individual members, Guard for group with no member
     }
-    //Consider future guard for group with no member? Or perhaps group must default have the person who created the group
 
     override func viewDidLoad() {
         super.viewDidLoad()
