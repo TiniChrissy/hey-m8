@@ -37,18 +37,14 @@ class InitialViewController: UIViewController {
         greetingLabel = UILabel()
         greetingLabel.text = "Log in or sign up to hey m8"
         greetingLabel.textAlignment = .center
-        //       greetingLabel.backgroundColor = .tertiarySystemFill
         view.addSubview(greetingLabel)
         greetingLabel.translatesAutoresizingMaskIntoConstraints = false
  
         let margins = view.layoutMarginsGuide
-//        greetingLabel.leadingAnchor.constraint(equalTo: margins.leadingAnchor, constant: 20).isActive = true
-//        greetingLabel.trailingAnchor.constraint(equalTo: margins.trailingAnchor, constant: 20).isActive = true
         greetingLabel.topAnchor.constraint(equalTo: margins.topAnchor, constant: 50).isActive = true
         greetingLabel.bottomAnchor.constraint(equalTo: margins.bottomAnchor, constant: 20).isActive = true
 
         greetingLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-//        greetingLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -80).isActive = true
         greetingLabel.heightAnchor.constraint(equalToConstant: 54).isActive = true
         greetingLabel.widthAnchor.constraint(equalToConstant: 300).isActive = true
         
