@@ -131,6 +131,12 @@ class UserEventsTableViewController: UITableViewController {
             let destination = segue.destination as! EventDetailsViewController
             destination.event = eventToBeSent
         }
+        
+        if segue.identifier == "createEventSegue" {
+            let destination = segue.destination as! CreateEventViewController
+            destination.allEventsDelegate = self
+            print("allEventsDelegate set")
+        }
     }
     
     //Add to current table and display
@@ -158,15 +164,6 @@ class UserEventsTableViewController: UITableViewController {
                     catch {
                         print(error)
                     }
-                    //                    print("\(document.documentID) => \(document.data())")
-                    //
-                    //                    let eventName = document.data()["name"] as! String
-                    //                    let eventId = document.documentID
-                    //                    let eventMembers = document.data()["members"] as? Array<String> ?? [""]
-                    //
-                    //                    let event = Event(name: eventName, descriptor: nil, groupId: <#T##Int#>, times: <#T##Array<PotentialTime>#>, locations: <#T##Array<PotentialLocation>#>)
-                    //                    let event = Event(name: eventName, eventID: eventId)
-                    //                    self.addEvent(newEvent: event)
                 }
             }
         }

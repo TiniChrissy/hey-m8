@@ -99,7 +99,7 @@
                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="Wl1-LM-xyi">
                             <color key="tintColor" name="Global Tint"/>
                             <connections>
-                                <segue destination="Bbc-4d-SSl" kind="show" id="9kx-Cv-Ago"/>
+                                <segue destination="Bbc-4d-SSl" kind="show" identifier="createEventSegue" id="9kx-Cv-Ago"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -206,9 +206,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dPs-2E-6XW">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsMultipleSelection="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dPs-2E-6XW">
                                 <rect key="frame" x="0.0" y="88" width="414" height="665"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" name="Background Colour"/>
                                 <color key="sectionIndexBackgroundColor" name="Background Colour"/>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="ml0-Mc-1Vr">
                                     <rect key="frame" x="0.0" y="136.00000034679067" width="414" height="44"/>
@@ -241,7 +241,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" name="Background Colour"/>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="dateCountCell" textLabel="SSF-gy-Mnn" detailTextLabel="1DW-H8-8Xf" style="IBUITableViewCellStyleSubtitle" id="ofM-tZ-cqR">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="dateCountCell" textLabel="SSF-gy-Mnn" style="IBUITableViewCellStyleDefault" id="ofM-tZ-cqR">
                                         <rect key="frame" x="0.0" y="68" width="414" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ofM-tZ-cqR" id="wtU-Mt-CrZ">
@@ -249,16 +249,9 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="SSF-gy-Mnn">
-                                                    <rect key="frame" x="20" y="6" width="25" height="14.5"/>
+                                                    <rect key="frame" x="20" y="0.0" width="374" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1DW-H8-8Xf">
-                                                    <rect key="frame" x="20" y="22.5" width="40.5" height="13.5"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>

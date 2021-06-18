@@ -30,14 +30,6 @@ class PotentialLocation: NSObject, Codable {
         let values = try decoder.container(keyedBy: CodingKeys.self)
 
         votes = try values.decodeIfPresent(Int.self, forKey: .votes)
-        
-//        let isCurrentLocation = try values.decode(Bool.self, forKey: .location)
-//        let name = try values.decode(String.self, forKey: .location)
-//        let phoneNumber = try values.decode(String.self, forKey: .location)
-//        let url = try values.decode(URL.self, forKey: .location)
-//        let timeZone = try values.decode(TimeZone.self, forKey: .location)
-//
-//        let MKPointOfInterestCategory = try values.decode(String.self, forKey: .location)
 
         let latitude = try values.decode(CLLocationDegrees.self, forKey: .latitude)
         let longitude = try values.decode(CLLocationDegrees.self, forKey: .longitude)

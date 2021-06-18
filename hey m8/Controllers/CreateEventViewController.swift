@@ -21,6 +21,8 @@ class CreateEventViewController: UIViewController {
     
     var eventID: String!
     
+    weak var allEventsDelegate: UserEventsTableViewController?
+    
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var descriptionTextField: UITextField!
     @IBAction func createEventButton(_ sender: UIButton) {
@@ -66,7 +68,6 @@ class CreateEventViewController: UIViewController {
         if segue.identifier == "shareEventSegue" {
             let destination = segue.destination as! EventShareViewController
             destination.eventDelegate = self
-            print("inside the seguebit")
         }
 
     }
@@ -87,6 +88,7 @@ class CreateEventViewController: UIViewController {
         groupID = newGroup
         return true
     }
+    
     func saveEvent() {
         guard let name = nameTextField.text, name.isEmpty==false else{
             displayMessagecli240(title: "Error", message: "Please enter a name")
@@ -113,7 +115,6 @@ class CreateEventViewController: UIViewController {
                           times: potentialTimes,
                           locations: potentialLocations)
         
-        
         // Add a new document with a generated ID
         var ref: DocumentReference? = nil
         do {
@@ -129,7 +130,6 @@ class CreateEventViewController: UIViewController {
             for time in a {
                 do {
                     try database.collection("events").document(ref!.documentID).collection("potential times").addDocument(from: time)
-                    print("potential time shoud be added :S")
                     
                 } catch let error {
                     print("Couldn't add times to the event:", error )
@@ -137,6 +137,8 @@ class CreateEventViewController: UIViewController {
                
             }
         }
+        allEventsDelegate?.tableView.reloadData()
+//        allEventsDelegate?.tableView.reloadSections([allEventsDelegate?.SECTION_EVENT], with: .automatic)
     }
     
     
