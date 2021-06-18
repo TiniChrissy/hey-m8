@@ -12,7 +12,7 @@ class EventDetailsViewController: UIViewController, UITableViewDelegate,  UITabl
     var database: Firestore!
     
     @IBOutlet weak var tableView: UITableView!
-   
+    
     weak var dateRangeDelegate: CreateEventViewController?
     var votedDatesRange = [PotentialTime]()
     var selectedDates = [PotentialTime]()
@@ -26,6 +26,9 @@ class EventDetailsViewController: UIViewController, UITableViewDelegate,  UITabl
     let CELL_COUNT = "dateCountCell"
     
     @IBAction func confirmAvailability(_ sender: Any) {
+        if (tableView.indexPathsForSelectedRows == nil) {
+            displayMessagecli240(title: "Invalid Date Range", message: "Please vote for at least one date")
+        }
         let eventDocument = database.collection("events").document(event.id?.documentID ?? "")
         let potentialTimesCollection = eventDocument.collection("potential times")
         
@@ -58,7 +61,7 @@ class EventDetailsViewController: UIViewController, UITableViewDelegate,  UITabl
                                     self.tableView.reloadSections([self.SECTION_DATE], with: .automatic)
                                 }
                             })
-                           
+                            
                         } else {
                             // A nil value was successfully initialized from the DocumentSnapshot,
                             // or the DocumentSnapshot was nil.
@@ -70,7 +73,9 @@ class EventDetailsViewController: UIViewController, UITableViewDelegate,  UITabl
                     }
                 }
             }
-                                        self.selectedDates.removeAll()
+            self.selectedDates.removeAll()
+//            self.dateRangeDelegate
+            self.navigationController?.popViewController(animated: true)
         }
         
     }
@@ -91,7 +96,7 @@ class EventDetailsViewController: UIViewController, UITableViewDelegate,  UITabl
         
         //Connect to database
         database = Firestore.firestore()
- 
+        
         getPotentialTimes(completionHandler: { (success) -> Void in
             if success {
                 self.tableView.reloadSections([self.SECTION_DATE], with: .automatic)
@@ -99,7 +104,7 @@ class EventDetailsViewController: UIViewController, UITableViewDelegate,  UITabl
                     print("date", potentialTime.time)
                     print("votes", potentialTime.votes)
                 })
-
+                
                 self.tableView.reloadSections([self.SECTION_COUNT], with: .automatic)
             } else {
                 // placeholder
@@ -109,22 +114,22 @@ class EventDetailsViewController: UIViewController, UITableViewDelegate,  UITabl
         tableView.allowsSelection = true
         tableView.isUserInteractionEnabled = true
     }
-
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
-            case SECTION_DATE:
-                return votedDatesRange.count
-            case SECTION_COUNT:
-                return 1
-            default:
-                return 0
+        case SECTION_DATE:
+            return votedDatesRange.count
+        case SECTION_COUNT:
+            return 1
+        default:
+            return 0
         }
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == SECTION_DATE {
             let timeCell = tableView.dequeueReusableCell(withIdentifier: CELL_DATE, for: indexPath)
@@ -140,33 +145,33 @@ class EventDetailsViewController: UIViewController, UITableViewDelegate,  UITabl
             if time.votes == nil {
                 time.votes = 0
             }
-
+            
             timeCell.detailTextLabel?.text = "Number of votes: " + String(format: "%d", time.votes ?? "0")
             
             //Multiple seleciton
             if let selectedPaths = tableView.indexPathsForSelectedRows as? [NSIndexPath] {
                 let selected = selectedPaths.filter(){ $0 as IndexPath == indexPath }
-                    if selected.count > 0 {
-                        timeCell.accessoryType = .checkmark
-                    } else {
-                        timeCell.accessoryType = .none
-                    }
+                if selected.count > 0 {
+                    timeCell.accessoryType = .checkmark
+                } else {
+                    timeCell.accessoryType = .none
                 }
+            }
             
             return timeCell
         }
-
+        
         if indexPath.section == SECTION_COUNT {
             let countCell = tableView.dequeueReusableCell(withIdentifier: CELL_COUNT, for: indexPath)
             countCell.backgroundColor = UIColor(named: "Background Colour")
-//            countCell.textLabel?.text = String(votedDatesRange.count) + " available dates for you to choose from"
+            //            countCell.textLabel?.text = String(votedDatesRange.count) + " available dates for you to choose from"
             
             if votedDatesRange.count == 0 {
                 countCell.textLabel?.text = "No available dates for you to choose from"
             } else if (votedDatesRange.count > 0) {
                 countCell.textLabel?.text = String(votedDatesRange.count) + " available dates for you to choose from"
             }
-
+            
             countCell.textLabel?.numberOfLines=0
             countCell.textLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
             countCell.textLabel?.textColor = .secondaryLabel
@@ -175,24 +180,20 @@ class EventDetailsViewController: UIViewController, UITableViewDelegate,  UITabl
         }
         return UITableViewCell() //should not happen
     }
-
+    
     // Override to support conditional editing of the table view.
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-     if indexPath.section == SECTION_DATE {
-         return true
-     }
-     // Return false if you do not want the specified item to be editable.
-     return true
+        if indexPath.section == SECTION_DATE {
+            return true
+        }
+        // Return false if you do not want the specified item to be editable.
+        return true
     }
     
     // Override to support editing the table view.
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-         if editingStyle == .delete && indexPath.section == SECTION_DATE {
-//            print("trying to delete a member from group")
-//            currentMembers.remove(at: indexPath.row)
-//            membersTable.deleteRows(at: [indexPath], with: .fade)
-//            membersTable.reloadSections([SECTION_USER], with: .automatic)
-         }
+        if editingStyle == .delete && indexPath.section == SECTION_DATE {
+        }
         
     }
     
@@ -200,11 +201,10 @@ class EventDetailsViewController: UIViewController, UITableViewDelegate,  UITabl
         if indexPath.section == SECTION_DATE {
             if let cell = tableView.cellForRow(at: indexPath) {
                 self.selectedDates.append(votedDatesRange[indexPath.row])
-                }
-            
+            }
         }
         if indexPath.section == SECTION_COUNT {
-
+            
         }
     }
     
@@ -217,11 +217,6 @@ class EventDetailsViewController: UIViewController, UITableViewDelegate,  UITabl
                 }
             }
         }
-        
-    }
-    
-    func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
-        
     }
     
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
@@ -239,7 +234,6 @@ class EventDetailsViewController: UIViewController, UITableViewDelegate,  UITabl
                 for document in querySnapshot!.documents {
                     print("document", document.data())
                     let result = Result {
-//                        print("document data", document.data())
                         try document.data(as: PotentialTime.self)
                         
                     }
@@ -248,13 +242,8 @@ class EventDetailsViewController: UIViewController, UITableViewDelegate,  UITabl
                         if let potentialTime = potentialTime {
                             let a = document.data()
                             let ID = document.documentID
-                            print("date in get", potentialTime.time)
-                            print("votes", potentialTime.votes)
-                            
-                            print("document vote", a["vote"])
-                            potentialTime.votes = a["vote"] as! Int
+                            potentialTime.votes = a["vote"] as? Int
                             self.votedDatesRange.append(potentialTime)
-//                            print("potentialTime inside",potentialTime)
                         } else {
                             // A nil value was successfully initialized from the DocumentSnapshot,
                             // or the DocumentSnapshot was nil.
@@ -267,7 +256,7 @@ class EventDetailsViewController: UIViewController, UITableViewDelegate,  UITabl
                 }
             }
             //Here is where I believe the completion handler should go. It is exactly at this point that we are sure the async code has run.
-//            print("here is where the completion handler should be i think and therefore votedDatesRange works", self.votedDatesRange)
+            //            print("here is where the completion handler should be i think and therefore votedDatesRange works", self.votedDatesRange)
             let flag = true // true if download succeed,false otherwise
             completionHandler(flag)
             
